@@ -1,0 +1,757 @@
+---
+import logo from '../assets/logo.jpg';
+---
+
+<!-- TopNavBar -->
+<header
+  class="fixed top-0 left-0 right-0 z-9999 w-full bg-white/95 backdrop-blur-sm border-b border-[#f4f0f1] shadow-sm"
+>
+  <div class="w-full max-w-7xl mx-auto px-4 sm:px-10 py-4">
+    <div class="flex items-center justify-between">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <img
+          src={logo.src}
+          alt="De Gaza al Mundo Logo"
+          class="w-24 h-24 object-cover rounded-xl"
+        />
+      </div>
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-8">
+        <nav class="flex items-center gap-8">
+          <a
+            class="text-[#171212] text-base font-medium hover:text-[#931a24] transition-colors"
+            href="#">Inicio</a
+          >
+          <a
+            class="text-[#171212] text-base font-medium hover:text-[#931a24] transition-colors"
+            href="#hero-section">Sobre Nosotros</a
+          >
+          <a
+            class="text-[#171212] text-base font-medium hover:text-[#931a24] transition-colors"
+            href="#transparency-section">Transparencia</a
+          >
+          <a
+            class="text-[#171212] text-base font-medium hover:text-[#931a24] transition-colors"
+            href="#craft-section">Artesanías</a
+          >
+		  <a
+            class="text-[#171212] text-base font-medium hover:text-[#931a24] transition-colors"
+            href="#collaborate-section">Cómo Colaborar</a
+          >
+        </nav>
+        <button
+          class="flex items-center justify-center gap-2 rounded-lg h-11 px-5 bg-[#931a24] hover:bg-red-800 transition-colors text-white text-base font-bold shadow-sm cursor-pointer"
+        >
+          <span class="material-symbols-outlined text-xl">send</span>
+          <span>Unirme al Telegram</span>
+        </button>
+      </div>
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="md:hidden p-2 text-[#171212] cursor-pointer">
+        <span class="material-symbols-outlined" id="menu-icon">menu</span>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-[#f4f0f1] px-4 py-4">
+      <nav class="flex flex-col gap-4">
+        <a
+          class="text-[#171212] text-base font-medium hover:text-[#931a24] transition-colors py-2"
+          href="#">Inicio</a>
+        <a
+          class="text-[#171212] text-base font-medium hover:text-[#931a24] transition-colors py-2"
+          href="#hero-section">Sobre Nosotros</a>
+        <a
+          class="text-[#171212] text-base font-medium hover:text-[#931a24] transition-colors py-2"
+          href="#transparency-section">Transparencia</a>
+        <a
+          class="text-[#171212] text-base font-medium hover:text-[#931a24] transition-colors py-2"
+          href="#craft-section">Artesanías</a>
+        <a
+          class="text-[#171212] text-base font-medium hover:text-[#931a24] transition-colors py-2"
+          href="#collaborate-section">Cómo Colaborar</a>
+        <button
+          class="flex items-center justify-center gap-2 rounded-lg h-11 px-5 bg-[#931a24] hover:bg-red-800 transition-colors text-white text-base font-bold shadow-sm cursor-pointer mt-2">
+          <span class="material-symbols-outlined text-xl">send</span>
+          <span>Unirme al Telegram</span>
+        </button>
+      </nav>
+    </div>
+  </div>
+</header>
+<main class="grow pt-28">
+  <!-- HeroSection -->
+  <section id="hero-section" class="relative bg-[#f8f6f6] py-12 md:py-24 px-4 sm:px-10">
+    <div class="w-full max-w-7xl mx-auto">
+      <div class="@container">
+        <div class="flex flex-col-reverse lg:flex-row gap-12 items-center">
+          <!-- Text Content -->
+          <div class="flex flex-col gap-6 lg:w-1/2 items-start">
+            <div
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#236E1E]/10 text-[#236E1E] text-sm font-medium"
+            >
+              <span class="material-symbols-outlined text-sm">check_circle</span
+              >
+              Ayuda 100% directa y transparente
+            </div>
+            <h2
+              class="text-[#171212] text-4xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight"
+            >
+              Conectando corazones solidarios con familias en Gaza
+            </h2>
+            <p class="text-[#6b6b6b] text-lg leading-relaxed max-w-xl">
+              Somos un puente directo entre donantes y familias que necesitan
+              ayuda urgente. Sin intermediarios burocráticos, tu solidaridad
+              llega directamente a quienes más lo necesitan para cubrir
+              necesidades básicas de alimentación y salud.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mt-2">
+              <button
+                class="flex items-center justify-center gap-2 rounded-lg h-12 px-8 bg-[#931a24] hover:bg-red-800 transition-colors text-white text-base font-bold shadow-md w-full sm:w-auto cursor-pointer"
+              >
+                <span class="material-symbols-outlined">group_add</span>
+                <span>Unirme al Grupo</span>
+              </button>
+              <button
+                class="flex items-center justify-center gap-2 rounded-lg h-12 px-8 bg-white border border-[#e5e7eb] hover:bg-gray-50 transition-colors text-[#171212] text-base font-semibold w-full sm:w-auto cursor-pointer"
+              >
+                <span>Saber más</span>
+              </button>
+            </div>
+            <div class="flex items-center gap-4 text-sm text-[#6b6b6b] mt-2">
+              <div class="flex -space-x-3">
+                <img
+                  alt="User avatar"
+                  class="w-10 h-10 rounded-full border-2 border-white object-cover"
+                  data-alt="Portrait of a female volunteer"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeozgq7VsOiM9Ia5JEJvYlf1aiwnnnXgwSO906oRsgz1myxOLF5vf393noWhK_RaIm0jKpeAMP0zY6-pqNQcdkji0QGQ0owyyMwEFuWFhPI_i3QPVtuZTXFrkY2p1v-k8ACainH46O52wLsr93wsnzyuDG6j08Hih6umFl4zQVPjJOZ62A4pAXPmlzI8e9azGhsEH1GRtT9FBV4iBcmvIajLJ2x1vBk8BAo4JcWHSSKp0BIPkTjLFflccAIoGqKyhtANlKPqB6uuc"
+                />
+                <img
+                  alt="User avatar"
+                  class="w-10 h-10 rounded-full border-2 border-white object-cover"
+                  data-alt="Portrait of a male donor"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5g9onrYZp_p9KY-LJ0dw4oo8T40wvxj4BX3VEuUpJMggOeeWmWvYtgn9kpCRe5LTYwuMiNCImI-ZY-TWkShjhzVnoxAa5BN3Is5PT3bH1j4zjvOQITQn8knEEt2RX2cNtaZ-KtmhyIzPA4trE6JiYgEhGY602bj05aszrUiF-W_Eyin1b_LktvYS4_nl3brl6Sg1M1e302G28efwV3Q14N6md8SF-nL09QdiffKWxShUNIOxxeo6EK2j0m0x2RGNBL_EWoGOIPVU"
+                />
+                <img
+                  alt="User avatar"
+                  class="w-10 h-10 rounded-full border-2 border-white object-cover"
+                  data-alt="Portrait of a smiling supporter"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZALKw1o3HkZ3ERUixu7bgo7jdIu04GKKoifTY5l6mVCXW5lMaSLPYEsTJ8LIdPsoqxFdjv4WTIhV5dyPf4bCt3sE1I8gW3ptBcHtzoQ1TMmUp0ERmKSlIq0_MiQLlvvsZKtyYKDL6wObQJeyJu5L2uW1iCPVRFGi0JIBw2LUafr8bhVgUmYIWPE8W6XFONSqR04f2HX0hPHt2rxQXn7fj7oGnkHa_HU6Y0uv9JUYktk1ND-RtxzxYLfboRgbFWEUvbATO5V_joY0"
+                />
+              </div>
+              <span>+1,200 miembros activos</span>
+            </div>
+          </div>
+          <!-- Hero Image -->
+          <div class="w-full lg:w-1/2">
+            <div
+              class="relative rounded-2xl overflow-hidden shadow-2xl aspect-4/3 group"
+            >
+              <div
+                class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-all duration-500"
+              >
+              </div>
+              <div
+                class="w-full h-full bg-center bg-cover object-cover transition-transform duration-700 group-hover:scale-105"
+                data-alt="Two children holding hands walking through rubble in a resilient manner"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB40yXBj9J5CwwBrziZwzhAK5_LxOywlaz0s5IlC_0AxYDiXz9YZlNahYvajE6iwPyD2w-GaOSSWEWkrXTwbawbTJnnAPNXBDt6ktqGuOnI04yEBleLwGQ4dZpf---0sar9Axf6C7RMYeXtPRmgmLO58IhwyrnePwRlegIz0FkdlYX4ofN7k7o6_SC-89dLbU-5OI5sPe9yFywKalJ-B09mLqmdYyKnKGszpSaaltVXKY81VhdHAf3Yr7JT7U7EuVbkaBuzJd5WvII");'
+              >
+              </div>
+              <!-- Palestinian Flag Colors Accent -->
+              <div
+                class="absolute bottom-0 left-0 w-full h-2 bg-linear-to-r from-primary via-black to-accent-green"
+              >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Stats Section (New addition for trust) -->
+  <section class="border-y border-[#f4f0f1] bg-white py-10">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-10">
+      <div
+        class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-[#f4f0f1]"
+      >
+        <div class="px-4 py-2">
+          <p class="text-4xl font-black text-[#931a24] mb-2">100%</p>
+          <p class="text-[#6b6b6b] font-medium">Donación Directa</p>
+        </div>
+        <div class="px-4 py-2">
+          <p class="text-4xl font-black text-[#236E1E] mb-2">500+</p>
+          <p class="text-[#6b6b6b] font-medium">Familias Ayudadas</p>
+        </div>
+        <div class="px-4 py-2">
+          <p class="text-4xl font-black text-black mb-2">24/7</p>
+          <p class="text-[#6b6b6b] font-medium">Soporte Comunitario</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- SectionHeader + ImageGrid -->
+  <section id="transparency-section" class="py-16 md:py-24 bg-white scroll-mt-20">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-10">
+      <div
+        class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12"
+      >
+        <div class="max-w-2xl">
+          <span
+            class="text-[#236E1E] font-bold tracking-wider text-sm uppercase mb-2 flex items-center gap-2"
+            >Transparencia</span
+          >
+          <h2
+            class="text-[#171212] text-3xl md:text-4xl font-bold leading-tight tracking-tight"
+          >
+            Nuestra Labor en Imágenes
+          </h2>
+          <p class="text-[#6b6b6b] mt-4 text-lg">
+            Cada aporte se traduce en ayuda real. Compartimos evidencia
+            fotográfica de las entregas de alimentos, medicinas y abrigo.
+          </p>
+        </div>
+        <a
+          class="hidden md:flex items-center gap-2 text-[#931a24] font-bold hover:underline decoration-2 underline-offset-4"
+          href="#"
+        >
+          Ver galería completa
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Image 1 -->
+        <div
+          class="group relative overflow-hidden rounded-xl aspect-square shadow-sm"
+        >
+          <div
+            class="w-full h-full bg-center bg-cover transition-transform duration-500 group-hover:scale-110"
+            data-alt="Hands holding a box of food supplies being passed to another person"
+            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD-Ziq9Esag7z6DROomgq2vcz3dIaDZClAzRWZrVUv1_gFc3SD66YmVML1XQ5Sp-XTlRc_0Nvm2bVjQP0LH8MYoAfWY3pKRXiE7Ap5ryNo3iwBRh4QFtD-dVGEKdswu1daqvZJDvp0nFnfQC6seauD-cPm6ckBCXYLrpAqsocU9C-iT2p3Wqp1z5EnqzRM2rsCOL-JW0diruwf3_ns5f1DNSxHajZRGqzJdlIEQIlVoLYl_7Al2O5gRAXXYC_WLcHN8Z75j92PPPxI");'
+          >
+          </div>
+          <div
+            class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4"
+          >
+            <p class="text-white font-medium">Entrega de alimentos</p>
+          </div>
+        </div>
+        <!-- Image 2 -->
+        <div
+          class="group relative overflow-hidden rounded-xl aspect-square shadow-sm"
+        >
+          <div
+            class="w-full h-full bg-center bg-cover transition-transform duration-500 group-hover:scale-110"
+            data-alt="A doctor examining a child in a makeshift clinic"
+            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDh8NdFRJjGEWOG1QUfAjHpPbA9lrLJj_p8MZFHRiY3GV3BZIbnXDCnyH0xoYMwhEXsX3yXoxefVTSU_kmVnNPL3kwo9cnkz8cKoFPOFY2qQ3buFwI1ujGZBwPnHiucM8TttM_4I6eThgj3bUG3ZKNB_SzRTaSgVR3kBYtRJQRNdQt0GcL-ZFKgMPqMDwOA-d0kG471jnf_eMMjAYHNCFtUWhWQV9Q7pTl_VW3j3EPqxCg-DRIf3fW1ajSxP0v1uOGOveuduakQyOw");'
+          >
+          </div>
+          <div
+            class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4"
+          >
+            <p class="text-white font-medium">Asistencia médica</p>
+          </div>
+        </div>
+        <!-- Image 3 -->
+        <div
+          class="group relative overflow-hidden rounded-xl aspect-square shadow-sm"
+        >
+          <div
+            class="w-full h-full bg-center bg-cover transition-transform duration-500 group-hover:scale-110"
+            data-alt="Group of volunteers organizing packages in a warehouse"
+            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBg5htIwNGMv3CpiK3VMeALOKu089SSGv_Af8B7Yifwd2coFjbHgr2DHn0GmdIC0vdHe4AaihQSqb1x3GYn7WftcDa5j_TfzFkHIltZUE6Fajj2KGVKz00bWQZJFV5xR1pCcb_ZVUIR_W4amR2BjbaZKv-i6-6lxlee88Yf--LVKkJawae3o0NTGkaF2Il9l0iIKIOKazgfFarhP24zW1qv0ZAyqkkPZqBe_22iOjlQ4PPQpzoQpHPKpYEUjisJwt6VjJtTbjQF8K8");'
+          >
+          </div>
+          <div
+            class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4"
+          >
+            <p class="text-white font-medium">Coordinación logística</p>
+          </div>
+        </div>
+        <!-- Image 4 -->
+        <div
+          class="group relative overflow-hidden rounded-xl aspect-square shadow-sm"
+        >
+          <div
+            class="w-full h-full bg-center bg-cover transition-transform duration-500 group-hover:scale-110"
+            data-alt="Children smiling while holding warm winter clothes"
+            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAqMsn2KfKplWhV18s8BcZz6nFTN9-WPilnOnarCu8hUpo7mUhL1ZH9FTNu6Ay0UIYeFQFsgz0MhCE__qcRFz95ekQiMtUk-mHJfMH_Zde8YuVf3u0zMIOkLzpc-gj-aOn4U03m8PfSMNZK9joSLrCAPDxusDxlhKTA696qqN8u2H02U66hPOB5Ee2JwHF9Ywp0H1LjIIbwvsWO3gVKNHRb5HvZX_idOUJRdCcf3S4BIs2ubWC6UQLoidZ2K88jr5Xq3AQ6dZRHWXY");'
+          >
+          </div>
+          <div
+            class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4"
+          >
+            <p class="text-white font-medium">Abrigo para el invierno</p>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 text-center md:hidden">
+        <a
+          class="inline-flex items-center gap-2 text-[#931a24] font-bold"
+          href="#"
+        >
+          Ver galería completa
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- CraftSection -->
+  <section
+    id="craft-section" class="relative bg-[#f8f6f6] py-16 md:py-24 border-t border-[#e5e7eb]"
+  >
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-10">
+      <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+        <div class="lg:w-1/2 order-2 lg:order-1">
+          <span
+            class="text-[#931a24] font-bold tracking-wider text-sm uppercase mb-2 flex items-center gap-2"
+          >
+            <span class="w-2 h-2 rounded-full bg-[#931a24]"></span>
+            Artesanía Solidaria
+          </span>
+          <h2
+            class="text-[#171212] text-3xl md:text-4xl font-black leading-tight mb-6"
+          >
+            Apoya con el Corazón,<br />Lleva Palestina Contigo
+          </h2>
+          <p class="text-[#6b6b6b] text-lg leading-relaxed mb-8">
+            Nuestros voluntarios y familias elaboran con dedicación hermosas
+            piezas artesanales. Cada pulsera, llavero y camiseta que adquieres
+            es un donativo directo que se transforma en ayuda humanitaria.
+          </p>
+          <div class="space-y-6">
+            <div class="flex gap-4 items-start">
+              <div
+                class="w-12 h-12 rounded-full bg-black/5 flex items-center justify-center text-black shrink-0"
+              >
+                <span class="material-symbols-outlined text-2xl">palette</span>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-[#171212] mb-1">
+                  Diseños Auténticos
+                </h3>
+                <p class="text-[#6b6b6b]">
+                  Inspirados en la cultura y los colores de nuestra tierra:
+                  rojo, negro, blanco y verde.
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-4 items-start">
+              <div
+                class="w-12 h-12 rounded-full bg-[#236E1E]/10 flex items-center justify-center text-[#236E1E] shrink-0"
+              >
+                <span class="material-symbols-outlined text-2xl">favorite</span>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-[#171212] mb-1">
+                  Impacto Real
+                </h3>
+                <p class="text-[#6b6b6b]">
+                  El 100% de los beneficios se destina a la compra de alimentos
+                  y medicinas.
+                </p>
+              </div>
+            </div>
+          </div>
+		  <!-- Mobile Slider (visible only on mobile) -->
+          <div class="mt-8 lg:hidden overflow-hidden">
+            <div id="craft-slider" class="flex gap-4 overflow-x-auto scroll-smooth scrollbar-hide snap-x snap-mandatory">
+              <div class="flex-none w-[calc(50%-8px)] snap-start">
+                <div class="relative rounded-xl overflow-hidden shadow-lg aspect-3/4 group border-4 border-white">
+                  <img
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCOQ4AgPE59BemxiXNSp8LenAboEtxiNceEgZUKPJ_Cox6V6O45P_ED9eZ0VXf658HVDe5I4Qb2-p-43hEnwBaSYuTl6b3z1iQXP1f8bb0s2lgJXqcqk-VDQRNcD59BiwJaOVRxtZJNZRHZzBiTZoSr55zkwnrw3jh0P-nQE6f0ce5g1iHMwZPAmiOENY88YQBA8C3vjVxJje70ZNC3F_qDhstrtrpuAriEpKWfmSLcjRDCCyUqOcWMfkkAc13Zw4hEPC0tzYuGEY"
+                    alt="Handcrafted Palestinian bracelet with flag colors"
+                    class="w-full h-full object-cover"
+                  />
+                  <div class="absolute bottom-4 left-4">
+                    <span class="inline-block px-3 py-1 bg-[#931a24] text-white font-bold rounded-lg shadow-md text-xs">
+                      Pulseras
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="flex-none w-[calc(50%-8px)] snap-start">
+                <div class="relative rounded-xl overflow-hidden shadow-lg aspect-3/4 group border-4 border-white">
+                  <img
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBv3TJupSmTZ9T7BkZzHgZIXqmVx_9nxClrY4VebS38Jx75tdwccNiktdkn0Z-wlFBYmV2WXOLt7QcgSg7QqtRtRMvCHBeH2udMBY4l6jktByf9MJ4TXOONYpExnL4ANvReNIvpJP9lRjZaMY2oDNZNDNRoTbFd4VCcgZLaKPctXx4hO8j753zJTgFYEu_Sq7oPsutchDCzJmaz3gWoz6e6yhdyIE1wiEGXKSy67D33fIhZN8wjyF9_wjFAzFr1zvncGyefP0h1Ifo"
+                    alt="White t-shirt with Palestinian embroidery design"
+                    class="w-full h-full object-cover"
+                  />
+                  <div class="absolute bottom-4 left-4">
+                    <span class="inline-block px-3 py-1 bg-[#236E1E] text-white font-bold rounded-lg shadow-md text-xs">
+                      Camisetas
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="flex-none w-[calc(50%-8px)] snap-start">
+                <div class="relative rounded-xl overflow-hidden shadow-lg aspect-3/4 group border-4 border-white">
+                  <img
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBT2QD-6O4ADOgryGEV48OjMC-oEL8W8SIVFpKZoHiz6mhYYMTXtj0PCVAtV74lTfF8s-6zw8Iv6nedogt5nDFirkBkjzlyvGgTLCBXkMpRyChboGyp3wv3VOpcdy_1vuNZDcsZUSfpSiQDTXHavXGBz_zAqbQ2lFte3FSzYlWEi70V8SUP4nPwWzy_pOVShPeBaGGXWyHze9PwRjewXICi4wWCqO5OzT2gLuDIXLGdy6rzdG653RbiHofZPWk8L0ZK28oCOlEZWmk"
+                    alt="Keychain with Palestinian flag charm"
+                    class="w-full h-full object-cover"
+                  />
+                  <div class="absolute bottom-4 left-4">
+                    <span class="inline-block px-3 py-1 bg-black text-white font-bold rounded-lg shadow-md text-xs">
+                      Llaveros
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="flex-none w-[calc(50%-8px)] snap-start">
+                <div class="relative rounded-xl overflow-hidden shadow-lg aspect-3/4 group border-4 border-white">
+                  <img
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtSPRlCNJc9qmBjwY-Jy4pFpTL_YqRK07a-aN_A5yzU6PUceQkXAviyvEaFPhWlwV7qToTSpQiREE963yN48q7JIAtY2mwUa8NQ0IBJj8mYu9rsyB7HLF5W-plg5KnIxrv-PtRNmyb7BHHM74UxclH9UoHywsRfY-CavZ_-kht7Ke4nf8pPbif7wtpqn3zR8b-Z_8KGvOXXsX1xpoTg-6Mo8hH4jeSoSat-IJdxTG9gEJKSc-Z760-ljDQpV82FtqTK4rnwvCbWas"
+                    alt="Handmade tote bag with traditional patterns"
+                    class="w-full h-full object-cover"
+                  />
+                  <div class="absolute bottom-4 left-4">
+                    <span class="inline-block px-3 py-1 bg-[#236E1E] text-white font-bold rounded-lg shadow-md text-xs">
+                      Bolsas
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Slider indicators -->
+            <div class="flex justify-center gap-2 mt-4">
+              <button class="w-2 h-2 rounded-full bg-[#931a24] transition-all duration-200" data-slide="0"></button>
+              <button class="w-2 h-2 rounded-full bg-gray-300 hover:bg-[#931a24] transition-all duration-200" data-slide="1"></button>
+            </div>
+          </div>
+          <div class="mt-10 flex gap-4 justify-center lg:justify-start">
+            <button
+              class="inline-flex items-center justify-center gap-2 rounded-lg h-12 px-6 bg-black text-white hover:bg-gray-800 transition-colors font-bold shadow-lg"
+            >
+              <span class="material-symbols-outlined">shopping_bag</span>
+              Ver Catálogo
+            </button>
+          </div>
+          
+        </div>
+        <!-- Desktop Grid (hidden on mobile) -->
+        <div class="lg:w-1/2 order-1 lg:order-2 hidden lg:block">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="space-y-4 lg:translate-y-8">
+              <div
+                class="relative rounded-xl overflow-hidden shadow-lg aspect-3/4 group border-4 border-white min-h-[250px]"
+              >
+                <img
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCOQ4AgPE59BemxiXNSp8LenAboEtxiNceEgZUKPJ_Cox6V6O45P_ED9eZ0VXf658HVDe5I4Qb2-p-43hEnwBaSYuTl6b3z1iQXP1f8bb0s2lgJXqcqk-VDQRNcD59BiwJaOVRxtZJNZRHZzBiTZoSr55zkwnrw3jh0P-nQE6f0ce5g1iHMwZPAmiOENY88YQBA8C3vjVxJje70ZNC3F_qDhstrtrpuAriEpKWfmSLcjRDCCyUqOcWMfkkAc13Zw4hEPC0tzYuGEY"
+                  alt="Handcrafted Palestinian bracelet with flag colors"
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div class="absolute bottom-4 left-4">
+                  <span
+                    class="inline-block px-4 py-2 bg-[#931a24] text-white font-bold rounded-lg shadow-md text-sm"
+                  >
+                    Pulseras
+                  </span>
+                </div>
+              </div>
+              <div
+                class="relative rounded-xl overflow-hidden shadow-lg aspect-square group border-4 border-white min-h-[200px]"
+              >
+                <img
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBv3TJupSmTZ9T7BkZzHgZIXqmVx_9nxClrY4VebS38Jx75tdwccNiktdkn0Z-wlFBYmV2WXOLt7QcgSg7QqtRtRMvCHBeH2udMBY4l6jktByf9MJ4TXOONYpExnL4ANvReNIvpJP9lRjZaMY2oDNZNDNRoTbFd4VCcgZLaKPctXx4hO8j753zJTgFYEu_Sq7oPsutchDCzJmaz3gWoz6e6yhdyIE1wiEGXKSy67D33fIhZN8wjyF9_wjFAzFr1zvncGyefP0h1Ifo"
+                  alt="White t-shirt with Palestinian embroidery design"
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div class="absolute bottom-4 left-4">
+                  <span
+                    class="inline-block px-4 py-2 bg-[#236E1E] text-white font-bold rounded-lg shadow-md text-sm"
+                  >
+                    Camisetas
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="space-y-4">
+              <div
+                class="relative rounded-xl overflow-hidden shadow-lg aspect-square group border-4 border-white min-h-[200px]"
+              >
+                <img
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBT2QD-6O4ADOgryGEV48OjMC-oEL8W8SIVFpKZoHiz6mhYYMTXtj0PCVAtV74lTfF8s-6zw8Iv6nedogt5nDFirkBkjzlyvGgTLCBXkMpRyChboGyp3wv3VOpcdy_1vuNZDcsZUSfpSiQDTXHavXGBz_zAqbQ2lFte3FSzYlWEi70V8SUP4nPwWzy_pOVShPeBaGGXWyHze9PwRjewXICi4wWCqO5OzT2gLuDIXLGdy6rzdG653RbiHofZPWk8L0ZK28oCOlEZWmk"
+                  alt="Keychain with Palestinian flag charm"
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div class="absolute bottom-4 left-4">
+                  <span
+                    class="inline-block px-4 py-2 bg-black text-white font-bold rounded-lg shadow-md text-sm"
+                  >
+                    Llaveros
+                  </span>
+                </div>
+              </div>
+              <div
+                class="relative rounded-xl overflow-hidden shadow-lg aspect-3/4 group border-4 border-white min-h-[250px]"
+              >
+                <img
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtSPRlCNJc9qmBjwY-Jy4pFpTL_YqRK07a-aN_A5yzU6PUceQkXAviyvEaFPhWlwV7qToTSpQiREE963yN48q7JIAtY2mwUa8NQ0IBJj8mYu9rsyB7HLF5W-plg5KnIxrv-PtRNmyb7BHHM74UxclH9UoHywsRfY-CavZ_-kht7Ke4nf8pPbif7wtpqn3zR8b-Z_8KGvOXXsX1xpoTg-6Mo8hH4jeSoSat-IJdxTG9gEJKSc-Z760-ljDQpV82FtqTK4rnwvCbWas"
+                  alt="Handmade tote bag with traditional patterns"
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div class="absolute bottom-4 left-4">
+                  <span
+                    class="inline-block px-4 py-2 bg-[#236E1E] text-white font-bold rounded-lg shadow-md text-sm"
+                  >
+                    Bolsas
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- CTASection -->
+  <section id="collaborate-section" class="bg-[#fcfafa] py-16 md:py-24 relative overflow-hidden">
+    <!-- Decorative circle -->
+    <div
+      class="absolute -top-24 -right-24 w-96 h-96 bg-accent-green/5 rounded-full blur-3xl"
+    >
+    </div>
+    <div
+      class="absolute -bottom-24 -left-24 w-96 h-96 bg-[#931a24]/5 rounded-full blur-3xl"
+    >
+    </div>
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-10 relative z-10">
+      <div
+        class="bg-white rounded-2xl shadow-xl border border-[#f0f0f0] p-8 md:p-16 text-center max-w-4xl mx-auto"
+      >
+        <div
+          class="w-16 h-16 bg-blue-50 text-[#0088cc] rounded-full flex items-center justify-center mx-auto mb-6"
+        >
+          <span class="material-symbols-outlined text-4xl">send</span>
+          <!-- Simulating Telegram Icon style -->
+        </div>
+        <h2
+          class="text-[#171212] text-3xl md:text-5xl font-black leading-tight mb-6"
+        >
+          Tu ayuda llega directa
+        </h2>
+        <p
+          class="text-[#6b6b6b] text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10"
+        >
+          Únete a nuestra comunidad en Telegram para coordinar tu ayuda
+          directamente con quienes la necesitan. Sin intermediarios, directo al
+          corazón de Gaza.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <button
+            class="flex items-center justify-center gap-3 rounded-lg h-14 px-8 bg-[#931a24] hover:bg-red-800 transition-all transform hover:-translate-y-1 text-white text-lg font-bold shadow-lg cursor-pointer"
+          >
+            <span class="material-symbols-outlined">chat</span>
+            <span>Unirse al Canal de Telegram</span>
+          </button>
+        </div>
+        <p class="mt-6 text-sm text-[#6b6b6b]">
+          Unirse es gratuito y seguro. Respetamos tu privacidad.
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#1a1a1a] text-white pt-16 pb-8 border-t-4 border-[#236E1E]">
+  <div class="w-full max-w-7xl mx-auto px-4 sm:px-10">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+      <!-- Brand -->
+      <div class="col-span-1 md:col-span-2">
+        <div class="flex items-center gap-3 mb-6">
+          <div
+            class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center text-white"
+          >
+            <span class="material-symbols-outlined text-xl"
+              >volunteer_activism</span
+            >
+          </div>
+          <h3 class="text-xl font-bold">De Gaza al Mundo</h3>
+        </div>
+        <p class="text-gray-400 leading-relaxed max-w-sm mb-6">
+          Una iniciativa comunitaria dedicada a conectar donantes directamente
+          con familias palestinas. Tu solidaridad es nuestra fuerza.
+        </p>
+        <div class="flex gap-4">
+          <a
+            class="w-10 h-10 rounded-full bg-white/5 hover:bg-[#931a24] transition-colors flex items-center justify-center text-white"
+            href="#"
+          >
+            <span class="sr-only">Facebook</span>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+              >
+              </path>
+            </svg>
+          </a>
+          <a
+            class="w-10 h-10 rounded-full bg-white/5 hover:bg-[#931a24] transition-colors flex items-center justify-center text-white"
+            href="#"
+          >
+            <span class="sr-only">Twitter</span>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"
+              >
+              </path>
+            </svg>
+          </a>
+          <a
+            class="w-10 h-10 rounded-full bg-white/5 hover:bg-[#931a24] transition-colors flex items-center justify-center text-white"
+            href="#"
+          >
+            <span class="sr-only">Instagram</span>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+              >
+              </path>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <!-- Links 1 -->
+      <div>
+        <h4 class="text-lg font-bold mb-6 text-white">Organización</h4>
+        <ul class="space-y-4">
+          <li>
+            <a class="text-gray-400 hover:text-white transition-colors" href="#"
+              >Sobre Nosotros</a
+            >
+          </li>
+          <li>
+            <a class="text-gray-400 hover:text-white transition-colors" href="#"
+              >Nuestro Equipo</a
+            >
+          </li>
+          <li>
+            <a class="text-gray-400 hover:text-white transition-colors" href="#"
+              >Transparencia</a
+            >
+          </li>
+          <li>
+            <a class="text-gray-400 hover:text-white transition-colors" href="#"
+              >Contacto</a
+            >
+          </li>
+        </ul>
+      </div>
+      <!-- Links 2 -->
+      <div>
+        <h4 class="text-lg font-bold mb-6 text-white">Ayuda</h4>
+        <ul class="space-y-4">
+          <li>
+            <a class="text-gray-400 hover:text-white transition-colors" href="#"
+              >Preguntas Frecuentes</a
+            >
+          </li>
+          <li>
+            <a class="text-gray-400 hover:text-white transition-colors" href="#"
+              >Cómo Donar</a
+            >
+          </li>
+          <li>
+            <a class="text-gray-400 hover:text-white transition-colors" href="#"
+              >Unirse al Telegram</a
+            >
+          </li>
+          <li>
+            <a class="text-gray-400 hover:text-white transition-colors" href="#"
+              >Política de Privacidad</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div
+      class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
+    >
+      <p class="text-sm text-gray-500">
+        © 2023 De Gaza al Mundo. Todos los derechos reservados.
+      </p>
+      <div class="flex items-center gap-2">
+        <span class="w-3 h-3 rounded-full bg-[#931a24]"></span>
+        <span class="w-3 h-3 rounded-full bg-black border border-white/20"
+        ></span>
+        <span class="w-3 h-3 rounded-full bg-white"></span>
+        <span class="w-3 h-3 rounded-full bg-[#236E1E]"></span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu functionality
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    
+    if (mobileMenuBtn && mobileMenu && menuIcon) {
+      mobileMenuBtn.addEventListener('click', function() {
+        if (mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.remove('hidden');
+          menuIcon.textContent = 'close';
+        } else {
+          mobileMenu.classList.add('hidden');
+          menuIcon.textContent = 'menu';
+        }
+      });
+      
+      // Close menu when clicking links
+      const mobileLinks = mobileMenu.querySelectorAll('a');
+      mobileLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+          mobileMenu.classList.add('hidden');
+          menuIcon.textContent = 'menu';
+        });
+      });
+    }
+    
+    // Slider functionality
+    const slider = document.getElementById('craft-slider');
+    const indicators = document.querySelectorAll('[data-slide]');
+    
+    if (slider && indicators.length > 0) {
+      let currentSlide = 0;
+      
+      function updateIndicators(activeIndex: number) {
+        indicators.forEach(function(indicator, index) {
+          if (index === activeIndex) {
+            indicator.classList.remove('bg-gray-300');
+            indicator.classList.add('bg-[#931a24]');
+          } else {
+            indicator.classList.remove('bg-[#931a24]');
+            indicator.classList.add('bg-gray-300');
+          }
+        });
+      }
+      
+      // Handle indicator clicks (shows 2 pairs of images)
+      indicators.forEach(function(indicator, index) {
+        indicator.addEventListener('click', function() {
+          currentSlide = index;
+          const scrollPosition = index * slider.offsetWidth;
+          slider.scrollTo({
+            left: scrollPosition,
+            behavior: 'smooth'
+          });
+          updateIndicators(currentSlide);
+        });
+      });
+      
+      updateIndicators(0);
+    }
+  });
+</script>
