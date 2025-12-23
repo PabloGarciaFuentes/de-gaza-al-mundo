@@ -88,7 +88,7 @@ const { data = defaultData } = Astro.props;
               <div
                 class={`w-12 h-12 rounded-full ${feature.iconBg} flex items-center justify-center ${feature.iconColor} shrink-0`}
               >
-                <span class="material-symbols-outlined text-2xl">{feature.icon}</span>
+                <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">{feature.icon}</span>
               </div>
               <div>
                 <h3 class="text-lg font-bold text-[#171212] mb-1">
@@ -123,13 +123,13 @@ const { data = defaultData } = Astro.props;
           </div>
           <!-- Slider indicators -->
           <div class="flex justify-center gap-2 mt-4">
-            <button class="w-2 h-2 rounded-full bg-[#931a24] transition-all duration-200" data-slide="0"></button>
-            <button class="w-2 h-2 rounded-full bg-gray-300 hover:bg-[#931a24] transition-all duration-200" data-slide="1"></button>
+            <button class="w-2 h-2 rounded-full bg-[#931a24] transition-all duration-200 cursor-pointer" data-slide="0"></button>
+            <button class="w-2 h-2 rounded-full bg-gray-300 hover:bg-[#931a24] transition-all duration-200 cursor-pointer" data-slide="1"></button>
           </div>
         </div>
         <div class="mt-10 flex gap-4 justify-center lg:justify-start">
           <button
-            class="inline-flex items-center justify-center gap-2 rounded-lg h-12 px-6 bg-black text-white hover:bg-gray-800 transition-colors font-bold shadow-lg"
+            class="inline-flex items-center justify-center gap-2 rounded-lg h-12 px-6 bg-black text-white hover:bg-gray-800 transition-colors font-bold shadow-lg cursor-pointer"
           >
             <span class="material-symbols-outlined">{data.cta.icon}</span>
             {data.cta.label}
