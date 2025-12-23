@@ -4,7 +4,8 @@ const defaultData = {
   description: "Únete a nuestra comunidad en Telegram para coordinar tu ayuda directamente con quienes la necesitan. Sin intermediarios, directo al corazón de Gaza.",
   cta: {
     icon: "chat",
-    label: "Unirse al Canal de Telegram"
+    label: "Unirse al Canal de Telegram",
+    url: "https://t.me/+6HWcj5AJePYxN2M0"
   },
   disclaimer: "Unirse es gratuito y seguro. Respetamos tu privacidad.",
   telegramIcon: {
@@ -18,7 +19,7 @@ const { data = defaultData } = Astro.props;
 ---
 
 <!-- CTASection -->
-<section id="collaborate-section" class="bg-[#fcfafa] py-16 md:py-24 relative overflow-hidden">
+<section id="collaborate-section" class="bg-[#fcfafa] py-16 md:py-24 relative overflow-hidden scroll-mt-20">
   <!-- Decorative circle -->
   <div
     class="absolute -top-24 -right-24 w-96 h-96 bg-accent-green/5 rounded-full blur-3xl"
@@ -49,12 +50,15 @@ const { data = defaultData } = Astro.props;
         {data.description}
       </p>
       <div class="flex flex-col sm:flex-row justify-center gap-4">
-        <button
+        <a
+          href={data.cta.url}
+          target="_blank"
+          rel="noopener noreferrer"
           class="flex items-center justify-center gap-3 rounded-lg h-14 px-8 bg-[#931a24] hover:bg-red-800 transition-all transform hover:-translate-y-1 text-white text-lg font-bold shadow-lg cursor-pointer"
         >
           <span class="material-symbols-outlined">{data.cta.icon}</span>
           <span>{data.cta.label}</span>
-        </button>
+        </a>
       </div>
       <p class="mt-6 text-sm text-[#6b6b6b]">
         {data.disclaimer}

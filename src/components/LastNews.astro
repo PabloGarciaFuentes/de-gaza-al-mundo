@@ -1,0 +1,165 @@
+---
+import kaseOImage from "../assets/images/news/kase_o.png";
+
+const defaultData = {
+  header: {
+    badge: "Actualidad",
+    title: "Últimas noticias",
+    linkText: "Ver todas las actualizaciones",
+    linkIcon: "arrow_forward",
+    mobileLinkText: "Ver todas las noticias",
+  },
+  articles: [
+    {
+      id: 1,
+      image: kaseOImage.src,
+      alt: "Comunity volunteers",
+      date: "15 Dic, 2023",
+      category: {
+        name: "Comunidad",
+        color: "bg-black",
+        textColor: "text-black",
+      },
+      title: "Kase.O se une a nuestra causa solidaria",
+      excerpt: `El reconocido rapero español Kase.O dona el dinero de sus actuaciones en los festivales con fondos proisrraelís a la asociación "De Gaza Al Mundo".`,
+      link: "https://www.instagram.com/p/DSfnBXpjM53/",
+    },
+    {
+      id: 2,
+      image:
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuDh8NdFRJjGEWOG1QUfAjHpPbA9lrLJj_p8MZFHRiY3GV3BZIbnXDCnyH0xoYMwhEXsX3yXoxefVTSU_kmVnNPL3kwo9cnkz8cKoFPOFY2qQ3buFwI1ujGZBwPnHiucM8TttM_4I6eThgj3bUG3ZKNB_SzRTaSgVR3kBYtRJQRNdQt0GcL-ZFKgMPqMDwOA-d0kG471jnf_eMMjAYHNCFtUWhWQV9Q7pTl_VW3j3EPqxCg-DRIf3fW1ajSxP0v1uOGOveuduakQyOw",
+      alt: "Doctor checking patient",
+      date: "10 Ene, 2024",
+      category: {
+        name: "Salud",
+        color: "bg-[#236E1E]",
+        textColor: "text-[#236E1E]",
+      },
+      title: "Renovación de equipos médicos en campamentos provisionales",
+      excerpt:
+        "Gracias a vuestras aportaciones, hemos logrado suministrar nuevos equipos de diagnóstico básico para atender a niños y ancianos en las zonas más afectadas.",
+      link: "#",
+    },
+    {
+      id: 3,
+      image:
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuD-Ziq9Esag7z6DROomgq2vcz3dIaDZClAzRWZrVUv1_gFc3SD66YmVML1XQ5Sp-XTlRc_0Nvm2bVjQP0LH8MYoAfWY3pKRXiE7Ap5ryNo3iwBRh4QFtD-dVGEKdswu1daqvZJDvp0nFnfQC6seauD-cPm6ckBCXYLrpAqsocU9C-iT2p3Wqp1z5EnqzRM2rsCOL-JW0diruwf3_ns5f1DNSxHajZRGqzJdlIEQIlVoLYl_7Al2O5gRAXXYC_WLcHN8Z75j92PPPxI",
+      alt: "Food packages",
+      date: "28 Dic, 2023",
+      category: {
+        name: "Emergencia",
+        color: "bg-[#931a24]",
+        textColor: "text-[#931a24]",
+      },
+      title: "Distribución urgente de 500 paquetes de alimentos",
+      excerpt:
+        "Ante la escasez crítica, activamos un protocolo de emergencia para hacer llegar harina, aceite y conservas a familias desplazadas en el sur.",
+      link: "#",
+    },
+  ],
+};
+
+const { data = defaultData } = Astro.props;
+---
+
+<!-- LastNews Section -->
+<section
+  id="last-news-section"
+  class="py-16 md:py-24 bg-white border-t border-[#f4f0f1]"
+>
+  <div class="w-full max-w-7xl mx-auto px-4 sm:px-10">
+    <div
+      class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12"
+    >
+      <div class="max-w-2xl">
+        <span
+          class="text-[#931a24] font-bold tracking-wider text-sm uppercase mb-2 flex items-center gap-2"
+        >
+          <span class="w-2 h-2 rounded-full bg-[#931a24]"></span>
+          {data.header.badge}
+        </span>
+        <h2
+          class="text-[#171212] text-3xl md:text-4xl font-black leading-tight tracking-tight"
+        >
+          {data.header.title}
+        </h2>
+      </div>
+      <a
+        class="hidden md:flex items-center gap-2 text-[#6b6b6b] hover:text-[#931a24] transition-colors font-bold text-sm"
+        href="#"
+      >
+        {data.header.linkText}
+        <span class="material-symbols-outlined">{data.header.linkIcon}</span>
+      </a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {
+        data.articles.map(
+          (article: {
+            image: any;
+            alt: any;
+            date: any;
+            category: { color: any; textColor: any; name: any };
+            title: any;
+            excerpt: any;
+            link: string | URL | null | undefined;
+          }) => (
+            <article class="flex flex-col group">
+              <div class="relative overflow-hidden rounded-xl aspect-video mb-5 shadow-sm">
+                <div class="absolute inset-0 bg-black/5 z-10" />
+                <div
+                  class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                  data-alt={article.alt}
+                  style={`background-image: url("${article.image}")`}
+                ></div>
+                <div class="absolute top-3 right-3 z-20 bg-white/95 backdrop-blur px-3 py-1 rounded-md shadow-sm">
+                  <span class="text-xs font-bold text-[#171212]">
+                    {article.date}
+                  </span>
+                </div>
+              </div>
+              <div class="flex flex-col grow">
+                <div class="flex items-center gap-2 mb-3">
+                  <span
+                    class={`w-2 h-2 rounded-full ${article.category.color}`}
+                  />
+                  <span
+                    class={`text-xs font-bold ${article.category.textColor} uppercase tracking-wider`}
+                  >
+                    {article.category.name}
+                  </span>
+                </div>
+                <h3 class="text-xl font-bold text-[#171212] mb-3 leading-snug group-hover:text-[#931a24] transition-colors">
+                  {article.title}
+                </h3>
+                <p class="text-[#6b6b6b] text-sm leading-relaxed line-clamp-3 mb-4 grow">
+                  {article.excerpt}
+                </p>
+                <a
+                  href={article.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1 text-[#931a24] font-bold text-sm group-hover:translate-x-1 transition-transform"
+                >
+                  Leer artículo{" "}
+                  <span class="material-symbols-outlined text-base">
+                    arrow_forward
+                  </span>
+                </a>
+              </div>
+            </article>
+          )
+        )
+      }
+    </div>
+    <div class="mt-10 text-center md:hidden">
+      <a
+        class="inline-flex items-center gap-2 text-[#171212] font-bold border border-gray-200 px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors"
+        href="#"
+      >
+        {data.header.mobileLinkText}
+        <span class="material-symbols-outlined">{data.header.linkIcon}</span>
+      </a>
+    </div>
+  </div>
+</section>

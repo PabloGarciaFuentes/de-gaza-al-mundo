@@ -5,7 +5,7 @@ const defaultData = {
   logo: {
     src: logo.src,
     alt: "De Gaza al Mundo Logo",
-    class: "w-24 h-24 object-cover rounded-xl"
+    class: "w-16 h-16 md:w-24 md:h-24 object-cover rounded-xl"
   },
   navigation: [
     { label: "Inicio", href: "#" },
@@ -16,7 +16,8 @@ const defaultData = {
   ],
   ctaButton: {
     label: "Unirme al Telegram",
-    icon: "send"
+    icon: "send",
+    url: "https://t.me/+6HWcj5AJePYxN2M0"
   }
 };
 
@@ -28,7 +29,28 @@ const { data = defaultData } = Astro.props;
   class="fixed top-0 left-0 right-0 z-9999 w-full bg-white/95 backdrop-blur-sm border-b border-[#f4f0f1] shadow-sm"
 >
   <div class="w-full max-w-7xl mx-auto px-4 sm:px-10 py-4">
-    <div class="flex items-center justify-between">
+    <!-- Mobile Layout: Logo - Título Centrado - Hamburguesa -->
+    <div class="md:hidden flex items-center justify-between">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <img
+          src={data.logo.src}
+          alt={data.logo.alt}
+          class={data.logo.class}
+        />
+      </div>
+      <!-- Título centrado -->
+      <h1 class="text-[#171212] text-lg font-bold tracking-tight absolute left-1/2 transform -translate-x-1/2">
+        De Gaza al Mundo
+      </h1>
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="p-2 text-[#171212] cursor-pointer">
+        <span class="material-symbols-outlined" id="menu-icon">menu</span>
+      </button>
+    </div>
+    
+    <!-- Desktop Layout: Logo - Navegación -->
+    <div class="hidden md:flex items-center justify-between">
       <!-- Logo -->
       <div class="flex items-center">
         <img
@@ -49,17 +71,16 @@ const { data = defaultData } = Astro.props;
             </a>
           ))}
         </nav>
-        <button
+        <a
+          href={data.ctaButton.url}
+          target="_blank"
+          rel="noopener noreferrer"
           class="flex items-center justify-center gap-2 rounded-lg h-11 px-5 bg-[#931a24] hover:bg-red-800 transition-colors text-white text-base font-bold shadow-sm cursor-pointer"
         >
           <span class="material-symbols-outlined text-xl">{data.ctaButton.icon}</span>
           <span>{data.ctaButton.label}</span>
-        </button>
+        </a>
       </div>
-      <!-- Mobile Menu Button -->
-      <button id="mobile-menu-btn" class="md:hidden p-2 text-[#171212] cursor-pointer">
-        <span class="material-symbols-outlined" id="menu-icon">menu</span>
-      </button>
     </div>
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-[#f4f0f1] px-4 py-4">
@@ -72,11 +93,14 @@ const { data = defaultData } = Astro.props;
             {item.label}
           </a>
         ))}
-        <button
+        <a
+          href={data.ctaButton.url}
+          target="_blank"
+          rel="noopener noreferrer"
           class="flex items-center justify-center gap-2 rounded-lg h-11 px-5 bg-[#931a24] hover:bg-red-800 transition-colors text-white text-base font-bold shadow-sm cursor-pointer mt-2">
           <span class="material-symbols-outlined text-xl">{data.ctaButton.icon}</span>
           <span>{data.ctaButton.label}</span>
-        </button>
+        </a>
       </nav>
     </div>
   </div>
