@@ -1,0 +1,113 @@
+---
+import logo from '../assets/logo.jpg';
+
+const defaultData = {
+  logo: {
+    src: logo.src,
+    alt: "De Gaza al Mundo Logo",
+    class: "w-24 h-24 object-cover rounded-xl"
+  },
+  navigation: [
+    { label: "Inicio", href: "#" },
+    { label: "Sobre Nosotros", href: "#hero-section" },
+    { label: "Transparencia", href: "#transparency-section" },
+    { label: "Artesanías", href: "#craft-section" },
+    { label: "Cómo Colaborar", href: "#collaborate-section" }
+  ],
+  ctaButton: {
+    label: "Unirme al Telegram",
+    icon: "send"
+  }
+};
+
+const { data = defaultData } = Astro.props;
+---
+
+<!-- TopNavBar -->
+<header
+  class="fixed top-0 left-0 right-0 z-9999 w-full bg-white/95 backdrop-blur-sm border-b border-[#f4f0f1] shadow-sm"
+>
+  <div class="w-full max-w-7xl mx-auto px-4 sm:px-10 py-4">
+    <div class="flex items-center justify-between">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <img
+          src={data.logo.src}
+          alt={data.logo.alt}
+          class={data.logo.class}
+        />
+      </div>
+      <!-- Desktop Nav -->
+      <div id="desktop-menu" class="hidden md:flex items-center gap-8">
+        <nav class="flex items-center gap-8">
+          {data.navigation.map((item: { href: string | URL | null | undefined; label: unknown; }) => (
+            <a
+              class="text-[#171212] text-base font-medium hover:text-[#931a24] transition-colors"
+              href={item.href}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+        <button
+          class="flex items-center justify-center gap-2 rounded-lg h-11 px-5 bg-[#931a24] hover:bg-red-800 transition-colors text-white text-base font-bold shadow-sm cursor-pointer"
+        >
+          <span class="material-symbols-outlined text-xl">{data.ctaButton.icon}</span>
+          <span>{data.ctaButton.label}</span>
+        </button>
+      </div>
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="md:hidden p-2 text-[#171212] cursor-pointer">
+        <span class="material-symbols-outlined" id="menu-icon">menu</span>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-[#f4f0f1] px-4 py-4">
+      <nav class="flex flex-col gap-4">
+        {data.navigation.map((item: { href: string | URL | null | undefined; label: unknown; }) => (
+          <a
+            class="text-[#171212] text-base font-medium hover:text-[#931a24] transition-colors py-2"
+            href={item.href}
+          >
+            {item.label}
+          </a>
+        ))}
+        <button
+          class="flex items-center justify-center gap-2 rounded-lg h-11 px-5 bg-[#931a24] hover:bg-red-800 transition-colors text-white text-base font-bold shadow-sm cursor-pointer mt-2">
+          <span class="material-symbols-outlined text-xl">{data.ctaButton.icon}</span>
+          <span>{data.ctaButton.label}</span>
+        </button>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu functionality
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    
+    if (mobileMenuBtn && mobileMenu && menuIcon) {
+      mobileMenuBtn.addEventListener('click', function() {
+        if (mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.remove('hidden');
+          menuIcon.textContent = 'close';
+        } else {
+          mobileMenu.classList.add('hidden');
+          menuIcon.textContent = 'menu';
+        }
+      });
+      
+      // Close menu when clicking links
+      const mobileLinks = mobileMenu.querySelectorAll('a');
+      mobileLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+          mobileMenu.classList.add('hidden');
+          menuIcon.textContent = 'menu';
+        });
+      });
+    }
+  });
+</script>

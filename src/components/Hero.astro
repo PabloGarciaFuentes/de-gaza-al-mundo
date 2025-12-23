@@ -1,0 +1,112 @@
+---
+const defaultData = {
+  badge: {
+    icon: "check_circle",
+    text: "Ayuda 100% directa y transparente"
+  },
+  title: "Conectando corazones solidarios con familias en Gaza",
+  description: "Somos un puente directo entre donantes y familias que necesitan ayuda urgente. Sin intermediarios burocráticos, tu solidaridad llega directamente a quienes más lo necesitan para cubrir necesidades básicas de alimentación y salud.",
+  buttons: [
+    {
+      type: "primary",
+      label: "Unirme al Grupo",
+      icon: "group_add"
+    },
+    {
+      type: "secondary",
+      label: "Saber más"
+    }
+  ],
+  stats: {
+    avatars: [
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDeozgq7VsOiM9Ia5JEJvYlf1aiwnnnXgwSO906oRsgz1myxOLF5vf393noWhK_RaIm0jKpeAMP0zY6-pqNQcdkji0QGQ0owyyMwEFuWFhPI_i3QPVtuZTXFrkY2p1v-k8ACainH46O52wLsr93wsnzyuDG6j08Hih6umFl4zQVPjJOZ62A4pAXPmlzI8e9azGhsEH1GRtT9FBV4iBcmvIajLJ2x1vBk8BAo4JcWHSSKp0BIPkTjLFflccAIoGqKyhtANlKPqB6uuc",
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuA5g9onrYZp_p9KY-LJ0dw4oo8T40wvxj4BX3VEuUpJMggOeeWmWvYtgn9kpCRe5LTYwuMiNCImI-ZY-TWkShjhzVnoxAa5BN3Is5PT3bH1j4zjvOQITQn8knEEt2RX2cNtaZ-KtmhyIzPA4trE6JiYgEhGY602bj05aszrUiF-W_Eyin1b_LktvYS4_nl3brl6Sg1M1e302G28efwV3Q14N6md8SF-nL09QdiffKWxShUNIOxxeo6EK2j0m0x2RGNBL_EWoGOIPVU",
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDZALKw1o3HkZ3ERUixu7bgo7jdIu04GKKoifTY5l6mVCXW5lMaSLPYEsTJ8LIdPsoqxFdjv4WTIhV5dyPf4bCt3sE1I8gW3ptBcHtzoQ1TMmUp0ERmKSlIq0_MiQLlvvsZKtyYKDL6wObQJeyJu5L2uW1iCPVRFGi0JIBw2LUafr8bhVgUmYIWPE8W6XFONSqR04f2HX0hPHt2rxQXn7fj7oGnkHa_HU6Y0uv9JUYktk1ND-RtxzxYLfboRgbFWEUvbATO5V_joY0"
+    ],
+    text: "+1,200 miembros activos"
+  },
+  heroImage: {
+    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuB40yXBj9J5CwwBrziZwzhAK5_LxOywlaz0s5IlC_0AxYDiXz9YZlNahYvajE6iwPyD2w-GaOSSWEWkrXTwbawbTJnnAPNXBDt6ktqGuOnI04yEBleLwGQ4dZpf---0sar9Axf6C7RMYeXtPRmgmLO58IhwyrnePwRlegIz0FkdlYX4ofN7k7o6_SC-89dLbU-5OI5sPe9yFywKalJ-B09mLqmdYyKnKGszpSaaltVXKY81VhdHAf3Yr7JT7U7EuVbkaBuzJd5WvII",
+    alt: "Two children holding hands walking through rubble in a resilient manner"
+  }
+};
+
+const { data = defaultData } = Astro.props;
+---
+
+<!-- HeroSection -->
+<section id="hero-section" class="relative bg-[#f8f6f6] py-12 md:py-24 px-4 sm:px-10">
+  <div class="w-full max-w-7xl mx-auto">
+    <div class="@container">
+      <div class="flex flex-col-reverse lg:flex-row gap-12 items-center">
+        <!-- Text Content -->
+        <div class="flex flex-col gap-6 lg:w-1/2 items-start">
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#236E1E]/10 text-[#236E1E] text-sm font-medium"
+          >
+            <span class="material-symbols-outlined text-sm">{data.badge.icon}</span>
+            {data.badge.text}
+          </div>
+          <h2
+            class="text-[#171212] text-4xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight"
+          >
+            {data.title}
+          </h2>
+          <p class="text-[#6b6b6b] text-lg leading-relaxed max-w-xl">
+            {data.description}
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mt-2">
+            {data.buttons.map((button: { type: string; icon: unknown; label: unknown; }) => (
+              <button
+                class={`flex items-center justify-center gap-2 rounded-lg h-12 px-8 ${
+                  button.type === 'primary' 
+                    ? 'bg-[#931a24] hover:bg-red-800 text-white' 
+                    : 'bg-white border border-[#e5e7eb] hover:bg-gray-50 text-[#171212]'
+                } transition-colors text-base font-${
+                  button.type === 'primary' ? 'bold' : 'semibold'
+                } ${button.type === 'primary' ? 'shadow-md' : ''} w-full sm:w-auto cursor-pointer`}
+              >
+                {button.icon && <span class="material-symbols-outlined">{button.icon}</span>}
+                <span>{button.label}</span>
+              </button>
+            ))}
+          </div>
+          <div class="flex items-center gap-4 text-sm text-[#6b6b6b] mt-2">
+            <div class="flex -space-x-3">
+              {data.stats.avatars.map((avatar: string | null | undefined, index: number) => (
+                <img
+                  alt={`User avatar ${index + 1}`}
+                  class="w-10 h-10 rounded-full border-2 border-white object-cover"
+                  src={avatar}
+                />
+              ))}
+            </div>
+            <span>{data.stats.text}</span>
+          </div>
+        </div>
+        <!-- Hero Image -->
+        <div class="w-full lg:w-1/2">
+          <div
+            class="relative rounded-2xl overflow-hidden shadow-2xl aspect-4/3 group"
+          >
+            <div
+              class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-all duration-500"
+            >
+            </div>
+            <div
+              class="w-full h-full bg-center bg-cover object-cover transition-transform duration-700 group-hover:scale-105"
+              data-alt={data.heroImage.alt}
+              style={`background-image: url("${data.heroImage.src}");`}
+            >
+            </div>
+            <!-- Palestinian Flag Colors Accent -->
+            <div
+              class="absolute bottom-0 left-0 w-full h-2 bg-linear-to-r from-primary via-black to-accent-green"
+            >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

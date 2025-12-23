@@ -1,0 +1,263 @@
+---
+const defaultData = {
+  header: {
+    badge: "Artesanía Solidaria",
+    title: "Apoya con el Corazón,<br />Lleva Palestina Contigo",
+    description: "Nuestros voluntarios y familias elaboran con dedicación hermosas piezas artesanales. Cada pulsera, llavero y camiseta que adquieres es un donativo directo que se transforma en ayuda humanitaria."
+  },
+  features: [
+    {
+      icon: "palette",
+      iconBg: "bg-black/5",
+      iconColor: "text-black",
+      title: "Diseños Auténticos",
+      description: "Inspirados en la cultura y los colores de nuestra tierra: rojo, negro, blanco y verde."
+    },
+    {
+      icon: "favorite",
+      iconBg: "bg-[#236E1E]/10",
+      iconColor: "text-[#236E1E]", 
+      title: "Impacto Real",
+      description: "El 100% de los beneficios se destina a la compra de alimentos y medicinas."
+    }
+  ],
+  products: [
+    {
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDCOQ4AgPE59BemxiXNSp8LenAboEtxiNceEgZUKPJ_Cox6V6O45P_ED9eZ0VXf658HVDe5I4Qb2-p-43hEnwBaSYuTl6b3z1iQXP1f8bb0s2lgJXqcqk-VDQRNcD59BiwJaOVRxtZJNZRHZzBiTZoSr55zkwnrw3jh0P-nQE6f0ce5g1iHMwZPAmiOENY88YQBA8C3vjVxJje70ZNC3F_qDhstrtrpuAriEpKWfmSLcjRDCCyUqOcWMfkkAc13Zw4hEPC0tzYuGEY",
+      alt: "Handcrafted Palestinian bracelet with flag colors",
+      category: "Pulseras",
+      categoryColor: "bg-[#931a24]",
+      aspectRatio: "aspect-3/4"
+    },
+    {
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBv3TJupSmTZ9T7BkZzHgZIXqmVx_9nxClrY4VebS38Jx75tdwccNiktdkn0Z-wlFBYmV2WXOLt7QcgSg7QqtRtRMvCHBeH2udMBY4l6jktByf9MJ4TXOONYpExnL4ANvReNIvpJP9lRjZaMY2oDNZNDNRoTbFd4VCcgZLaKPctXx4hO8j753zJTgFYEu_Sq7oPsutchDCzJmaz3gWoz6e6yhdyIE1wiEGXKSy67D33fIhZN8wjyF9_wjFAzFr1zvncGyefP0h1Ifo",
+      alt: "White t-shirt with Palestinian embroidery design",
+      category: "Camisetas",
+      categoryColor: "bg-[#236E1E]",
+      aspectRatio: "aspect-square"
+    },
+    {
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBT2QD-6O4ADOgryGEV48OjMC-oEL8W8SIVFpKZoHiz6mhYYMTXtj0PCVAtV74lTfF8s-6zw8Iv6nedogt5nDFirkBkjzlyvGgTLCBXkMpRyChboGyp3wv3VOpcdy_1vuNZDcsZUSfpSiQDTXHavXGBz_zAqbQ2lFte3FSzYlWEi70V8SUP4nPwWzy_pOVShPeBaGGXWyHze9PwRjewXICi4wWCqO5OzT2gLuDIXLGdy6rzdG653RbiHofZPWk8L0ZK28oCOlEZWmk",
+      alt: "Keychain with Palestinian flag charm",
+      category: "Llaveros",
+      categoryColor: "bg-black",
+      aspectRatio: "aspect-square"
+    },
+    {
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAtSPRlCNJc9qmBjwY-Jy4pFpTL_YqRK07a-aN_A5yzU6PUceQkXAviyvEaFPhWlwV7qToTSpQiREE963yN48q7JIAtY2mwUa8NQ0IBJj8mYu9rsyB7HLF5W-plg5KnIxrv-PtRNmyb7BHHM74UxclH9UoHywsRfY-CavZ_-kht7Ke4nf8pPbif7wtpqn3zR8b-Z_8KGvOXXsX1xpoTg-6Mo8hH4jeSoSat-IJdxTG9gEJKSc-Z760-ljDQpV82FtqTK4rnwvCbWas",
+      alt: "Handmade tote bag with traditional patterns",
+      category: "Bolsas",
+      categoryColor: "bg-white",
+      categoryTextColor: "text-black",
+      aspectRatio: "aspect-3/4"
+    }
+  ],
+  cta: {
+    icon: "shopping_bag",
+    label: "Ver Catálogo"
+  }
+};
+
+const { data = defaultData } = Astro.props;
+---
+
+<!-- CraftSection -->
+<section
+  id="craft-section" class="relative bg-[#f8f6f6] py-16 md:py-24 border-t border-[#e5e7eb]"
+>
+  <div class="w-full max-w-7xl mx-auto px-4 sm:px-10">
+    <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+      <div class="lg:w-1/2 order-2 lg:order-1">
+        <span
+          class="text-[#931a24] font-bold tracking-wider text-sm uppercase mb-2 flex items-center gap-2"
+        >
+          <span class="w-2 h-2 rounded-full bg-[#931a24]"></span>
+          {data.header.badge}
+        </span>
+        <h2
+          class="text-[#171212] text-3xl md:text-4xl font-black leading-tight mb-6"
+          set:html={data.header.title}
+        >
+        </h2>
+        <p class="text-[#6b6b6b] text-lg leading-relaxed mb-8">
+          {data.header.description}
+        </p>
+        <div class="space-y-6">
+          {data.features.map((feature: { iconBg: any; iconColor: any; icon: unknown; title: unknown; description: unknown; }) => (
+            <div class="flex gap-4 items-start">
+              <div
+                class={`w-12 h-12 rounded-full ${feature.iconBg} flex items-center justify-center ${feature.iconColor} shrink-0`}
+              >
+                <span class="material-symbols-outlined text-2xl">{feature.icon}</span>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-[#171212] mb-1">
+                  {feature.title}
+                </h3>
+                <p class="text-[#6b6b6b]">
+                  {feature.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <!-- Mobile Slider (visible only on mobile) -->
+        <div class="mt-8 lg:hidden overflow-hidden">
+          <div id="craft-slider" class="flex gap-4 overflow-x-auto scroll-smooth scrollbar-hide snap-x snap-mandatory">
+            {data.products.map((product: { image: string | null | undefined; alt: string | null | undefined; categoryColor: any; categoryTextColor: any; category: unknown; }) => (
+              <div class="flex-none w-[calc(50%-8px)] snap-start">
+                <div class="relative rounded-xl overflow-hidden shadow-lg aspect-3/4 group border-4 border-white">
+                  <img
+                    src={product.image}
+                    alt={product.alt}
+                    class="w-full h-full object-cover"
+                  />
+                  <div class="absolute bottom-4 left-4">
+                    <span class={`inline-block px-3 py-1 ${product.categoryColor} ${product.categoryTextColor || 'text-white'} font-bold rounded-lg shadow-md text-xs`}>
+                      {product.category}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <!-- Slider indicators -->
+          <div class="flex justify-center gap-2 mt-4">
+            <button class="w-2 h-2 rounded-full bg-[#931a24] transition-all duration-200" data-slide="0"></button>
+            <button class="w-2 h-2 rounded-full bg-gray-300 hover:bg-[#931a24] transition-all duration-200" data-slide="1"></button>
+          </div>
+        </div>
+        <div class="mt-10 flex gap-4 justify-center lg:justify-start">
+          <button
+            class="inline-flex items-center justify-center gap-2 rounded-lg h-12 px-6 bg-black text-white hover:bg-gray-800 transition-colors font-bold shadow-lg"
+          >
+            <span class="material-symbols-outlined">{data.cta.icon}</span>
+            {data.cta.label}
+          </button>
+        </div>
+      </div>
+      <!-- Desktop Grid (hidden on mobile) -->
+      <div class="lg:w-1/2 order-1 lg:order-2 hidden lg:block">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="space-y-4 lg:translate-y-8">
+            <div
+              class="relative rounded-xl overflow-hidden shadow-lg aspect-3/4 group border-4 border-white min-h-62.5"
+            >
+              <img
+                src={data.products[0].image}
+                alt={data.products[0].alt}
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div class="absolute bottom-4 left-4">
+                <span
+                  class={`inline-block px-4 py-2 ${data.products[0].categoryColor} text-white font-bold rounded-lg shadow-md text-sm`}
+                >
+                  {data.products[0].category}
+                </span>
+              </div>
+            </div>
+            <div
+              class="relative rounded-xl overflow-hidden shadow-lg aspect-square group border-4 border-white min-h-50"
+            >
+              <img
+                src={data.products[1].image}
+                alt={data.products[1].alt}
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div class="absolute bottom-4 left-4">
+                <span
+                  class={`inline-block px-4 py-2 ${data.products[1].categoryColor} text-white font-bold rounded-lg shadow-md text-sm`}
+                >
+                  {data.products[1].category}
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div
+              class="relative rounded-xl overflow-hidden shadow-lg aspect-square group border-4 border-white min-h-50"
+            >
+              <img
+                src={data.products[2].image}
+                alt={data.products[2].alt}
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div class="absolute bottom-4 left-4">
+                <span
+                  class={`inline-block px-4 py-2 ${data.products[2].categoryColor} text-white font-bold rounded-lg shadow-md text-sm`}
+                >
+                  {data.products[2].category}
+                </span>
+              </div>
+            </div>
+            <div
+              class="relative rounded-xl overflow-hidden shadow-lg aspect-3/4 group border-4 border-white min-h-62.5"
+            >
+              <img
+                src={data.products[3].image}
+                alt={data.products[3].alt}
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div class="absolute bottom-4 left-4">
+                <span
+                  class={`inline-block px-4 py-2 ${data.products[3].categoryColor} ${data.products[3].categoryTextColor || 'text-white'} font-bold rounded-lg shadow-md text-sm`}
+                >
+                  {data.products[3].category}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Slider functionality
+    const slider = document.getElementById('craft-slider');
+    const indicators = document.querySelectorAll('[data-slide]');
+    
+    if (slider && indicators.length > 0) {
+      let currentSlide = 0;
+      
+      function updateIndicators(activeIndex: number) {
+        indicators.forEach(function(indicator, index) {
+          if (index === activeIndex) {
+            indicator.classList.remove('bg-gray-300');
+            indicator.classList.add('bg-[#931a24]');
+          } else {
+            indicator.classList.remove('bg-[#931a24]');
+            indicator.classList.add('bg-gray-300');
+          }
+        });
+      }
+      
+      // Handle indicator clicks (shows 2 pairs of images)
+      indicators.forEach(function(indicator, index) {
+        indicator.addEventListener('click', function() {
+          currentSlide = index;
+          const scrollPosition = index * slider.offsetWidth;
+          slider.scrollTo({
+            left: scrollPosition,
+            behavior: 'smooth'
+          });
+          updateIndicators(currentSlide);
+        });
+      });
+      
+      updateIndicators(0);
+    }
+  });
+</script>

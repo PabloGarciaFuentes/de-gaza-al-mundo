@@ -1,0 +1,39 @@
+---
+const defaultData = {
+  stats: [
+    {
+      value: "100%",
+      label: "Donación Directa",
+      color: "text-[#931a24]"
+    },
+    {
+      value: "500+",
+      label: "Familias Ayudadas", 
+      color: "text-[#236E1E]"
+    },
+    {
+      value: "24/7",
+      label: "Soporte Comunitario",
+      color: "text-black"
+    }
+  ]
+};
+
+const { data = defaultData } = Astro.props;
+---
+
+<!-- Stats Section (New addition for trust) -->
+<section id="stats-section" class="border-y border-[#f4f0f1] bg-white py-10">
+  <div class="w-full max-w-7xl mx-auto px-4 sm:px-10">
+    <div
+      class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-[#f4f0f1]"
+    >
+      {data.stats.map((stat) => (
+        <div class="px-4 py-2">
+          <p class={`text-4xl font-black ${stat.color} mb-2`}>{stat.value}</p>
+          <p class="text-[#6b6b6b] font-medium">{stat.label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
