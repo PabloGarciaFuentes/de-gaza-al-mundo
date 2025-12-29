@@ -1,4 +1,9 @@
 ---
+import CamisetaImg from '../assets/images/craft/camiseta_2.png';
+import LlaverosImg from '../assets/images/craft/llaveros_1.jpg';
+import BaberosImg from '../assets/images/craft/baberos_1.jpg';
+import LibrosImg from '../assets/images/craft/libro_1.png';
+
 const defaultData = {
   header: {
     badge: "Artesanía Solidaria",
@@ -23,30 +28,27 @@ const defaultData = {
   ],
   products: [
     {
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDCOQ4AgPE59BemxiXNSp8LenAboEtxiNceEgZUKPJ_Cox6V6O45P_ED9eZ0VXf658HVDe5I4Qb2-p-43hEnwBaSYuTl6b3z1iQXP1f8bb0s2lgJXqcqk-VDQRNcD59BiwJaOVRxtZJNZRHZzBiTZoSr55zkwnrw3jh0P-nQE6f0ce5g1iHMwZPAmiOENY88YQBA8C3vjVxJje70ZNC3F_qDhstrtrpuAriEpKWfmSLcjRDCCyUqOcWMfkkAc13Zw4hEPC0tzYuGEY",
-      alt: "Handcrafted Palestinian bracelet with flag colors",
-      category: "Pulseras",
+      image: BaberosImg.src,
+      category: "Baberos",
       categoryColor: "bg-[#931a24]",
       aspectRatio: "aspect-3/4"
     },
     {
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBv3TJupSmTZ9T7BkZzHgZIXqmVx_9nxClrY4VebS38Jx75tdwccNiktdkn0Z-wlFBYmV2WXOLt7QcgSg7QqtRtRMvCHBeH2udMBY4l6jktByf9MJ4TXOONYpExnL4ANvReNIvpJP9lRjZaMY2oDNZNDNRoTbFd4VCcgZLaKPctXx4hO8j753zJTgFYEu_Sq7oPsutchDCzJmaz3gWoz6e6yhdyIE1wiEGXKSy67D33fIhZN8wjyF9_wjFAzFr1zvncGyefP0h1Ifo",
-      alt: "White t-shirt with Palestinian embroidery design",
-      category: "Camisetas",
+      image: LlaverosImg.src,
+      category: "Llaveros",
       categoryColor: "bg-[#236E1E]",
       aspectRatio: "aspect-square"
     },
     {
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBT2QD-6O4ADOgryGEV48OjMC-oEL8W8SIVFpKZoHiz6mhYYMTXtj0PCVAtV74lTfF8s-6zw8Iv6nedogt5nDFirkBkjzlyvGgTLCBXkMpRyChboGyp3wv3VOpcdy_1vuNZDcsZUSfpSiQDTXHavXGBz_zAqbQ2lFte3FSzYlWEi70V8SUP4nPwWzy_pOVShPeBaGGXWyHze9PwRjewXICi4wWCqO5OzT2gLuDIXLGdy6rzdG653RbiHofZPWk8L0ZK28oCOlEZWmk",
-      alt: "Keychain with Palestinian flag charm",
-      category: "Llaveros",
+      image: CamisetaImg.src,
+      alt: "White t-shirt with Palestinian embroidery design",
+      category: "Camisetas",
       categoryColor: "bg-black",
       aspectRatio: "aspect-square"
     },
     {
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAtSPRlCNJc9qmBjwY-Jy4pFpTL_YqRK07a-aN_A5yzU6PUceQkXAviyvEaFPhWlwV7qToTSpQiREE963yN48q7JIAtY2mwUa8NQ0IBJj8mYu9rsyB7HLF5W-plg5KnIxrv-PtRNmyb7BHHM74UxclH9UoHywsRfY-CavZ_-kht7Ke4nf8pPbif7wtpqn3zR8b-Z_8KGvOXXsX1xpoTg-6Mo8hH4jeSoSat-IJdxTG9gEJKSc-Z760-ljDQpV82FtqTK4rnwvCbWas",
-      alt: "Handmade tote bag with traditional patterns",
-      category: "Bolsas",
+      image: LibrosImg.src,
+      category: "Libros",
       categoryColor: "bg-white",
       categoryTextColor: "text-black",
       aspectRatio: "aspect-3/4"
@@ -54,7 +56,8 @@ const defaultData = {
   ],
   cta: {
     icon: "shopping_bag",
-    label: "Ver Catálogo"
+    label: "Ver Catálogo",
+    url: "https://www.canva.com/design/DAG5dynujUo/01FSx7j2KWv66Oc9XuNWnw/view?utlId=h6587fed21c"
   }
 };
 
@@ -128,12 +131,15 @@ const { data = defaultData } = Astro.props;
           </div>
         </div>
         <div class="mt-10 flex gap-4 justify-center lg:justify-start">
-          <button
+          <a
+            href={data.cta.url}
+            target="_blank"
+            rel="noopener noreferrer"
             class="inline-flex items-center justify-center gap-2 rounded-lg h-12 px-6 bg-black text-white hover:bg-gray-800 transition-colors font-bold shadow-lg cursor-pointer"
           >
             <span class="material-symbols-outlined">{data.cta.icon}</span>
             {data.cta.label}
-          </button>
+          </a>
         </div>
       </div>
       <!-- Desktop Grid (hidden on mobile) -->

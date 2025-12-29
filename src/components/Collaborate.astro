@@ -1,10 +1,22 @@
 ---
 const defaultData = {
-  title: "Tu ayuda llega directa",
-  description: "Únete a nuestra comunidad en Telegram para coordinar tu ayuda directamente con quienes la necesitan. Sin intermediarios, directo al corazón de Gaza.",
+  title: "Cómo donar",
+  description: `MÉTODOS DISPONIBLES: 
+
+  📌 Transferencia:
+ASOCIACIÓN POR LA CAUSA
+IBAN: ES73 3058 6403 3827 2001 0306
+Concepto: Donación Proyecto dGaM
+(Por seguridad no poner la palabra Gaza ni Palestina)
+
+📌 Bizum eligiendo la opción Donar a una causa solidaria:
+Asociación por la causa
+Código 13292
+Concepto: Donación Proyecto dGaM
+  `,
   cta: {
     icon: "chat",
-    label: "Unirse al Canal de Telegram",
+    label: "Unirse a Telegram",
     url: "https://t.me/+6HWcj5AJePYxN2M0"
   },
   disclaimer: "Unirse es gratuito y seguro. Respetamos tu privacidad.",
@@ -45,7 +57,7 @@ const { data = defaultData } = Astro.props;
         {data.title}
       </h2>
       <p
-        class="text-[#6b6b6b] text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10"
+        class="text-[#6b6b6b] text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10 whitespace-pre-line text-justify"
       >
         {data.description}
       </p>
