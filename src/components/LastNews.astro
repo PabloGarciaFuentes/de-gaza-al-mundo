@@ -1,11 +1,13 @@
 ---
 import kaseOImage from "../assets/images/news/kase_o.png";
+import ZambombaImg from "../assets/images/news/zambomba.png";
+import MercadilloImg from "../assets/images/news/mercadillo.png";
 
 const defaultData = {
   header: {
     badge: "Actualidad",
     title: "Últimas noticias",
-    linkText: "Ver todas las actualizaciones",
+    linkText: "Ver todas las noticias",
     linkIcon: "arrow_forward",
     mobileLinkText: "Ver todas las noticias",
   },
@@ -14,48 +16,78 @@ const defaultData = {
       id: 1,
       image: kaseOImage.src,
       alt: "Comunity volunteers",
-      date: "15 Dic, 2023",
+      date: "20 Dic, 2025",
       category: {
         name: "Comunidad",
         color: "bg-black",
         textColor: "text-black",
       },
       title: "Kase.O se une a nuestra causa solidaria",
-      excerpt: `El reconocido rapero español Kase.O dona el dinero de sus actuaciones en los festivales con fondos proisrraelís a la asociación "De Gaza Al Mundo".`,
+      description: `El reconocido rapero español Kase.O dona el dinero de sus actuaciones en los festivales con fondos proisrraelís a la asociación "De Gaza Al Mundo".`,
       link: "https://www.instagram.com/p/DSfnBXpjM53/",
     },
     {
       id: 2,
-      image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuDh8NdFRJjGEWOG1QUfAjHpPbA9lrLJj_p8MZFHRiY3GV3BZIbnXDCnyH0xoYMwhEXsX3yXoxefVTSU_kmVnNPL3kwo9cnkz8cKoFPOFY2qQ3buFwI1ujGZBwPnHiucM8TttM_4I6eThgj3bUG3ZKNB_SzRTaSgVR3kBYtRJQRNdQt0GcL-ZFKgMPqMDwOA-d0kG471jnf_eMMjAYHNCFtUWhWQV9Q7pTl_VW3j3EPqxCg-DRIf3fW1ajSxP0v1uOGOveuduakQyOw",
-      alt: "Doctor checking patient",
-      date: "10 Ene, 2024",
+      image: ZambombaImg.src,
+      alt: "Zambomba Event",
+      date: "20 Dic, 2025",
       category: {
-        name: "Salud",
+        name: "Eventos",
         color: "bg-[#236E1E]",
         textColor: "text-[#236E1E]",
       },
-      title: "Renovación de equipos médicos en campamentos provisionales",
-      excerpt:
-        "Gracias a vuestras aportaciones, hemos logrado suministrar nuevos equipos de diagnóstico básico para atender a niños y ancianos en las zonas más afectadas.",
-      link: "#",
+      title: "Zambomba Flamenca por Palestina",
+      description:
+        `Celebrado en el Centro Cívico Sector III de #Getafe una Zambomba Flamenca por Palestina. Organizado por @artistasconpalestina y @getafeconpalestina.`,
+      link: "https://www.instagram.com/p/DSfeuqfDJJN/",
     },
     {
       id: 3,
-      image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuD-Ziq9Esag7z6DROomgq2vcz3dIaDZClAzRWZrVUv1_gFc3SD66YmVML1XQ5Sp-XTlRc_0Nvm2bVjQP0LH8MYoAfWY3pKRXiE7Ap5ryNo3iwBRh4QFtD-dVGEKdswu1daqvZJDvp0nFnfQC6seauD-cPm6ckBCXYLrpAqsocU9C-iT2p3Wqp1z5EnqzRM2rsCOL-JW0diruwf3_ns5f1DNSxHajZRGqzJdlIEQIlVoLYl_7Al2O5gRAXXYC_WLcHN8Z75j92PPPxI",
-      alt: "Food packages",
-      date: "28 Dic, 2023",
+      image: MercadilloImg.src,
+      alt: "Mercadillo Navidad",
+      date: "18 Dic, 2025",
       category: {
-        name: "Emergencia",
+        name: "Solidaridad",
         color: "bg-[#931a24]",
         textColor: "text-[#931a24]",
       },
-      title: "Distribución urgente de 500 paquetes de alimentos",
-      excerpt:
-        "Ante la escasez crítica, activamos un protocolo de emergencia para hacer llegar harina, aceite y conservas a familias desplazadas en el sur.",
-      link: "#",
+      title: "Tenderete MariCarmen",
+      description:
+        "Venta de productos de artesanía y merchandising solidario para el proyecto De Gaza al Mundo. Junto a las amigas de @creartecendo.",
+      link: "https://www.instagram.com/p/DSaqd7LCr22/",
     },
+    // {
+    //   id: 3,
+    //   image:
+    //     "https://lh3.googleusercontent.com/aida-public/AB6AXuDh8NdFRJjGEWOG1QUfAjHpPbA9lrLJj_p8MZFHRiY3GV3BZIbnXDCnyH0xoYMwhEXsX3yXoxefVTSU_kmVnNPL3kwo9cnkz8cKoFPOFY2qQ3buFwI1ujGZBwPnHiucM8TttM_4I6eThgj3bUG3ZKNB_SzRTaSgVR3kBYtRJQRNdQt0GcL-ZFKgMPqMDwOA-d0kG471jnf_eMMjAYHNCFtUWhWQV9Q7pTl_VW3j3EPqxCg-DRIf3fW1ajSxP0v1uOGOveuduakQyOw",
+    //   alt: "Doctor checking patient",
+    //   date: "10 Ene, 2024",
+    //   category: {
+    //     name: "Salud",
+    //     color: "bg-[#236E1E]",
+    //     textColor: "text-[#236E1E]",
+    //   },
+    //   title: "Renovación de equipos médicos en campamentos provisionales",
+    //   description:
+    //     "Gracias a vuestras aportaciones, hemos logrado suministrar nuevos equipos de diagnóstico básico para atender a niños y ancianos en las zonas más afectadas.",
+    //   link: "#",
+    // },
+    // {
+    //   id: 4,
+    //   image:
+    //     "https://lh3.googleusercontent.com/aida-public/AB6AXuD-Ziq9Esag7z6DROomgq2vcz3dIaDZClAzRWZrVUv1_gFc3SD66YmVML1XQ5Sp-XTlRc_0Nvm2bVjQP0LH8MYoAfWY3pKRXiE7Ap5ryNo3iwBRh4QFtD-dVGEKdswu1daqvZJDvp0nFnfQC6seauD-cPm6ckBCXYLrpAqsocU9C-iT2p3Wqp1z5EnqzRM2rsCOL-JW0diruwf3_ns5f1DNSxHajZRGqzJdlIEQIlVoLYl_7Al2O5gRAXXYC_WLcHN8Z75j92PPPxI",
+    //   alt: "Food packages",
+    //   date: "28 Dic, 2023",
+    //   category: {
+    //     name: "Emergencia",
+    //     color: "bg-[#931a24]",
+    //     textColor: "text-[#931a24]",
+    //   },
+    //   title: "Distribución urgente de 500 paquetes de alimentos",
+    //   description:
+    //     "Ante la escasez crítica, activamos un protocolo de emergencia para hacer llegar harina, aceite y conservas a familias desplazadas en el sur.",
+    //   link: "#",
+    // },
   ],
 };
 
@@ -101,7 +133,7 @@ const { data = defaultData } = Astro.props;
             date: any;
             category: { color: any; textColor: any; name: any };
             title: any;
-            excerpt: any;
+            description: any;
             link: string | URL | null | undefined;
           }) => (
             <article class="flex flex-col group">
@@ -133,7 +165,7 @@ const { data = defaultData } = Astro.props;
                   {article.title}
                 </h3>
                 <p class="text-[#6b6b6b] text-sm leading-relaxed line-clamp-3 mb-4 grow">
-                  {article.excerpt}
+                  {article.description}
                 </p>
                 <a
                   href={article.link}
