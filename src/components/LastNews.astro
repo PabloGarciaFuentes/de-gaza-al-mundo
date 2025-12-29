@@ -139,11 +139,14 @@ const { data = defaultData } = Astro.props;
             <article class="flex flex-col group">
               <div class="relative overflow-hidden rounded-xl aspect-video mb-5 shadow-sm">
                 <div class="absolute inset-0 bg-black/5 z-10" />
-                <div
-                  class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                  data-alt={article.alt}
-                  style={`background-image: url("${article.image}")`}
-                ></div>
+                <img
+                  src={article.image}
+                  alt={article.alt}
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                  width="400"
+                  height="225"
+                />
                 <div class="absolute top-3 right-3 z-20 bg-white/95 backdrop-blur px-3 py-1 rounded-md shadow-sm">
                   <span class="text-xs font-bold text-[#171212]">
                     {article.date}

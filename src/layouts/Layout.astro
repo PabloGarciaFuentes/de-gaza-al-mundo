@@ -52,6 +52,19 @@ const {
 		<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
 		<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+		
+		<!-- Preload critical resources -->
+		<link rel="preload" href="/favicon.svg" as="image" type="image/svg+xml" />
+		<link rel="preload" href="https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2" as="font" type="font/woff2" crossorigin />
+		
+		<!-- DNS prefetch for external domains -->
+		<link rel="dns-prefetch" href="//lh3.googleusercontent.com" />
+		<link rel="dns-prefetch" href="//t.me" />
+		<link rel="dns-prefetch" href="//www.canva.com" />
+		<link rel="dns-prefetch" href="//www.instagram.com" />
+		
+		<!-- Preload critical CSS -->
+		<link rel="preload" href="/src/styles/global.css" as="style" />
 	</head>
 	<body class="bg-background-light text-text-main flex flex-col min-h-screen overflow-x-hidden">
 		<!-- Skip to content link for accessibility -->
@@ -68,6 +81,18 @@ const {
 		margin: 0;
 		width: 100%;
 		height: 100%;
+	}
+	
+	/* Focus management for better accessibility */
+	*:focus {
+		outline: 2px solid #931a24;
+		outline-offset: 2px;
+	}
+	
+	/* Better focus for buttons and links */
+	button:focus,
+	a:focus {
+		box-shadow: 0 0 0 2px rgba(147, 26, 36, 0.2);
 	}
 	
 	/* Screen reader only class */

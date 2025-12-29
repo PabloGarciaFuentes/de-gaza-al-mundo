@@ -45,7 +45,7 @@ const { data = defaultData } = Astro.props;
         De Gaza al Mundo
       </h1>
       <!-- Mobile Menu Button -->
-      <button id="mobile-menu-btn" class="p-2 text-[#171212] cursor-pointer">
+      <button id="mobile-menu-btn" class="p-2 text-[#171212] cursor-pointer" aria-label="Abrir menú de navegación" aria-expanded="false">
         <span class="material-symbols-outlined" id="menu-icon">menu</span>
       </button>
     </div>
@@ -85,7 +85,7 @@ const { data = defaultData } = Astro.props;
       </div>
     </div>
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-[#f4f0f1] px-4 py-4">
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-[#f4f0f1] px-4 py-4" role="navigation" aria-label="Menú móvil">
       <nav class="flex flex-col gap-4">
         {data.navigation.map((item: { href: string | URL | null | undefined; label: unknown; }) => (
           <a
@@ -99,7 +99,8 @@ const { data = defaultData } = Astro.props;
           href={data.ctaButton.url}
           target="_blank"
           rel="noopener noreferrer"
-          class="flex items-center justify-center gap-2 rounded-lg h-11 px-5 bg-[#931a24] hover:bg-red-800 transition-colors text-white text-base font-bold shadow-sm cursor-pointer mt-2">
+          class="flex items-center justify-center gap-2 rounded-lg h-11 px-5 bg-[#931a24] hover:bg-red-800 transition-colors text-white text-base font-bold shadow-sm cursor-pointer mt-2"
+          aria-label="Unirse a nuestro canal de Telegram - Se abre en nueva ventana">
           <span class="material-symbols-outlined text-xl">{data.ctaButton.icon}</span>
           <span>{data.ctaButton.label}</span>
         </a>
