@@ -50,11 +50,11 @@ const { data = defaultData } = Astro.props;
             <span class="material-symbols-outlined text-sm">{data.badge.icon}</span>
             {data.badge.text}
           </div>
-          <h2
+          <h1
             class="text-[#171212] text-4xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight"
           >
             {data.title}
-          </h2>
+          </h1>
           <p class="text-[#6b6b6b] text-lg leading-relaxed max-w-xl">
             {data.description}
           </p>
@@ -118,12 +118,15 @@ const { data = defaultData } = Astro.props;
               class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-all duration-300"
             >
             </div>
-            <div
-              class="w-full h-full bg-center bg-cover transition-transform duration-300 group-hover:scale-105"
-              data-alt={data.heroImage.alt}
-              style={`background-image: url("${data.heroImage.src}");`}
-            >
-            </div>
+            <img
+              src={data.heroImage.src}
+              alt={data.heroImage.alt}
+              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              loading="eager"
+              fetchpriority="high"
+              width="600"
+              height="800"
+            />
             <!-- Palestinian Flag Colors Accent Top -->
             <div
               class="absolute top-0 left-0 w-full h-1 opacity-70"

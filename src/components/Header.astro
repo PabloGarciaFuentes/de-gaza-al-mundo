@@ -62,7 +62,7 @@ const { data = defaultData } = Astro.props;
       </div>
       <!-- Desktop Nav -->
       <div id="desktop-menu" class="hidden md:flex items-center gap-8">
-        <nav class="flex items-center gap-8">
+        <nav class="flex items-center gap-8" role="navigation" aria-label="Navegación principal">
           {data.navigation.map((item: { href: string | URL | null | undefined; label: unknown; }) => (
             <a
               class="text-[#171212] text-base font-medium hover:text-[#931a24] transition-colors"
@@ -77,6 +77,7 @@ const { data = defaultData } = Astro.props;
           target="_blank"
           rel="noopener noreferrer"
           class="flex items-center justify-center gap-2 rounded-lg h-11 px-5 bg-[#931a24] hover:bg-red-800 transition-colors text-white text-base font-bold shadow-sm cursor-pointer"
+          aria-label="Unirse a nuestro canal de Telegram"
         >
           <span class="material-symbols-outlined text-xl">{data.ctaButton.icon}</span>
           <span>{data.ctaButton.label}</span>
