@@ -68,7 +68,54 @@ const { data = defaultData } = Astro.props;
         <span class="material-symbols-outlined">{data.header.linkIcon}</span>
       </a>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    
+    <!-- Mobile Slider (visible only on mobile) -->
+    <div class="md:hidden overflow-hidden">
+      <div id="transparency-slider" class="flex gap-4 overflow-x-auto scroll-smooth scrollbar-hide snap-x snap-mandatory">
+        {data.gallery.map((item: { alt: string; image: any; caption: unknown; }) => (
+          <div class="flex-none w-[calc(50%-8px)] snap-start">
+            <div class="group relative overflow-hidden rounded-xl aspect-square shadow-sm">
+              <img
+                src={item.image}
+                alt={item.alt}
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy"
+                width="300"
+                height="300"
+              />
+              <div
+                class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4"
+              >
+                <p class="text-white font-medium">{item.caption}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <!-- Arrow Navigation -->
+      <div class="flex justify-center items-center gap-8 mt-4">
+        <button 
+          id="transparency-prev-arrow" 
+          class="flex items-center justify-center w-10 h-10 rounded-full bg-white border-2 border-[#236E1E] text-[#236E1E] hover:bg-[#236E1E] hover:text-white transition-all duration-200 shadow-md opacity-30 cursor-not-allowed"
+          aria-label="Ver imágenes anteriores"
+        >
+          <span class="material-symbols-outlined">chevron_left</span>
+        </button>
+        <span class="text-sm text-[#6b6b6b] font-medium">
+          <span id="transparency-current-slide">1</span> / 2
+        </span>
+        <button 
+          id="transparency-next-arrow" 
+          class="flex items-center justify-center w-10 h-10 rounded-full bg-white border-2 border-[#236E1E] text-[#236E1E] hover:bg-[#236E1E] hover:text-white transition-all duration-200 shadow-md"
+          aria-label="Ver más imágenes"
+        >
+          <span class="material-symbols-outlined">chevron_right</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Desktop Grid (hidden on mobile) -->
+    <div class="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-6">
       {data.gallery.map((item: { alt: string; image: any; caption: unknown; }) => (
         <div
           class="group relative overflow-hidden rounded-xl aspect-square shadow-sm"
@@ -100,3 +147,95 @@ const { data = defaultData } = Astro.props;
     </div>
   </div>
 </section>
+<style>
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Transparency Slider functionality
+    const transparencySlider = document.getElementById('transparency-slider');
+    const transparencyPrevArrow = document.getElementById('transparency-prev-arrow');
+    const transparencyNextArrow = document.getElementById('transparency-next-arrow');
+    const transparencyCurrentSlide = document.getElementById('transparency-current-slide');
+    
+    if (transparencySlider && transparencyPrevArrow && transparencyNextArrow) {
+      let currentSlide = 0;
+      const totalSlides = 2; // 4 images, 2 per view = 2 slides
+      
+      function updateArrows() {
+        // Update prev arrow
+        if (transparencyPrevArrow) {
+          if (currentSlide === 0) {
+            transparencyPrevArrow.classList.add('opacity-30', 'cursor-not-allowed');
+            transparencyPrevArrow.classList.remove('opacity-100', 'cursor-pointer');
+          } else {
+            transparencyPrevArrow.classList.remove('opacity-30', 'cursor-not-allowed');
+            transparencyPrevArrow.classList.add('opacity-100', 'cursor-pointer');
+          }
+        }
+        
+        // Update next arrow
+        if (transparencyNextArrow) {
+          if (currentSlide === totalSlides - 1) {
+            transparencyNextArrow.classList.add('opacity-30', 'cursor-not-allowed');
+            transparencyNextArrow.classList.remove('opacity-100', 'cursor-pointer');
+          } else {
+            transparencyNextArrow.classList.remove('opacity-30', 'cursor-not-allowed');
+            transparencyNextArrow.classList.add('opacity-100', 'cursor-pointer');
+          }
+        }
+        
+        // Update slide counter
+        if (transparencyCurrentSlide) {
+          transparencyCurrentSlide.textContent = (currentSlide + 1).toString();
+        }
+      }
+      
+      // Handle next arrow click
+      transparencyNextArrow.addEventListener('click', function() {
+        if (currentSlide < totalSlides - 1) {
+          currentSlide++;
+          const scrollPosition = currentSlide * transparencySlider.offsetWidth;
+          transparencySlider.scrollTo({
+            left: scrollPosition,
+            behavior: 'smooth'
+          });
+          updateArrows();
+        }
+      });
+      
+      // Handle prev arrow click
+      transparencyPrevArrow.addEventListener('click', function() {
+        if (currentSlide > 0) {
+          currentSlide--;
+          const scrollPosition = currentSlide * transparencySlider.offsetWidth;
+          transparencySlider.scrollTo({
+            left: scrollPosition,
+            behavior: 'smooth'
+          });
+          updateArrows();
+        }
+      });
+      
+      // Handle manual scroll to update arrows
+      transparencySlider.addEventListener('scroll', function() {
+        const scrollPosition = transparencySlider.scrollLeft;
+        const slideWidth = transparencySlider.offsetWidth;
+        const newSlide = Math.round(scrollPosition / slideWidth);
+        if (newSlide !== currentSlide) {
+          currentSlide = newSlide;
+          updateArrows();
+        }
+      });
+      
+      updateArrows();
+    }
+  });
+</script>

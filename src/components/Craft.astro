@@ -124,10 +124,25 @@ const { data = defaultData } = Astro.props;
               </div>
             ))}
           </div>
-          <!-- Slider indicators -->
-          <div class="flex justify-center gap-2 mt-4">
-            <button class="w-2 h-2 rounded-full bg-[#931a24] transition-all duration-200 cursor-pointer" data-slide="0"></button>
-            <button class="w-2 h-2 rounded-full bg-gray-300 hover:bg-[#931a24] transition-all duration-200 cursor-pointer" data-slide="1"></button>
+          <!-- Arrow Navigation -->
+          <div class="flex justify-center items-center gap-8 mt-4">
+            <button 
+              id="craft-prev-arrow" 
+              class="flex items-center justify-center w-10 h-10 rounded-full bg-white border-2 border-[#931a24] text-[#931a24] hover:bg-[#931a24] hover:text-white transition-all duration-200 shadow-md opacity-30 cursor-not-allowed"
+              aria-label="Ver productos anteriores"
+            >
+              <span class="material-symbols-outlined">chevron_left</span>
+            </button>
+            <span class="text-sm text-[#6b6b6b] font-medium">
+              <span id="craft-current-slide">1</span> / 2
+            </span>
+            <button 
+              id="craft-next-arrow" 
+              class="flex items-center justify-center w-10 h-10 rounded-full bg-white border-2 border-[#931a24] text-[#931a24] hover:bg-[#931a24] hover:text-white transition-all duration-200 shadow-md"
+              aria-label="Ver más productos"
+            >
+              <span class="material-symbols-outlined">chevron_right</span>
+            </button>
           </div>
         </div>
         <div class="mt-10 flex gap-4 justify-center lg:justify-start">
@@ -237,39 +252,83 @@ const { data = defaultData } = Astro.props;
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // Slider functionality
-    const slider = document.getElementById('craft-slider');
-    const indicators = document.querySelectorAll('[data-slide]');
+    // Craft Slider functionality
+    const craftSlider = document.getElementById('craft-slider');
+    const craftPrevArrow = document.getElementById('craft-prev-arrow');
+    const craftNextArrow = document.getElementById('craft-next-arrow');
+    const craftCurrentSlide = document.getElementById('craft-current-slide');
     
-    if (slider && indicators.length > 0) {
+    if (craftSlider && craftPrevArrow && craftNextArrow) {
       let currentSlide = 0;
+      const totalSlides = 2; // 4 products, 2 per view = 2 slides
       
-      function updateIndicators(activeIndex: number) {
-        indicators.forEach(function(indicator, index) {
-          if (index === activeIndex) {
-            indicator.classList.remove('bg-gray-300');
-            indicator.classList.add('bg-[#931a24]');
+      function updateArrows() {
+        // Update prev arrow
+        if (craftPrevArrow) {
+          if (currentSlide === 0) {
+            craftPrevArrow.classList.add('opacity-30', 'cursor-not-allowed');
+            craftPrevArrow.classList.remove('opacity-100', 'cursor-pointer');
           } else {
-            indicator.classList.remove('bg-[#931a24]');
-            indicator.classList.add('bg-gray-300');
+            craftPrevArrow.classList.remove('opacity-30', 'cursor-not-allowed');
+            craftPrevArrow.classList.add('opacity-100', 'cursor-pointer');
           }
-        });
+        }
+        
+        // Update next arrow
+        if (craftNextArrow) {
+          if (currentSlide === totalSlides - 1) {
+            craftNextArrow.classList.add('opacity-30', 'cursor-not-allowed');
+            craftNextArrow.classList.remove('opacity-100', 'cursor-pointer');
+          } else {
+            craftNextArrow.classList.remove('opacity-30', 'cursor-not-allowed');
+            craftNextArrow.classList.add('opacity-100', 'cursor-pointer');
+          }
+        }
+        
+        // Update slide counter
+        if (craftCurrentSlide) {
+          craftCurrentSlide.textContent = (currentSlide + 1).toString();
+        }
       }
       
-      // Handle indicator clicks (shows 2 pairs of images)
-      indicators.forEach(function(indicator, index) {
-        indicator.addEventListener('click', function() {
-          currentSlide = index;
-          const scrollPosition = index * slider.offsetWidth;
-          slider.scrollTo({
+      // Handle next arrow click
+      craftNextArrow.addEventListener('click', function() {
+        if (currentSlide < totalSlides - 1) {
+          currentSlide++;
+          const scrollPosition = currentSlide * craftSlider.offsetWidth;
+          craftSlider.scrollTo({
             left: scrollPosition,
             behavior: 'smooth'
           });
-          updateIndicators(currentSlide);
-        });
+          updateArrows();
+        }
       });
       
-      updateIndicators(0);
+      // Handle prev arrow click
+      craftPrevArrow.addEventListener('click', function() {
+        if (currentSlide > 0) {
+          currentSlide--;
+          const scrollPosition = currentSlide * craftSlider.offsetWidth;
+          craftSlider.scrollTo({
+            left: scrollPosition,
+            behavior: 'smooth'
+          });
+          updateArrows();
+        }
+      });
+      
+      // Handle manual scroll to update arrows
+      craftSlider.addEventListener('scroll', function() {
+        const scrollPosition = craftSlider.scrollLeft;
+        const slideWidth = craftSlider.offsetWidth;
+        const newSlide = Math.round(scrollPosition / slideWidth);
+        if (newSlide !== currentSlide) {
+          currentSlide = newSlide;
+          updateArrows();
+        }
+      });
+      
+      updateArrows();
     }
   });
 </script>
