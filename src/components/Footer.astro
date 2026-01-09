@@ -6,37 +6,37 @@ const defaultData = {
     description: "Una iniciativa comunitaria dedicada a conectar donantes directamente con familias palestinas. Tu solidaridad es nuestra fuerza."
   },
   socialLinks: [
-    {
-      name: "Facebook",
-      href: "#",
-      icon: "facebook"
-    },
-    {
-      name: "Twitter", 
-      href: "#",
-      icon: "twitter"
-    },
+    // {
+    //   name: "Facebook",
+    //   href: "#",
+    //   icon: "facebook"
+    // },
+    // {
+    //   name: "Twitter", 
+    //   href: "#",
+    //   icon: "twitter"
+    // },
     {
       name: "Instagram",
-      href: "#",
+      href: "https://www.instagram.com/degazaalmundo/",
       icon: "instagram"
     }
   ],
   links: {
     organization: [
-      { label: "Sobre Nosotros", href: "#hero-section" },
+      { label: "Sobre Nosotros", href: "#" },
+      { label: "Cómo Donar", href: "#collaborate-section" },
       // { label: "Nuestro Equipo", href: "#" },
       { label: "Transparencia", href: "#transparency-section" },
       { label: "Contacto", href: "#" }
     ],
     help: [
       { label: "Preguntas Frecuentes", href: "#" },
-      { label: "Cómo Donar", href: "#collaborate-section" },
       { label: "Unirse al Telegram", href: "https://t.me/+6HWcj5AJePYxN2M0" },
       { label: "Política de Privacidad", href: "#" }
     ]
   },
-  copyright: "© 2023 De Gaza al Mundo. Todos los derechos reservados.",
+  copyright: "© 2026 De Gaza al Mundo. Todos los derechos reservados.",
   flagColors: [
     { color: "bg-[#931a24]", label: "Rojo palestino" },
     { color: "bg-black", label: "Negro", border: "border border-white/20" },
@@ -69,7 +69,7 @@ const { data = defaultData } = Astro.props;
           {data.socialLinks.map((social: { href: string | URL | null | undefined; name: unknown; icon: string; }) => (
             <a
               class="w-10 h-10 rounded-full bg-white/5 hover:bg-[#931a24] transition-colors flex items-center justify-center text-white"
-              href={social.href}
+              href={social.href} target="_blank" rel="noopener noreferrer"
             >
               <span class="sr-only">{social.name}</span>
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
