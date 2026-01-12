@@ -3,6 +3,10 @@ import TransparenciaImg_1 from "../assets/images/transparency/transparencia_1.pn
 import TransparenciaImg_3 from "../assets/images/transparency/transparencia_3.png";
 import TransparenciaImg_4 from "../assets/images/transparency/transparencia_4.png";
 import TransparenciaImg_5 from "../assets/images/transparency/transparencia_5.png";
+import TransparenciaImg_6 from "../assets/images/transparency/transparencia_6.png";
+import TransparenciaImg_7 from "../assets/images/transparency/transparencia_7.png";
+import TransparenciaImg_8 from "../assets/images/transparency/transparencia_8.png";
+import TransparenciaImg_9 from "../assets/images/transparency/transparencia_9.png";
 
 const defaultData = {
   header: {
@@ -10,28 +14,29 @@ const defaultData = {
     title: "Nuestra labor, contada con imágenes",
     description: "Cada gesto solidario nos une y construye esperanza. Detrás de cada aporte hay personas que se ayudan entre sí y comunidades que vuelven a sentirse acompañadas. Compartimos imágenes reales de nuestras acciones para que puedas ver cómo, juntos, transformamos la solidaridad en apoyo concreto y en un futuro más digno para quienes más lo necesitan.",
     linkText: "Ver galería completa",
-    linkIcon: "arrow_forward"
+    linkIcon: "arrow_forward",
+    url: "https://www.instagram.com/degazaalmundo/",
   },
   gallery: [
     {
-      image: TransparenciaImg_3.src,
-      alt: "Familia de Abdallah",
-      caption: "Familia de Abdallah"
+      image: TransparenciaImg_6.src,
+      alt: "TransparenciaImg_6",
+      caption: ""
     },
     {
-      image: TransparenciaImg_5.src,
-      alt: "Hijos de Abdallah",
-      caption: "Hijos de Abdallah"
+      image: TransparenciaImg_7.src,
+      alt: "TransparenciaImg_7",
+      caption: ""
     },
     {
-      image: TransparenciaImg_1.src,
-      alt: "Abdallah y sus hijos",
-      caption: "Abdallah y sus hijos"
+      image: TransparenciaImg_8.src,
+      alt: "TransparenciaImg_8",
+      caption: ""
     },
     {
-      image: TransparenciaImg_4.src,
-      alt: "Massa y Waseem",
-      caption: "Massa y Waseem"
+      image: TransparenciaImg_9.src,
+      alt: "TransparenciaImg_9",
+      caption: ""
     }
   ]
 };
@@ -62,7 +67,7 @@ const { data = defaultData } = Astro.props;
       </div>
       <a
         class="hidden md:flex items-center gap-2 text-[#931a24] font-bold hover:text-red-800"
-        href="#"
+        href={data.header.url} target="_blank" rel="noopener noreferrer"
       >
         {data.header.linkText}
         <span class="material-symbols-outlined">{data.header.linkIcon}</span>

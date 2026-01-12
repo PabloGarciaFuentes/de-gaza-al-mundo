@@ -28,13 +28,13 @@ const defaultData = {
       { label: "Cómo Donar", href: "#collaborate-section" },
       // { label: "Nuestro Equipo", href: "#" },
       { label: "Transparencia", href: "#transparency-section" },
-      { label: "Contacto", href: "#" }
+      // { label: "Contacto", href: "#" }
     ],
     help: [
-      { label: "Preguntas Frecuentes", href: "#" },
-      { label: "Unirse al Telegram", href: "https://t.me/+6HWcj5AJePYxN2M0" },
-      { label: "Política de Privacidad", href: "#" }
-    ]
+      // { label: "Preguntas Frecuentes", href: "#" },
+      { label: "Unirse a Telegram", href: "https://t.me/+6HWcj5AJePYxN2M0" },
+      // { label: "Política de Privacidad", href: "#" }
+    ],
   },
   copyright: "© 2026 De Gaza al Mundo. Todos los derechos reservados.",
   flagColors: [
@@ -65,7 +65,10 @@ const { data = defaultData } = Astro.props;
         <p class="text-gray-400 leading-relaxed max-w-sm mb-6">
           {data.brand.description}
         </p>
-        <div class="flex gap-4">
+        <!-- RRSS y Email -->
+        <div class="flex items-center gap-3 mb-2">
+          <span class="text-sm font-bold text-white">RRSS:</span>
+          <div class="flex gap-4">
           {data.socialLinks.map((social: { href: string | URL | null | undefined; name: unknown; icon: string; }) => (
             <a
               class="w-10 h-10 rounded-full bg-white/5 hover:bg-[#931a24] transition-colors flex items-center justify-center text-white"
@@ -91,6 +94,14 @@ const { data = defaultData } = Astro.props;
               </svg>
             </a>
           ))}
+          </div>
+        </div>
+        <!-- Email -->
+        <div class="flex items-center gap-3">
+          <span class="text-sm font-bold text-white">Email:</span>
+          <a href="mailto:degazaalmundo@gmail.com" class="text-gray-400 hover:text-white transition-colors text-sm">
+            degazaalmundo@gmail.com
+          </a>
         </div>
       </div>
       <!-- Links 1 -->
