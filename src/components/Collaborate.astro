@@ -1,37 +1,38 @@
 ---
 const defaultData = {
   title: "Cómo donar",
-  description: `MÉTODOS DISPONIBLES: 
+  description: `Te necesitamos. Necesitamos más donantes para asegurar comida diaria, agua potable, productos de higiene, leña y cubrir urgencias. La situación es extrema, y esta es la forma más directa, humana y transparente que hemos encontrado para llegar donde más se necesita.
 
-  📌 Transferencia:
-ASOCIACIÓN POR LA CAUSA
-IBAN: ES73 3058 6403 3827 2001 0306
-Concepto: Donación Proyecto dGaM
-(Por seguridad no poner la palabra Gaza ni Palestina)
+  Haz una donación a través de la Asociación "Por la Causa"
 
-📌 Bizum eligiendo la opción Donar a una causa solidaria:
-Asociación por la causa
-Código 13292
-Concepto: Donación Proyecto dGaM
-  `,
+  Transferencia bancaria:
+  IBAN: ES73 3058 6403 3827 2001 0306 
+
+  Bizum: opción 'Donar a una causa solidaria'
+  Código: 13292
+  Concepto: Donación Proyecto dGaM
+  Por seguridad no poner la palabra Gaza ni Palestina`,
   cta: {
     icon: "chat",
     label: "Unirse a Telegram",
-    url: "https://t.me/+6HWcj5AJePYxN2M0"
+    url: "https://t.me/+6HWcj5AJePYxN2M0",
   },
   disclaimer: "Unirse es gratuito y seguro. Respetamos tu privacidad.",
   telegramIcon: {
     icon: "send",
     bgColor: "bg-blue-50",
-    textColor: "text-[#0088cc]"
-  }
+    textColor: "text-[#0088cc]",
+  },
 };
 
 const { data = defaultData } = Astro.props;
 ---
 
 <!-- CTASection -->
-<section id="collaborate-section" class="bg-[#fcfafa] py-16 md:py-24 relative overflow-hidden scroll-mt-20">
+<section
+  id="collaborate-section"
+  class="bg-[#fcfafa] py-16 md:py-24 relative overflow-hidden scroll-mt-20"
+>
   <!-- Decorative circle -->
   <div
     class="absolute -top-24 -right-24 w-96 h-96 bg-accent-green/5 rounded-full blur-3xl"
@@ -49,7 +50,11 @@ const { data = defaultData } = Astro.props;
         class={`w-16 h-16 ${data.telegramIcon.bgColor} ${data.telegramIcon.textColor} rounded-full flex items-center justify-center mx-auto mb-6`}
       >
         <!-- Simulating Telegram Icon style -->
-        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 2rem;">{data.telegramIcon.icon}</span>
+        <span
+          class="material-symbols-outlined"
+          style="font-variation-settings: 'FILL' 1; font-size: 2rem;"
+          >{data.telegramIcon.icon}</span
+        >
       </div>
       <h2
         class="text-[#171212] text-3xl md:text-5xl font-black leading-tight mb-6"

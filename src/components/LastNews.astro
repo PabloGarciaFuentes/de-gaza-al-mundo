@@ -7,9 +7,10 @@ const defaultData = {
   header: {
     badge: "Actualidad",
     title: "Últimas noticias",
-    linkText: "Ver todas las noticias",
+    linkText: "Ver todas las noticias en Instagram",
     linkIcon: "arrow_forward",
-    mobileLinkText: "Ver todas las noticias",
+    mobileLinkText: "Ver todas las noticias en Instagram",
+    url: "https://www.instagram.com/degazaalmundo/",
   },
   articles: [
     {
@@ -118,7 +119,9 @@ const { data = defaultData } = Astro.props;
       </div>
       <a
         class="hidden md:flex items-center gap-2 text-[#6b6b6b] hover:text-[#931a24] transition-colors font-bold text-sm"
-        href="#"
+        href={data.header.url}
+        target="_blank"
+        rel="noopener noreferrer"
       >
         {data.header.linkText}
         <span class="material-symbols-outlined">{data.header.linkIcon}</span>
@@ -190,7 +193,9 @@ const { data = defaultData } = Astro.props;
     <div class="mt-10 text-center md:hidden">
       <a
         class="inline-flex items-center gap-2 text-[#171212] font-bold border border-gray-200 px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors"
-        href="#"
+        href={data.header.url}
+        target="_blank"
+        rel="noopener noreferrer"
       >
         {data.header.mobileLinkText}
         <span class="material-symbols-outlined">{data.header.linkIcon}</span>
