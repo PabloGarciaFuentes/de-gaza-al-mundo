@@ -59,19 +59,19 @@ const { data = defaultData } = Astro.props;
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
       {data.contacts.map((contact: { icon: { borderHover: any; bgColor: any; textColor: any; hoverBg: any; hoverText: any; type: string; name: unknown; }; url: string | URL | null | undefined; platform: unknown; svg: string | null | undefined; handle: unknown; description: unknown; }) => (
         <a
-          class={`flex flex-col sm:flex-row items-center gap-6 p-8 rounded-2xl bg-[#fcfafa] border border-[#f0f0f0] ${contact.icon.borderHover} hover:shadow-xl transition-all group`}
+          class={`flex flex-col sm:flex-row items-center gap-3 sm:gap-6 p-4 sm:p-8 rounded-xl sm:rounded-2xl bg-[#fcfafa] border border-[#f0f0f0] ${contact.icon.borderHover} hover:shadow-xl transition-all group`}
           href={contact.url}
           target={contact.platform === "Instagram" ? "_blank" : undefined}
         >
         <div
-          class={`w-16 h-16 rounded-full ${contact.icon.bgColor} flex items-center justify-center shadow-sm ${contact.icon.textColor} ${contact.icon.hoverBg} ${contact.icon.hoverText} transition-colors`}
+          class={`w-10 h-10 sm:w-16 sm:h-16 rounded-full ${contact.icon.bgColor} flex items-center justify-center shadow-sm ${contact.icon.textColor} ${contact.icon.hoverBg} ${contact.icon.hoverText} transition-colors`}
         >
           {contact.icon.type === "svg" ? (
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
               <path d={contact.svg}></path>
             </svg>
           ) : (
-            <span class="material-symbols-outlined text-2xl">
+            <span class="material-symbols-outlined text-lg sm:text-2xl">
               {contact.icon.name}
             </span>
           )}
@@ -83,11 +83,11 @@ const { data = defaultData } = Astro.props;
               {contact.platform}
             </p>
             <p
-              class="text-text-main text-xl font-black group-hover:text-primary transition-colors"
+              class="text-text-main text-base sm:text-xl font-black group-hover:text-primary transition-colors"
             >
               {contact.handle}
             </p>
-            <p class="text-gray-500 text-sm mt-1">
+            <p class="text-gray-500 text-xs sm:text-sm mt-1">
               {contact.description}
             </p>
           </div>

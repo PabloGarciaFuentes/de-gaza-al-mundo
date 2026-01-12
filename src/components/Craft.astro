@@ -35,17 +35,17 @@ const defaultData = {
       aspectRatio: "aspect-3/4"
     },
     {
-      image: CamisetaImg.src,
-      alt: "White t-shirt with Palestinian embroidery design",
-      category: "Camisetas",
-      categoryColor: "bg-[#236E1E]",
-      aspectRatio: "aspect-square"
-    },
-    {
       image: LlaverosImg.src,
       alt: "Llaveros con diseño palestino",
       category: "Llaveros",
       categoryColor: "bg-black",
+      aspectRatio: "aspect-square"
+    },
+    {
+      image: CamisetaImg.src,
+      alt: "White t-shirt with Palestinian embroidery design",
+      category: "Camisetas",
+      categoryColor: "bg-[#236E1E]",
       aspectRatio: "aspect-square"
     },
     {
@@ -107,45 +107,26 @@ const { data = defaultData } = Astro.props;
             </div>
           ))}
         </div>
-        <!-- Mobile Slider (visible only on mobile) -->
-        <div class="mt-8 lg:hidden overflow-hidden">
-          <div id="craft-slider" class="flex gap-4 overflow-x-auto scroll-smooth scrollbar-hide snap-x snap-mandatory">
+        <!-- Mobile Grid (visible only on mobile) -->
+        <div class="mt-8 lg:hidden">
+          <div class="grid grid-cols-2 gap-4">
             {data.products.map((product: { image: string | null | undefined; alt: string | null | undefined; categoryColor: any; categoryTextColor: any; category: unknown; }) => (
-              <div class="flex-none w-[calc(50%-8px)] snap-start">
-                <div class="relative rounded-xl overflow-hidden shadow-lg aspect-3/4 group border-4 border-white">
-                  <img
-                    src={product.image}
-                    alt={product.alt}
-                    class="w-full h-full object-cover"
-                  />
-                  <div class="absolute bottom-4 left-4">
-                    <span class={`inline-block px-3 py-1 ${product.categoryColor} ${product.categoryTextColor || 'text-white'} font-bold rounded-lg shadow-md text-xs`}>
-                      {product.category}
-                    </span>
-                  </div>
+              <div class="group relative overflow-hidden rounded-xl aspect-4/5 shadow-sm">
+                <img
+                  src={product.image}
+                  alt={product.alt}
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                  width="300"
+                  height="375"
+                />
+                <div class="absolute bottom-3 left-3">
+                  <span class={`inline-block px-2 py-1 ${product.categoryColor} ${product.categoryTextColor || 'text-white'} font-bold rounded-md shadow-md text-xs`}>
+                    {product.category}
+                  </span>
                 </div>
               </div>
             ))}
-          </div>
-          <!-- Arrow Navigation -->
-          <div class="flex justify-center items-center gap-8 mt-4">
-            <button 
-              id="craft-prev-arrow" 
-              class="flex items-center justify-center w-10 h-10 rounded-full bg-white border-2 border-[#931a24] text-[#931a24] hover:bg-[#931a24] hover:text-white transition-all duration-200 shadow-md opacity-30 cursor-not-allowed"
-              aria-label="Ver productos anteriores"
-            >
-              <span class="material-symbols-outlined">chevron_left</span>
-            </button>
-            <span class="text-sm text-[#6b6b6b] font-medium">
-              <span id="craft-current-slide">1</span> / 2
-            </span>
-            <button 
-              id="craft-next-arrow" 
-              class="flex items-center justify-center w-10 h-10 rounded-full bg-white border-2 border-[#931a24] text-[#931a24] hover:bg-[#931a24] hover:text-white transition-all duration-200 shadow-md"
-              aria-label="Ver más productos"
-            >
-              <span class="material-symbols-outlined">chevron_right</span>
-            </button>
           </div>
         </div>
         <div class="mt-10 flex gap-4 justify-center lg:justify-start">
@@ -244,94 +225,5 @@ const { data = defaultData } = Astro.props;
 </section>
 
 <style>
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
+  /* Mantenemos los estilos básicos que podrían ser necesarios */
 </style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Craft Slider functionality
-    const craftSlider = document.getElementById('craft-slider');
-    const craftPrevArrow = document.getElementById('craft-prev-arrow');
-    const craftNextArrow = document.getElementById('craft-next-arrow');
-    const craftCurrentSlide = document.getElementById('craft-current-slide');
-    
-    if (craftSlider && craftPrevArrow && craftNextArrow) {
-      let currentSlide = 0;
-      const totalSlides = 2; // 4 products, 2 per view = 2 slides
-      
-      function updateArrows() {
-        // Update prev arrow
-        if (craftPrevArrow) {
-          if (currentSlide === 0) {
-            craftPrevArrow.classList.add('opacity-30', 'cursor-not-allowed');
-            craftPrevArrow.classList.remove('opacity-100', 'cursor-pointer');
-          } else {
-            craftPrevArrow.classList.remove('opacity-30', 'cursor-not-allowed');
-            craftPrevArrow.classList.add('opacity-100', 'cursor-pointer');
-          }
-        }
-        
-        // Update next arrow
-        if (craftNextArrow) {
-          if (currentSlide === totalSlides - 1) {
-            craftNextArrow.classList.add('opacity-30', 'cursor-not-allowed');
-            craftNextArrow.classList.remove('opacity-100', 'cursor-pointer');
-          } else {
-            craftNextArrow.classList.remove('opacity-30', 'cursor-not-allowed');
-            craftNextArrow.classList.add('opacity-100', 'cursor-pointer');
-          }
-        }
-        
-        // Update slide counter
-        if (craftCurrentSlide) {
-          craftCurrentSlide.textContent = (currentSlide + 1).toString();
-        }
-      }
-      
-      // Handle next arrow click
-      craftNextArrow.addEventListener('click', function() {
-        if (currentSlide < totalSlides - 1) {
-          currentSlide++;
-          const scrollPosition = currentSlide * craftSlider.offsetWidth;
-          craftSlider.scrollTo({
-            left: scrollPosition,
-            behavior: 'smooth'
-          });
-          updateArrows();
-        }
-      });
-      
-      // Handle prev arrow click
-      craftPrevArrow.addEventListener('click', function() {
-        if (currentSlide > 0) {
-          currentSlide--;
-          const scrollPosition = currentSlide * craftSlider.offsetWidth;
-          craftSlider.scrollTo({
-            left: scrollPosition,
-            behavior: 'smooth'
-          });
-          updateArrows();
-        }
-      });
-      
-      // Handle manual scroll to update arrows
-      craftSlider.addEventListener('scroll', function() {
-        const scrollPosition = craftSlider.scrollLeft;
-        const slideWidth = craftSlider.offsetWidth;
-        const newSlide = Math.round(scrollPosition / slideWidth);
-        if (newSlide !== currentSlide) {
-          currentSlide = newSlide;
-          updateArrows();
-        }
-      });
-      
-      updateArrows();
-    }
-  });
-</script>

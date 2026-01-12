@@ -36,7 +36,7 @@ const defaultData = {
       // { label: "Política de Privacidad", href: "#" }
     ],
   },
-  copyright: "© 2026 De Gaza al Mundo. Todos los derechos reservados.",
+  copyright: "© 2026 De Gaza al Mundo.",
   flagColors: [
     { color: "bg-[#931a24]", label: "Rojo palestino" },
     { color: "bg-black", label: "Negro", border: "border border-white/20" },
@@ -134,14 +134,27 @@ const { data = defaultData } = Astro.props;
     <div
       class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
     >
-      <p class="text-sm text-gray-500">
-        {data.copyright}
-      </p>
-      <div class="flex items-center gap-2">
-        {data.flagColors.map((flag: { color: any; border: any; }) => (
-          <span class={`w-3 h-3 rounded-full ${flag.color} ${flag.border || ''}`}></span>
-        ))}
+      <div class="flex flex-col md:flex-row items-center gap-2 md:gap-4">
+        <p class="text-sm text-gray-500">
+          {data.copyright}
+        </p>
+        <div class="flex items-center gap-2 my-2">
+          {data.flagColors.map((flag: { color: any; border: any; }) => (
+            <span class={`w-3 h-3 rounded-full ${flag.color} ${flag.border || ''}`}></span>
+          ))}
+        </div>
+        <p class="text-xs text-gray-600">
+          by <a 
+            href="https://pablogf.dev/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="text-[#236E1E] hover:text-[#2a8025] transition-colors font-medium"
+          >
+            pablogfdev
+          </a>
+        </p>
       </div>
+      
     </div>
   </div>
 </footer>
