@@ -4,16 +4,38 @@ import HeroImage from "../assets/images/hero/hero_img_2.png";
 const defaultData = {
   badge: {
     icon: "check_circle",
-    text: "Ayuda 100% directa y transparente"
+    text: "Ayuda 100% directa y transparente",
   },
-title: "Conectando corazones solidarios con familias en Gaza",
-description: `Somos “De Gaza al Mundo”, una comunidad solidaria de distintos puntos de España que, ante la violencia extrema y la hambruna forzada que sufre la población de Gaza, está viva y va creciendo cada día, unida por el deseo de acompañar a quienes más lo necesitan. Formamos parte de la Asociación Por la Causa, desde donde apoyamos de manera directa a más de 75 familias gazatíes, cerca de 350 personas, a través de un grupo de Telegram donde convivimos voluntarias, familias y donantes, compartiendo, escuchando y acompañándonos cada día, sin intermediarios.`,
-buttons: [
+  title: "Conectando corazones solidarios con familias en Gaza",
+  description: `Somos “De Gaza al Mundo”, una comunidad solidaria española que, ante la violencia extrema y la hambruna forzada que sufre la población de Gaza, ha decidido no quedarse parada ni ser cómplice del genocidio palestino. Formamos parte de la Asociación Por la Causa, desde donde apoyamos de manera directa a más de 75 familias gazatíes, cerca de 350 personas, a través de un grupo de Telegram donde convivimos voluntarias, familias y donantes, compartiendo, escuchando y acompañándonos cada día, sin intermediarios.`,
+  subtitle: `Objetivos "De Gaza al Mundo"`,  
+  features: [
+    {
+      icon: "restaurant",
+      iconColor: "text-[#236E1E]",
+      text: "Una comida al día y agua potable"
+    },
+    {
+      icon: "soap",
+      iconColor: "text-[#931a24]",
+      text: "Leña y productos de higiene"
+    },
+    {
+      icon: "volunteer_activism",
+      iconColor: "text-black",
+      text: "Conseguir más donaciones para las familias"
+    },
+    {
+      icon: "forum",
+      iconColor: "text-blue-600",
+      text: "Apoyo emocional y conversación"
+    }
+  ],  buttons: [
     {
       type: "primary",
       label: "Unirme al Grupo",
       icon: "group_add",
-      url: "https://t.me/+6HWcj5AJePYxN2M0"
+      url: "https://t.me/+6HWcj5AJePYxN2M0",
     },
     // {
     //   type: "secondary",
@@ -24,21 +46,24 @@ buttons: [
     avatars: [
       "https://lh3.googleusercontent.com/aida-public/AB6AXuDeozgq7VsOiM9Ia5JEJvYlf1aiwnnnXgwSO906oRsgz1myxOLF5vf393noWhK_RaIm0jKpeAMP0zY6-pqNQcdkji0QGQ0owyyMwEFuWFhPI_i3QPVtuZTXFrkY2p1v-k8ACainH46O52wLsr93wsnzyuDG6j08Hih6umFl4zQVPjJOZ62A4pAXPmlzI8e9azGhsEH1GRtT9FBV4iBcmvIajLJ2x1vBk8BAo4JcWHSSKp0BIPkTjLFflccAIoGqKyhtANlKPqB6uuc",
       "https://lh3.googleusercontent.com/aida-public/AB6AXuA5g9onrYZp_p9KY-LJ0dw4oo8T40wvxj4BX3VEuUpJMggOeeWmWvYtgn9kpCRe5LTYwuMiNCImI-ZY-TWkShjhzVnoxAa5BN3Is5PT3bH1j4zjvOQITQn8knEEt2RX2cNtaZ-KtmhyIzPA4trE6JiYgEhGY602bj05aszrUiF-W_Eyin1b_LktvYS4_nl3brl6Sg1M1e302G28efwV3Q14N6md8SF-nL09QdiffKWxShUNIOxxeo6EK2j0m0x2RGNBL_EWoGOIPVU",
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDZALKw1o3HkZ3ERUixu7bgo7jdIu04GKKoifTY5l6mVCXW5lMaSLPYEsTJ8LIdPsoqxFdjv4WTIhV5dyPf4bCt3sE1I8gW3ptBcHtzoQ1TMmUp0ERmKSlIq0_MiQLlvvsZKtyYKDL6wObQJeyJu5L2uW1iCPVRFGi0JIBw2LUafr8bhVgUmYIWPE8W6XFONSqR04f2HX0hPHt2rxQXn7fj7oGnkHa_HU6Y0uv9JUYktk1ND-RtxzxYLfboRgbFWEUvbATO5V_joY0"
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDZALKw1o3HkZ3ERUixu7bgo7jdIu04GKKoifTY5l6mVCXW5lMaSLPYEsTJ8LIdPsoqxFdjv4WTIhV5dyPf4bCt3sE1I8gW3ptBcHtzoQ1TMmUp0ERmKSlIq0_MiQLlvvsZKtyYKDL6wObQJeyJu5L2uW1iCPVRFGi0JIBw2LUafr8bhVgUmYIWPE8W6XFONSqR04f2HX0hPHt2rxQXn7fj7oGnkHa_HU6Y0uv9JUYktk1ND-RtxzxYLfboRgbFWEUvbATO5V_joY0",
     ],
-    text: "+900 miembros activos"
+    text: "+900 miembros activos",
   },
   heroImage: {
     src: HeroImage.src,
-    alt: "Two children holding hands walking through rubble in a resilient manner"
-  }
+    alt: "Two children holding hands walking through rubble in a resilient manner",
+  },
 };
 
 const { data = defaultData } = Astro.props;
 ---
 
 <!-- HeroSection -->
-<section id="hero-section" class="relative bg-[#f8f6f6] py-12 px-4 sm:px-10 scroll-mt-20">
+<section
+  id="hero-section"
+  class="relative bg-[#f8f6f6] py-12 px-4 sm:px-10 scroll-mt-20"
+>
   <div class="w-full max-w-7xl mx-auto">
     <div class="@container">
       <div class="flex flex-col-reverse lg:flex-row gap-12 items-center">
@@ -47,7 +72,9 @@ const { data = defaultData } = Astro.props;
           <div
             class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#236E1E]/10 text-[#236E1E] text-sm font-medium"
           >
-            <span class="material-symbols-outlined text-sm">{data.badge.icon}</span>
+            <span class="material-symbols-outlined text-sm"
+              >{data.badge.icon}</span
+            >
             {data.badge.text}
           </div>
           <h1
@@ -58,46 +85,86 @@ const { data = defaultData } = Astro.props;
           <p class="text-[#6b6b6b] text-lg leading-relaxed max-w-xl">
             {data.description}
           </p>
-          <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mt-2">
-            {data.buttons.map((button: { type: string; icon: unknown; label: unknown; url: string }) => {
-              if (button.label === 'Unirme al Grupo') {
-                return (
-                  <a
-                    href={button.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${button.label} - Se abre en nueva ventana`}
-                    class={`flex items-center justify-center gap-2 rounded-lg h-12 px-8 ${
-                      button.type === 'primary' 
-                        ? 'bg-[#931a24] hover:bg-red-800 text-white' 
-                        : 'bg-white border border-[#e5e7eb] hover:bg-gray-50 text-[#171212]'
-                    } transition-colors text-base font-${
-                      button.type === 'primary' ? 'bold' : 'semibold'
-                    } ${button.type === 'primary' ? 'shadow-md' : ''} w-full sm:w-auto cursor-pointer`}
-                  >
-                    {button.icon && <span class="material-symbols-outlined">{button.icon}</span>}
-                    <span>{button.label}</span>
-                  </a>
-                );
-              } else {
-                return (
-                  <button
-                    class={`flex items-center justify-center gap-2 rounded-lg h-12 px-8 ${
-                      button.type === 'primary' 
-                        ? 'bg-[#931a24] hover:bg-red-800 text-white' 
-                        : 'bg-white border border-[#e5e7eb] hover:bg-gray-50 text-[#171212]'
-                    } transition-colors text-base font-${
-                      button.type === 'primary' ? 'bold' : 'semibold'
-                    } ${button.type === 'primary' ? 'shadow-md' : ''} w-full sm:w-auto cursor-pointer`}
-                  >
-                    {button.icon && <span class="material-symbols-outlined">{button.icon}</span>}
-                    <span>{button.label}</span>
-                  </button>
-                );
-              }
-            })}
+          <h1
+            class="text-[#171212] text-xl sm:text-xl lg:text-xl font-black leading-tight tracking-tight"
+          >
+            {data.subtitle}
+          </h1>
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 w-full max-w-xl py-2"
+          >
+            {data.features.map((feature: { icon: unknown; iconColor: any; text: unknown; }) => (
+              <div class="flex items-center gap-3">
+                <div
+                  class={`w-10 h-10 shrink-0 rounded-lg bg-white border border-[#f0f0f0] flex items-center justify-center ${feature.iconColor} shadow-sm`}
+                >
+                  <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">
+                    {feature.icon}
+                  </span>
+                </div>
+                <span class="text-text-main font-medium text-sm leading-tight">
+                  {feature.text}
+                </span>
+              </div>
+            ))}
           </div>
-          <div class="flex items-center gap-4 text-sm text-[#6b6b6b] mt-2">
+          <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mt-2">
+            {
+              data.buttons.map(
+                (button: {
+                  type: string;
+                  icon: unknown;
+                  label: unknown;
+                  url: string;
+                }) => {
+                  if (button.label === "Unirme al Grupo") {
+                    return (
+                      <a
+                        href={button.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${button.label} - Se abre en nueva ventana`}
+                        class={`flex items-center justify-center gap-2 rounded-lg h-12 px-8 ${
+                          button.type === "primary"
+                            ? "bg-[#931a24] hover:bg-red-800 text-white"
+                            : "bg-white border border-[#e5e7eb] hover:bg-gray-50 text-[#171212]"
+                        } transition-colors text-base font-${
+                          button.type === "primary" ? "bold" : "semibold"
+                        } ${button.type === "primary" ? "shadow-md" : ""} w-full sm:w-auto cursor-pointer`}
+                      >
+                        {button.icon && (
+                          <span class="material-symbols-outlined">
+                            {button.icon}
+                          </span>
+                        )}
+                        <span>{button.label}</span>
+                      </a>
+                    );
+                  } else {
+                    return (
+                      <button
+                        class={`flex items-center justify-center gap-2 rounded-lg h-12 px-8 ${
+                          button.type === "primary"
+                            ? "bg-[#931a24] hover:bg-red-800 text-white"
+                            : "bg-white border border-[#e5e7eb] hover:bg-gray-50 text-[#171212]"
+                        } transition-colors text-base font-${
+                          button.type === "primary" ? "bold" : "semibold"
+                        } ${button.type === "primary" ? "shadow-md" : ""} w-full sm:w-auto cursor-pointer`}
+                      >
+                        {button.icon && (
+                          <span class="material-symbols-outlined">
+                            {button.icon}
+                          </span>
+                        )}
+                        <span>{button.label}</span>
+                      </button>
+                    );
+                  }
+                }
+              )
+            }
+          </div>
+          <!-- <div class="flex items-center gap-4 text-sm text-[#6b6b6b] mt-2">
             <div class="flex -space-x-3">
               {data.stats.avatars.map((avatar: string | null | undefined, index: number) => (
                 <img
@@ -111,7 +178,7 @@ const { data = defaultData } = Astro.props;
               ))}
             </div>
             <span>{data.stats.text}</span>
-          </div>
+          </div> -->
         </div>
         <!-- Hero Image -->
         <div class="w-full lg:w-1/2 flex justify-center">
@@ -155,8 +222,6 @@ const { data = defaultData } = Astro.props;
               style="background: linear-gradient(to bottom, #931a24, #000000, #ffffff, #236E1E); filter: blur(3.5px); border-radius: 0 16px 16px 0;"
             >
             </div>
-          </div>
-        </div>
           </div>
         </div>
       </div>
