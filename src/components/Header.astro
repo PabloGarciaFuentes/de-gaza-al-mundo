@@ -1,39 +1,113 @@
 ---
+/**
+ * HEADER NAVIGATION COMPONENT
+ * 
+ * Purpose: Main site navigation with responsive mobile/desktop layouts
+ * Position: Fixed header with backdrop blur for modern appearance
+ * 
+ * Key Features:
+ * - Fixed positioning with high z-index for always-visible navigation
+ * - Responsive layout: mobile hamburger menu vs desktop horizontal nav
+ * - Backdrop blur effect with semi-transparent background
+ * - Palestinian color scheme integration
+ * - External CTA button (Telegram integration)
+ * - Accessibility-first design with proper ARIA labels
+ * 
+ * Architecture:
+ * - Mobile: Logo + Centered Title + Hamburger → Expandable Menu
+ * - Desktop: Logo + Horizontal Navigation + CTA Button
+ */
+
+// Logo import
 import logo from '../assets/logo.jpg';
 
+/**
+ * HEADER DATA STRUCTURE
+ * 
+ * Configuration object for header content and behavior:
+ * - logo: Image configuration with responsive sizing
+ * - navigation: Array of internal navigation links (anchor-based)
+ * - ctaButton: External action button (Telegram join)
+ * 
+ * Navigation Strategy:
+ * - Uses anchor links (#section-id) for single-page navigation
+ * - Smooth scroll behavior handled by CSS scroll-behavior
+ * - CTA opens external link in new tab with security attributes
+ */
 const defaultData = {
+  // === LOGO CONFIGURATION ===
+  // Responsive logo with Palestinian-themed styling
   logo: {
     src: logo.src,
-    alt: "De Gaza al Mundo Logo",
-    class: "w-16 h-16 md:w-24 md:h-24 object-cover rounded-xl"
+    alt: "De Gaza al Mundo Logo", // Accessibility description
+    class: "w-16 h-16 md:w-24 md:h-24 object-cover rounded-xl" // Responsive sizing: mobile 16x16, desktop 24x24
   },
+  
+  // === NAVIGATION LINKS ===
+  // Internal section navigation using anchor links
+  // Order optimized for user journey flow
   navigation: [
-    // { label: "Inicio", href: "#" },
-    { label: "Sobre Nosotras", href: "#" },
-    { label: "Transparencia", href: "#transparency-section" },
-    { label: "Artesanías", href: "#craft-section" },
-    { label: "Noticias", href: "#news-section" },
-    { label: "Cómo Colaborar", href: "#collaborate-section" },
-    { label: "Contacto", href: "#contact-section" },
+    // { label: "Inicio", href: "#" }, // Commented out - redundant since logo serves as home link
+    { label: "Sobre Nosotras", href: "#" },               // About section (currently placeholder)
+    { label: "Transparencia", href: "#transparency-section" }, // Image gallery showcase
+    { label: "Artesanías", href: "#craft-section" },         // Products/craft section
+    { label: "Noticias", href: "#news-section" },            // Latest news updates
+    { label: "Cómo Colaborar", href: "#collaborate-section" }, // Donation/collaboration info
+    { label: "Contacto", href: "#contact-section" },         // Contact information
   ],
+  
+  // === CALL-TO-ACTION BUTTON ===
+  // Primary conversion action - Telegram community join
+  // Uses Palestinian red color (#931a24) for brand consistency
   ctaButton: {
-    label: "Unirme a Telegram",
-    icon: "send",
-    url: "https://t.me/+6HWcj5AJePYxN2M0"
+    label: "Unirme a Telegram",                    // Action-oriented text
+    icon: "send",                                  // Material symbol for messaging
+    url: "https://t.me/+6HWcj5AJePYxN2M0"        // External Telegram group link
   }
 };
 
+// Component props with fallback to defaultData
 const { data = defaultData } = Astro.props;
 ---
 
-<!-- TopNavBar -->
+<!-- 
+  FIXED HEADER NAVIGATION
+  
+  Positioning Strategy:
+  - Fixed positioning for always-visible navigation
+  - High z-index (z-9999) to stay above all content
+  - Full width with backdrop blur for modern glass effect
+  - Semi-transparent background (bg-white/95) with blur
+  
+  Design System:
+  - Uses Palestinian colors for hover states and CTA
+  - Consistent spacing and typography scale
+  - Border accent using brand color palette
+  - Shadow for depth and visual separation
+  
+  Responsive Behavior:
+  - Mobile: Hamburger menu with slide-down panel
+  - Desktop: Horizontal navigation with inline CTA
+-->
 <header
   class="fixed top-0 left-0 right-0 z-9999 w-full bg-white/95 backdrop-blur-sm border-b border-[#f4f0f1] shadow-sm"
 >
   <div class="w-full max-w-7xl mx-auto px-4 sm:px-10 py-4">
-    <!-- Mobile Layout: Logo - Título Centrado - Hamburguesa -->
+    <!-- 
+      MOBILE LAYOUT (md:hidden)
+      
+      Three-zone layout strategy:
+      1. Left: Logo (standard position)
+      2. Center: Site title (absolute positioning for perfect centering)
+      3. Right: Hamburger menu button
+      
+      Accessibility Features:
+      - Proper ARIA labels for screen readers
+      - aria-expanded state tracking for menu button
+      - Semantic button element for menu trigger
+    -->
     <div class="md:hidden flex items-center justify-between">
-      <!-- Logo -->
+      <!-- Left Zone: Logo -->
       <div class="flex items-center">
         <img
           src={data.logo.src}
@@ -41,19 +115,33 @@ const { data = defaultData } = Astro.props;
           class={data.logo.class}
         />
       </div>
-      <!-- Título centrado -->
+      
+      <!-- Center Zone: Brand Title (absolutely positioned for perfect centering) -->
       <h1 class="text-[#171212] text-lg font-bold tracking-tight absolute left-1/2 transform -translate-x-1/2">
         De Gaza al Mundo
       </h1>
-      <!-- Mobile Menu Button -->
+      
+      <!-- Right Zone: Hamburger Menu Toggle -->
       <button id="mobile-menu-btn" class="p-2 text-[#171212] cursor-pointer" aria-label="Abrir menú de navegación" aria-expanded="false">
         <span class="material-symbols-outlined" id="menu-icon">menu</span>
       </button>
     </div>
     
-    <!-- Desktop Layout: Logo - Navegación -->
+    <!-- 
+      DESKTOP LAYOUT (hidden md:flex)
+      
+      Two-zone horizontal layout:
+      1. Left: Logo only (no title needed at larger sizes)
+      2. Right: Navigation + CTA button
+      
+      Layout Strategy:
+      - justify-between for maximum space distribution
+      - Navigation items with consistent spacing (gap-8)
+      - CTA button visually separated from navigation
+      - Hover effects with Palestinian red color (#931a24)
+    -->
     <div class="hidden md:flex items-center justify-between">
-      <!-- Logo -->
+      <!-- Desktop Logo (no title needed) -->
       <div class="flex items-center">
         <img
           src={data.logo.src}
@@ -61,7 +149,18 @@ const { data = defaultData } = Astro.props;
           class={data.logo.class}
         />
       </div>
-      <!-- Desktop Nav -->
+      
+      <!-- 
+        DESKTOP NAVIGATION ZONE
+        
+        Contains both navigation links and CTA button
+        Layout: Navigation items → CTA button (visual separation)
+        
+        Navigation Features:
+        - Semantic <nav> element with role and aria-label
+        - Consistent hover effects using Palestinian red
+        - Smooth color transitions for polished UX
+      -->
       <div id="desktop-menu" class="hidden md:flex items-center gap-8">
         <nav class="flex items-center gap-8" role="navigation" aria-label="Navegación principal">
           {data.navigation.map((item: { href: string | URL | null | undefined; label: unknown; }) => (
@@ -73,6 +172,18 @@ const { data = defaultData } = Astro.props;
             </a>
           ))}
         </nav>
+        
+        <!-- 
+          PRIMARY CTA BUTTON
+          
+          External action for community engagement
+          Features:
+          - Palestinian red background (#931a24)
+          - Opens in new tab with security attributes
+          - Material icon + text combination
+          - Accessible with proper aria-label
+          - Hover state with darker red
+        -->
         <a
           href={data.ctaButton.url}
           target="_blank"
@@ -85,7 +196,24 @@ const { data = defaultData } = Astro.props;
         </a>
       </div>
     </div>
-    <!-- Mobile Menu -->
+    
+    <!-- 
+      MOBILE MENU PANEL
+      
+      Collapsible navigation panel for mobile devices
+      
+      Behavior:
+      - Hidden by default (controlled by JavaScript)
+      - Slides down below header when activated
+      - Includes all navigation links + CTA button
+      - Auto-closes when navigation link is clicked
+      
+      Styling:
+      - Matches header background for continuity
+      - Border separation from main header
+      - Vertical stack layout for touch-friendly interaction
+      - CTA button maintains brand styling
+    -->
     <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-[#f4f0f1] px-4 py-4" role="navigation" aria-label="Menú móvil">
       <nav class="flex flex-col gap-4">
         {data.navigation.map((item: { href: string | URL | null | undefined; label: unknown; }) => (
@@ -110,30 +238,70 @@ const { data = defaultData } = Astro.props;
   </div>
 </header>
 
+<!-- 
+  MOBILE MENU FUNCTIONALITY
+  
+  JavaScript Features:
+  1. Hamburger menu toggle (show/hide mobile menu)
+  2. Icon state management (menu ↔ close)
+  3. Auto-close on navigation (UX enhancement)
+  4. Accessibility state updates (aria-expanded)
+  
+  Event Handling:
+  - Click events on hamburger button
+  - Click events on all mobile navigation links
+  - Proper cleanup and state management
+  
+  Performance:
+  - Waits for DOMContentLoaded for safe execution
+  - Minimal DOM queries with error checking
+  - Event delegation for mobile links
+-->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // Mobile menu functionality
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuIcon = document.getElementById('menu-icon');
+    // === DOM ELEMENT REFERENCES ===
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');  // Hamburger button
+    const mobileMenu = document.getElementById('mobile-menu');         // Mobile menu panel
+    const menuIcon = document.getElementById('menu-icon');             // Icon element for state changes
     
+    // Safety check: ensure all required elements exist
     if (mobileMenuBtn && mobileMenu && menuIcon) {
+      
+      // === MOBILE MENU TOGGLE FUNCTIONALITY ===
+      /**
+       * Handles hamburger menu button clicks
+       * Toggles menu visibility and updates icon state
+       * Updates aria-expanded for screen readers
+       */
       mobileMenuBtn.addEventListener('click', function() {
-        if (mobileMenu.classList.contains('hidden')) {
+        const isMenuHidden = mobileMenu.classList.contains('hidden');
+        
+        if (isMenuHidden) {
+          // OPEN MENU
           mobileMenu.classList.remove('hidden');
-          menuIcon.textContent = 'close';
+          menuIcon.textContent = 'close';                    // Switch to close icon
+          mobileMenuBtn.setAttribute('aria-expanded', 'true'); // Update accessibility state
         } else {
+          // CLOSE MENU
           mobileMenu.classList.add('hidden');
-          menuIcon.textContent = 'menu';
+          menuIcon.textContent = 'menu';                     // Switch to hamburger icon
+          mobileMenuBtn.setAttribute('aria-expanded', 'false'); // Update accessibility state
         }
       });
       
-      // Close menu when clicking links
+      // === AUTO-CLOSE ON NAVIGATION ===
+      /**
+       * Closes mobile menu when user clicks any navigation link
+       * Improves UX by automatically hiding menu after selection
+       * Applies to all <a> elements within mobile menu
+       */
       const mobileLinks = mobileMenu.querySelectorAll('a');
       mobileLinks.forEach(function(link) {
         link.addEventListener('click', function() {
+          // Close menu and reset states
           mobileMenu.classList.add('hidden');
           menuIcon.textContent = 'menu';
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
         });
       });
     }

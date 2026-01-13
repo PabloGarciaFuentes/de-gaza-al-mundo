@@ -1,4 +1,23 @@
 ---
+/**
+ * TRANSPARENCY GALLERY COMPONENT
+ * 
+ * Purpose: Displays transparency images showing the organization's humanitarian work
+ * Features: Responsive gallery with modal viewer and dynamic loading
+ * 
+ * Key Features:
+ * - 31 static image imports (transparencia_6 to transparencia_36)
+ * - Mobile/Desktop responsive layouts
+ * - Modal image viewer with navigation
+ * - Gallery expansion (show more/less functionality)
+ * - Performance optimized with lazy loading
+ * 
+ * Note: Images start at number 6 (transparencia_6) as requested by client
+ */
+
+// === IMAGE IMPORTS ===
+// Static imports for all 31 transparency images (6-36)
+// These images document the organization's humanitarian activities
 import TransparenciaImg_6 from "../assets/images/transparency/transparencia_6.jpg";
 import TransparenciaImg_7 from "../assets/images/transparency/transparencia_7.jpg";
 import TransparenciaImg_8 from "../assets/images/transparency/transparencia_8.jpg";
@@ -31,15 +50,33 @@ import TransparenciaImg_34 from "../assets/images/transparency/transparencia_34.
 import TransparenciaImg_35 from "../assets/images/transparency/transparencia_35.jpg";
 import TransparenciaImg_36 from "../assets/images/transparency/transparencia_36.jpg";
 
+/**
+ * DEFAULT DATA STRUCTURE
+ * 
+ * Component data schema:
+ * - header: Section metadata (title, description, CTA)
+ * - gallery: Array of image objects with src, alt, and caption
+ * 
+ * Gallery Structure:
+ * - Total: 31 images (transparencia_6 through transparencia_36)
+ * - Initial display: 4 images
+ * - Expansion: Shows all 31 images on user interaction
+ */
 const defaultData = {
+  // === HEADER CONFIGURATION ===
+  // Section header with branding, title, description and CTA
   header: {
-    badge: "Transparencia",
+    badge: "Transparencia", // Green badge using Palestinian colors
     title: "Nuestra labor, contada con imágenes",
     description: "Cada gesto solidario nos une y construye esperanza. Detrás de cada aporte hay personas que se ayudan entre sí y comunidades que vuelven a sentirse acompañadas. Compartimos imágenes reales de nuestras acciones para que puedas ver cómo, juntos, transformamos la solidaridad en apoyo concreto y en un futuro más digno para quienes más lo necesitan.",
-    linkText: "Ver galería completa",
-    linkIcon: "arrow_forward",
-    url: "#",
+    linkText: "Ver galería completa", // Dynamic button text
+    linkIcon: "arrow_forward", // Material icon for expansion
+    url: "#", // Currently unused
   },
+  
+  // === GALLERY DATA ARRAY ===
+  // All 31 transparency images with metadata
+  // Structure: { image: string, alt: string, caption: string }
   gallery: [
     {
       image: TransparenciaImg_6.src,
@@ -199,10 +236,24 @@ const defaultData = {
   ]
 };
 
+// Component props with fallback to defaultData
 const { data = defaultData } = Astro.props;
 ---
 
-<!-- SectionHeader + ImageGrid -->
+<!-- 
+  TRANSPARENCY SECTION
+  
+  Layout Structure:
+  1. Section Header (title, description, desktop CTA)
+  2. Mobile Grid (2x2 initial, 2xN expanded)
+  3. Desktop Grid (4 column initial + additional rows)
+  4. Mobile CTA Button (bottom)
+  5. Modal Viewer (fullscreen overlay)
+  
+  Responsive Behavior:
+  - Mobile: Stack layout, 2-column grid, bottom CTA
+  - Desktop: Side-by-side layout, 4-column grid, header CTA
+-->
 <section id="transparency-section" class="py-16 md:py-24 bg-white scroll-mt-20">
   <div class="w-full max-w-7xl mx-auto px-4 sm:px-10">
     <div
@@ -223,6 +274,13 @@ const { data = defaultData } = Astro.props;
           {data.header.description}
         </p>
       </div>
+      
+      <!-- 
+        DESKTOP CTA BUTTON
+        Hidden on mobile, visible on desktop (md:flex)
+        Text and icon change based on gallery state (expanded/collapsed)
+        JavaScript controls the toggle functionality
+      -->
       <button
         id="show-all-btn"
         class="hidden md:flex items-center gap-2 text-[#931a24] font-bold hover:text-red-800 transition-colors hover:cursor-pointer"
@@ -232,8 +290,24 @@ const { data = defaultData } = Astro.props;
       </button>
     </div>
     
-    <!-- Mobile Grid (visible only on mobile) -->
+    <!-- 
+      MOBILE GRID CONTAINER
+      
+      Two-state system:
+      1. Initial Grid: Shows first 4 images in 2x2 layout
+      2. Expanded Grid: Shows all 31 images, replaces initial grid
+      
+      Modal Integration:
+      - Each image has data-modal-trigger attribute
+      - data-image-index for navigation within modal
+      - Unique IDs for individual image identification
+    -->
     <div class="md:hidden">
+      <!-- 
+        INITIAL MOBILE GRID
+        Shows first 4 images from gallery array (slice(0, 4))
+        2x2 grid layout with hover effects and modal triggers
+      -->
       <div id="initial-images-mobile" class="grid grid-cols-2 gap-4">
         {data.gallery.slice(0, 4).map((item: { alt: string; image: any; caption: unknown; }, index: number) => (
           <div class="group relative overflow-hidden rounded-xl aspect-square shadow-sm cursor-pointer" data-modal-trigger data-image-index={index}>
@@ -255,7 +329,13 @@ const { data = defaultData } = Astro.props;
         ))}
       </div>
       
-      <!-- All Images Mobile Grid (initially hidden, replaces initial grid when expanded) -->
+      <!-- 
+        EXPANDED MOBILE GRID
+        Initially hidden (display: none)
+        Shows ALL 31 images when user clicks "Ver galería completa"
+        Replaces initial grid with fade-in animation
+        Each image starts with opacity-0, animated via JavaScript
+      -->
       <div id="all-images-mobile" class="grid grid-cols-2 gap-4" style="display: none;">
         {data.gallery.map((item: { alt: string; image: any; caption: unknown; }, index: number) => (
           <div class="group relative overflow-hidden rounded-xl aspect-square shadow-sm opacity-0 transition-opacity duration-300 ease-in-out all-image cursor-pointer" data-modal-trigger data-image-index={index}>
@@ -278,7 +358,23 @@ const { data = defaultData } = Astro.props;
       </div>
     </div>
 
-    <!-- Desktop Grid (hidden on mobile) -->
+    <!-- 
+      DESKTOP GRID SECTION
+      
+      Two-tier system:
+      1. Initial Grid: Always visible, shows first 4 images in responsive columns
+      2. Additional Grid: Hidden by default, shows remaining 27 images
+      
+      Layout:
+      - Base: 2 columns
+      - Large screens (lg:): 4 columns
+      - Grid items maintain aspect-square ratio
+      
+      Interaction:
+      - All images clickable for modal
+      - Hover effects with image scaling
+      - Progressive enhancement with JavaScript
+    -->
     <div class="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-6">
       {data.gallery.slice(0, 4).map((item: { alt: string; image: any; caption: unknown; }, index: number) => (
         <div
@@ -302,7 +398,20 @@ const { data = defaultData } = Astro.props;
       ))}
     </div>
     
-    <!-- Additional Images (initially hidden) -->
+    <!-- 
+      ADDITIONAL DESKTOP IMAGES
+      
+      Contains images 5-31 (slice(4) = index 4 onwards)
+      Hidden by default (display: none)
+      Revealed when user clicks desktop CTA button
+      
+      Animation Sequence:
+      1. Container display changes to 'grid'
+      2. Individual images fade in with staggered timing
+      3. Each image starts with opacity-0, animated via JavaScript
+      
+      Note: data-image-index continues from 4 (index + 4)
+    -->
     <div id="additional-images-desktop" class="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-6 mt-6" style="display: none;">
       {data.gallery.slice(4).map((item: { alt: string; image: any; caption: unknown; }, index: number) => (
         <div
@@ -325,6 +434,15 @@ const { data = defaultData } = Astro.props;
         </div>
       ))}
     </div>
+    
+    <!-- 
+      MOBILE CTA BUTTON
+      
+      Positioned at bottom on mobile only (md:hidden)
+      Mirrors desktop CTA functionality
+      Text and icon update based on gallery state
+      Centered layout with red brand color
+    -->
     <div class="mt-8 text-center md:hidden">
       <button
         id="show-all-btn-mobile"
@@ -337,10 +455,38 @@ const { data = defaultData } = Astro.props;
   </div>
 </section>
 
-<!-- Modal para galería de imágenes -->
+<!-- 
+  IMAGE MODAL VIEWER
+  
+  Full-screen overlay for viewing images in detail
+  
+  Features:
+  - Backdrop blur with dark overlay (bg-black/90)
+  - Keyboard navigation (arrows, ESC)
+  - Touch/click navigation buttons
+  - Image counter (current/total)
+  - Circular navigation (loops from last to first)
+  - Click-outside-to-close functionality
+  
+  Accessibility:
+  - Proper ARIA labels
+  - Focus management
+  - Screen reader friendly
+  
+  State Management:
+  - Controlled via JavaScript
+  - Uses opacity for show/hide transitions
+  - pointer-events-none when hidden
+-->
 <div id="image-modal" class="fixed inset-0 bg-black/90 backdrop-blur-sm z-9999 opacity-0 pointer-events-none transition-opacity duration-300 ease-out">
   <div class="absolute inset-0 flex items-center justify-center p-4">
-    <!-- Botón cerrar -->
+    <!-- 
+      MODAL CONTROL BUTTONS
+      All positioned absolutely with backdrop-blur for visibility
+      Hover effects for better UX
+    -->
+    
+    <!-- Close button (top-right) -->
     <button 
       id="close-modal" 
       class="absolute top-4 right-4 z-10 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors duration-200 backdrop-blur-sm"
@@ -349,7 +495,7 @@ const { data = defaultData } = Astro.props;
       <span class="material-symbols-outlined text-white text-xl">close</span>
     </button>
     
-    <!-- Navegación anterior -->
+    <!-- Previous image navigation (left) -->
     <button 
       id="prev-image" 
       class="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors duration-200 backdrop-blur-sm"
@@ -358,7 +504,7 @@ const { data = defaultData } = Astro.props;
       <span class="material-symbols-outlined text-white text-2xl">chevron_left</span>
     </button>
     
-    <!-- Navegación siguiente -->
+    <!-- Next image navigation (right) -->
     <button 
       id="next-image" 
       class="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors duration-200 backdrop-blur-sm"
@@ -367,15 +513,22 @@ const { data = defaultData } = Astro.props;
       <span class="material-symbols-outlined text-white text-2xl">chevron_right</span>
     </button>
     
-    <!-- Contenedor de imagen -->
+    <!-- 
+      MODAL IMAGE CONTAINER
+      
+      Responsive container that maintains aspect ratios
+      Centers image both horizontally and vertically
+      Includes position counter overlay
+    -->
     <div class="relative max-w-5xl max-h-full w-full h-full flex items-center justify-center">
+      <!-- Main modal image (populated by JavaScript) -->
       <img 
         id="modal-image" 
         class="max-w-full max-h-full w-auto h-auto object-contain rounded-lg shadow-2xl" 
         alt="" 
       />
       
-      <!-- Indicador de posición -->
+      <!-- Position indicator (e.g., "5 / 31") -->
       <div class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-sm px-3 py-1 rounded-full">
         <span id="image-counter" class="text-white text-sm font-medium"></span>
       </div>
@@ -383,60 +536,113 @@ const { data = defaultData } = Astro.props;
   </div>
 </div>
 
+<!-- 
+  COMPONENT STYLES
+  
+  Custom scrollbar hiding for smooth UX
+  (Currently unused but kept for future enhancements)
+-->
 <style>
   .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    -ms-overflow-style: none;  /* Internet Explorer and Edge */
+    scrollbar-width: none;     /* Firefox */
   }
   .scrollbar-hide::-webkit-scrollbar {
-    display: none;
+    display: none;             /* Chrome, Safari, Opera */
   }
 </style>
 
+<!-- 
+  DATA BRIDGE SCRIPT
+  
+  Passes server-side gallery data to client-side JavaScript
+  Uses Astro's define:vars to safely transfer the data
+  Creates window.transparencyGalleryData for client access
+-->
 <script define:vars={{ galleryData: data.gallery }}>
   // Pass gallery data to window object for client-side access
   window.transparencyGalleryData = galleryData;
 </script>
 
+<!-- 
+  MAIN CLIENT-SIDE FUNCTIONALITY
+  
+  Core Features:
+  1. Gallery Toggle System (show/hide additional images)
+  2. Modal Image Viewer with Navigation
+  3. Responsive Behavior Handling
+  4. Progressive Enhancement
+  
+  Architecture:
+  - Event-driven with proper delegation
+  - Mobile/desktop responsive logic
+  - Accessibility-first keyboard navigation
+  - Performance optimized with minimal DOM queries
+-->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    let showingAll = false;
-    let currentImageIndex = 0;
-    let galleryImages: string | any[] = [];
+    // === COMPONENT STATE ===
+    let showingAll = false;        // Tracks gallery expansion state
+    let currentImageIndex = 0;     // Current image index in modal
+    let galleryImages: string | any[] = [];        // Local copy of gallery data
     
-    // Initialize gallery images array
-    const galleryData = (window as any).transparencyGalleryData || [];
+    // === INITIALIZATION ===
+    // Get gallery data from window object (passed from server)
+    galleryImages = (window as any).transparencyGalleryData || [];
     
-    // Check if we're on mobile or desktop
+    // === UTILITY FUNCTIONS ===
+    
+    /**
+     * Determines if current viewport is mobile
+     * @returns {boolean} True if mobile (< 768px), false if desktop
+     */
     function isMobile() {
-      return window.innerWidth < 768; // md breakpoint
+      return window.innerWidth < 768; // Matches Tailwind 'md' breakpoint
     }
     
-    // Gallery toggle functionality
+    // === GALLERY TOGGLE SYSTEM ===
+    
+    /**
+     * Toggles gallery between initial view (4 images) and expanded view (all images)
+     * Handles different behaviors for mobile and desktop layouts
+     * Updates button text and icons dynamically
+     */
     function toggleGallery() {
+      // === DOM ELEMENT REFERENCES ===
+      // Desktop elements
       const additionalDesktop = document.getElementById('additional-images-desktop');
+      
+      // Mobile elements
       const initialMobile = document.getElementById('initial-images-mobile');
       const allMobile = document.getElementById('all-images-mobile');
+      
+      // Button elements (both mobile and desktop)
       const showAllBtn = document.getElementById('show-all-btn');
       const showAllBtnMobile = document.getElementById('show-all-btn-mobile');
+      
+      // Text and icon elements for state updates
       const showAllText = document.getElementById('show-all-text');
       const showAllTextMobile = document.getElementById('show-all-text-mobile');
       const showAllIcon = document.getElementById('show-all-icon');
       const showAllIconMobile = document.getElementById('show-all-icon-mobile');
       
       if (!showingAll) {
-        // Show all images
+        // === EXPANSION PHASE ===
+        // Show additional images with different strategies for mobile/desktop
+        
         if (!isMobile() && additionalDesktop) {
-          // Desktop behavior
+          // DESKTOP EXPANSION:
+          // 1. Show additional grid container
+          // 2. Stagger fade-in animation for each image
           additionalDesktop.style.display = 'grid';
           setTimeout(() => {
             const additionalImages = additionalDesktop.querySelectorAll('.additional-image');
             additionalImages.forEach((img, index) => {
               setTimeout(() => {
                 (img as HTMLElement).style.opacity = '1';
-              }, index * 100);
+              }, index * 100); // 100ms stagger between images
             });
-          }, 50);
+          }, 50); // 50ms delay before starting animations
         }
         
         if (isMobile() && initialMobile && allMobile) {
@@ -461,21 +667,26 @@ const { data = defaultData } = Astro.props;
         
         showingAll = true;
       } else {
-        // Hide additional images
+        // === COLLAPSE PHASE ===
+        // Hide additional images and return to initial state
+        
         if (!isMobile()) {
-          // Desktop behavior
+          // DESKTOP COLLAPSE:
+          // 1. Fade out additional images with staggered timing
+          // 2. Hide additional container after animations complete
           const additionalImages = document.querySelectorAll('.additional-image');
           additionalImages.forEach((img, index) => {
             setTimeout(() => {
               (img as HTMLElement).style.opacity = '0';
-            }, index * 20);
+            }, index * 20); // Faster collapse (20ms stagger)
           });
           
+          // Hide container after all animations complete
           setTimeout(() => {
             if (additionalDesktop) {
               additionalDesktop.style.display = 'none';
             }
-          }, additionalImages.length * 20 + 100);
+          }, additionalImages.length * 20 + 100); // Buffer time for completion
         }
         
         if (isMobile()) {
