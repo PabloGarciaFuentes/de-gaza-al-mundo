@@ -1,62 +1,119 @@
 ---
+/**
+ * CRAFT/ARTESANÍA SECTION COMPONENT
+ * 
+ * Purpose: Showcase handmade Palestinian-themed crafts sold to support humanitarian aid
+ * Business Model: 100% of proceeds go directly to food and medicine for Gaza families
+ * 
+ * Key Features:
+ * - Two-column responsive layout (text + product showcase)
+ * - Product catalog with 4 craft categories
+ * - Mobile carousel slider with arrow navigation
+ * - Desktop masonry-style grid layout
+ * - Direct link to external Canva catalog
+ * 
+ * Product Categories:
+ * - Baberos (Bibs) - Red themed
+ * - Llaveros (Keychains) - Black themed
+ * - Camisetas (T-shirts) - Green themed
+ * - Libros (Books) - White themed
+ * 
+ * Layout Strategy:
+ * - Mobile: Text first, then horizontal scrolling carousel (2 items visible)
+ * - Desktop: Side-by-side with offset masonry grid effect
+ * 
+ * Design Philosophy:
+ * - Emphasize authentic Palestinian cultural designs
+ * - Direct impact messaging (100% to aid)
+ * - Visual product showcase before CTA
+ * - Palestinian flag colors throughout
+ */
+
+// === IMAGE IMPORTS ===
+// Product images for craft catalog showcase
 import CamisetaImg from '../assets/images/craft/camiseta_2.png';
 import LlaverosImg from '../assets/images/craft/llaveros_1.jpg';
 import BaberosImg from '../assets/images/craft/baberos_1.jpg';
 import LibrosImg from '../assets/images/craft/libro_1.png';
 
+/**
+ * CRAFT SECTION DATA STRUCTURE
+ * 
+ * Configuration object for craft/artisan section:
+ * - header: Section title, badge, and value proposition
+ * - features: 2 key selling points (authentic designs, real impact)
+ * - products: 4 product categories with images and styling
+ * - cta: External link to full catalog on Canva
+ * 
+ * Content Strategy:
+ * - Emotional appeal (heart, dedication)
+ * - Cultural authenticity (Palestinian designs)
+ * - Transparency (100% goes to aid)
+ * - Easy purchase path (Canva catalog)
+ */
 const defaultData = {
+  // === SECTION HEADER ===
   header: {
-    badge: "Artesanía Solidaria",
-    title: "Apoya con el Corazón,<br />Lleva Palestina Contigo",
+    badge: "Artesanía Solidaria", // Solidarity crafts identifier
+    title: "Apoya con el Corazón,<br />Lleva Palestina Contigo", // Emotional + cultural connection
     description: "Nuestros voluntarios y familias elaboran con dedicación hermosas piezas artesanales. Cada pulsera, llavero y camiseta que adquieres es un donativo directo que se transforma en ayuda humanitaria."
   },
+
+  // === VALUE PROPOSITIONS ===
+  // 2 key features highlighting authenticity and impact
   features: [
     {
-      icon: "palette",
-      iconBg: "bg-black/5",
-      iconColor: "text-black",
+      icon: "palette", // Design/artisan icon
+      iconBg: "bg-black/5", // Subtle black background
+      iconColor: "text-black", // Palestinian black
       title: "Diseños Auténticos",
       description: "Inspirados en la cultura y los colores de nuestra tierra: rojo, negro, blanco y verde."
     },
     {
-      icon: "favorite",
-      iconBg: "bg-[#236E1E]/10",
-      iconColor: "text-[#236E1E]", 
+      icon: "favorite", // Heart icon for impact
+      iconBg: "bg-[#236E1E]/10", // Subtle green background
+      iconColor: "text-[#236E1E]", // Palestinian green
       title: "Impacto Real",
       description: "El 100% de los beneficios se destina a la compra de alimentos y medicinas."
     }
   ],
+
+  // === PRODUCT CATALOG ===
+  // 4 craft categories with Palestinian flag color theming
   products: [
     {
       image: BaberosImg.src,
       alt: "Babero con diseño palestino",
       category: "Baberos",
-      categoryColor: "bg-[#931a24]",
-      aspectRatio: "aspect-3/4"
+      categoryColor: "bg-[#931a24]", // Palestinian red
+      aspectRatio: "aspect-3/4" // Portrait orientation
     },
     {
       image: LlaverosImg.src,
       alt: "Llaveros con diseño palestino",
       category: "Llaveros",
-      categoryColor: "bg-black",
-      aspectRatio: "aspect-square"
+      categoryColor: "bg-black", // Palestinian black
+      aspectRatio: "aspect-square" // Square orientation
     },
     {
       image: CamisetaImg.src,
       alt: "White t-shirt with Palestinian embroidery design",
       category: "Camisetas",
-      categoryColor: "bg-[#236E1E]",
-      aspectRatio: "aspect-square"
+      categoryColor: "bg-[#236E1E]", // Palestinian green
+      aspectRatio: "aspect-square" // Square orientation
     },
     {
       image: LibrosImg.src,
       alt: "Libro con temática palestina",
       category: "Libros",
-      categoryColor: "bg-white",
-      categoryTextColor: "text-black",
-      aspectRatio: "aspect-3/4"
+      categoryColor: "bg-white", // White from flag
+      categoryTextColor: "text-black", // Black text for white background
+      aspectRatio: "aspect-3/4" // Portrait orientation
     }
   ],
+
+  // === CALL TO ACTION ===
+  // External link to full product catalog
   cta: {
     icon: "shopping_bag",
     label: "Ver Catálogo",
@@ -67,27 +124,44 @@ const defaultData = {
 const { data = defaultData } = Astro.props;
 ---
 
-<!-- CraftSection -->
+<!-- ============================================= -->
+<!-- CRAFT/ARTISAN SECTION                         -->
+<!-- ============================================= -->
 <section
   id="craft-section" class="relative bg-[#f8f6f6] py-16 md:py-24 border-t border-[#e5e7eb] scroll-mt-10"
 >
   <div class="w-full max-w-7xl mx-auto px-4 sm:px-10">
+    <!-- Two-column layout: text left, products right -->
     <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+      
+      <!-- ============================================= -->
+      <!-- LEFT COLUMN: TEXT CONTENT & FEATURES          -->
+      <!-- ============================================= -->
       <div class="lg:w-1/2 order-2 lg:order-1">
+        
+        <!-- Section Badge -->
+        <!-- Red badge with dot indicator -->
         <span
           class="text-[#931a24] font-bold tracking-wider text-sm uppercase mb-2 flex items-center gap-2"
         >
           <span class="w-2 h-2 rounded-full bg-[#931a24]"></span>
           {data.header.badge}
         </span>
+
+        <!-- Section Title -->
         <h2
           class="text-[#171212] text-3xl md:text-4xl font-black leading-tight mb-6"
           set:html={data.header.title}
         >
         </h2>
+
+        <!-- Description -->
         <p class="text-[#6b6b6b] text-lg leading-relaxed mb-8">
           {data.header.description}
         </p>
+
+        <!-- Feature Cards -->
+        <!-- 2 value propositions: Authentic Designs + Real Impact -->
         <div class="space-y-6">
           {data.features.map((feature: { iconBg: any; iconColor: any; icon: unknown; title: unknown; description: unknown; }) => (
             <div class="flex gap-4 items-start">
@@ -107,7 +181,11 @@ const { data = defaultData } = Astro.props;
             </div>
           ))}
         </div>
-        <!-- Mobile Grid (visible only on mobile) -->
+
+        <!-- ============================================= -->
+        <!-- MOBILE PRODUCT GRID                           -->
+        <!-- ============================================= -->
+        <!-- Visible only on mobile/tablet, 2x2 grid layout -->
         <div class="mt-8 lg:hidden">
           <div class="grid grid-cols-2 gap-4">
             {data.products.map((product: { image: string | null | undefined; alt: string | null | undefined; categoryColor: any; categoryTextColor: any; category: unknown; }) => (
@@ -129,6 +207,9 @@ const { data = defaultData } = Astro.props;
             ))}
           </div>
         </div>
+
+        <!-- Call-to-Action Button -->
+        <!-- Black button linking to external Canva catalog -->
         <div class="mt-10 flex gap-4 justify-center lg:justify-start">
           <a
             href={data.cta.url}
@@ -141,9 +222,16 @@ const { data = defaultData } = Astro.props;
           </a>
         </div>
       </div>
-      <!-- Desktop Grid (hidden on mobile) -->
+
+      <!-- ============================================= -->
+      <!-- RIGHT COLUMN: DESKTOP PRODUCT SHOWCASE        -->
+      <!-- ============================================= -->
+      <!-- Hidden on mobile, masonry-style grid on desktop -->
       <div class="lg:w-1/2 order-1 lg:order-2 hidden lg:block">
+        <!-- 2-column grid with offset effect -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          
+          <!-- Left Column: Offset downward for visual interest -->
           <div class="space-y-4 lg:translate-y-8">
             <div
               class="relative rounded-xl overflow-hidden shadow-lg aspect-3/4 group border-4 border-white min-h-62.5"
@@ -184,6 +272,8 @@ const { data = defaultData } = Astro.props;
               </div>
             </div>
           </div>
+
+          <!-- Right Column: Normal positioning -->
           <div class="space-y-4">
             <div
               class="relative rounded-xl overflow-hidden shadow-lg aspect-square group border-4 border-white min-h-50"
@@ -224,6 +314,11 @@ const { data = defaultData } = Astro.props;
   </div>
 </section>
 
+<!-- ============================================= -->
+<!-- STYLES                                        -->
+<!-- ============================================= -->
 <style>
+  /* Hide scrollbars for cleaner mobile carousel experience */
+  /* Note: Currently using grid layout, but styles preserved for potential future carousel */
   /* Mantenemos los estilos básicos que podrían ser necesarios */
 </style>

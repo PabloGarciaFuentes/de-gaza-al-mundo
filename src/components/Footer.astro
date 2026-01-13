@@ -1,10 +1,54 @@
 ---
+/**
+ * FOOTER COMPONENT
+ * ================
+ * 
+ * Purpose:
+ * --------
+ * Site-wide footer providing brand identity, navigation, contact information, and legal elements.
+ * Serves as the final touchpoint with comprehensive links to all major sections and external channels.
+ * Reinforces Palestinian identity through flag color display and green border accent.
+ * 
+ * Features:
+ * ---------
+ * - Brand section with volunteer activism icon and mission statement
+ * - Social media links (Instagram) with custom SVG icons
+ * - Email contact (degazaalmundo@gmail.com)
+ * - Navigation columns: "Organización" (About, Donate, Transparency) and "Ayuda" (Telegram)
+ * - Copyright notice and Palestinian flag color indicators
+ * - Developer credit link with Palestinian green accent
+ * - 4-stripe Palestinian flag border at top (#236E1E green)
+ * 
+ * Layout Strategy:
+ * ---------------
+ * - Dark background (#1a1a1a) for strong contrast with main content
+ * - 4-column responsive grid (stacks to 1 column on mobile)
+ * - Brand section spans 2 columns for emphasis
+ * - Horizontal divider separating main content from copyright area
+ * - Centered footer elements with max-w-7xl constraint
+ * 
+ * Design Philosophy:
+ * ------------------
+ * Creates a comprehensive, professional footer that reinforces brand identity and trust.
+ * Dark background provides visual closure to the page while maintaining Palestinian color accents.
+ * Strategic use of green border and flag colors maintains cultural identity throughout site.
+ * Minimalist approach with essential links only - no clutter or unnecessary elements.
+ */
+
 const defaultData = {
+  // ========================================
+  // BRAND IDENTITY
+  // ========================================
   brand: {
-    icon: "volunteer_activism",
-    title: "De Gaza al Mundo",
-    description: "Una iniciativa comunitaria dedicada a conectar donantes directamente con familias palestinas. Tu solidaridad es nuestra fuerza."
+    icon: "volunteer_activism", // Material icon representing humanitarian aid
+    title: "De Gaza al Mundo", // Site name: "From Gaza to the World"
+    description: "Una iniciativa comunitaria dedicada a conectar donantes directamente con familias palestinas. Tu solidaridad es nuestra fuerza." // Mission statement
   },
+  
+  // ========================================
+  // SOCIAL MEDIA LINKS
+  // ========================================
+  // Currently only Instagram active (Facebook/Twitter commented out for future use)
   socialLinks: [
     // {
     //   name: "Facebook",
@@ -17,75 +61,118 @@ const defaultData = {
     //   icon: "twitter"
     // },
     {
-      name: "Instagram",
-      href: "https://www.instagram.com/degazaalmundo/",
-      icon: "instagram"
+      name: "Instagram", // Primary social channel
+      href: "https://www.instagram.com/degazaalmundo/", // Instagram profile URL
+      icon: "instagram" // Triggers Instagram SVG path in template
     }
   ],
+  
+  // ========================================
+  // NAVIGATION LINKS
+  // ========================================
   links: {
+    // Organization column: Core site sections
     organization: [
-      { label: "Sobre Nosotras", href: "#" },
-      { label: "Cómo Donar", href: "#collaborate-section" },
-      // { label: "Nuestro Equipo", href: "#" },
-      { label: "Transparencia", href: "#transparency-section" },
-      // { label: "Contacto", href: "#" }
+      { label: "Sobre Nosotras", href: "#" }, // "About Us"
+      { label: "Cómo Donar", href: "#collaborate-section" }, // "How to Donate" - links to collaborate section
+      // { label: "Nuestro Equipo", href: "#" }, // "Our Team" - future feature
+      { label: "Transparencia", href: "#transparency-section" }, // "Transparency" - links to transparency section
+      // { label: "Contacto", href: "#" } // "Contact" - future feature
     ],
+    // Help column: Support resources
     help: [
-      // { label: "Preguntas Frecuentes", href: "#" },
-      { label: "Unirse a Telegram", href: "https://t.me/+6HWcj5AJePYxN2M0" },
-      // { label: "Política de Privacidad", href: "#" }
+      // { label: "Preguntas Frecuentes", href: "#" }, // "FAQ" - future feature
+      { label: "Unirse a Telegram", href: "https://t.me/+6HWcj5AJePYxN2M0" }, // "Join Telegram" - primary community link
+      // { label: "Política de Privacidad", href: "#" } // "Privacy Policy" - future feature
     ],
   },
-  copyright: "© 2026 De Gaza al Mundo.",
+  
+  copyright: "© 2026 De Gaza al Mundo.", // Copyright notice
+  
+  // ========================================
+  // PALESTINIAN FLAG COLORS
+  // ========================================
+  // Visual representation of Palestinian identity
+  // Displayed as small circles in copyright area
   flagColors: [
-    { color: "bg-[#931a24]", label: "Rojo palestino" },
-    { color: "bg-black", label: "Negro", border: "border border-white/20" },
-    { color: "bg-white", label: "Blanco" },
-    { color: "bg-[#236E1E]", label: "Verde palestino" }
+    { color: "bg-[#931a24]", label: "Rojo palestino" }, // Red
+    { color: "bg-black", label: "Negro", border: "border border-white/20" }, // Black (with border for visibility)
+    { color: "bg-white", label: "Blanco" }, // White
+    { color: "bg-[#236E1E]", label: "Verde palestino" } // Green
   ]
 };
 
 const { data = defaultData } = Astro.props;
 ---
 
+<!-- ============================================ -->
+<!-- FOOTER SECTION                               -->
+<!-- ============================================ -->
+<!-- Site-wide footer with navigation and brand   -->
+<!-- Dark background (#1a1a1a) with green border  -->
+<!-- Palestinian flag colors in copyright area    -->
+<!-- ============================================ -->
+
 <!-- Footer -->
+<!-- 4-stripe Palestinian flag green border at top -->
 <footer id="footer" class="bg-[#1a1a1a] text-white pt-16 pb-8 border-t-4 border-[#236E1E]">
   <div class="w-full max-w-7xl mx-auto px-4 sm:px-10">
+    
+    <!-- Main Footer Grid -->
+    <!-- 4-column layout on desktop: Brand (2 cols) + Organization + Help -->
+    <!-- Stacks to single column on mobile -->
     <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-      <!-- Brand -->
+      
+      <!-- ========================================= -->
+      <!-- BRAND SECTION (spans 2 columns)          -->
+      <!-- ========================================= -->
       <div class="col-span-1 md:col-span-2">
+        
+        <!-- Brand Header with Icon -->
         <div class="flex items-center gap-3 mb-6">
+          <!-- Volunteer activism icon in subtle circle -->
           <div
             class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center text-white"
           >
             <span class="material-symbols-outlined text-xl">{data.brand.icon}</span>
           </div>
+          <!-- Site name: "De Gaza al Mundo" -->
           <h3 class="text-xl font-bold">{data.brand.title}</h3>
         </div>
+        
+        <!-- Mission Statement -->
         <p class="text-gray-400 leading-relaxed max-w-sm mb-6">
           {data.brand.description}
         </p>
-        <!-- RRSS y Email -->
+        
+        <!-- Social Media Links -->
+        <!-- Currently Instagram only, with space for Facebook/Twitter -->
         <div class="flex items-center gap-3 mb-2">
           <span class="text-sm font-bold text-white">RRSS:</span>
           <div class="flex gap-4">
           {data.socialLinks.map((social: { href: string | URL | null | undefined; name: unknown; icon: string; }) => (
+            <!-- Social Icon Circle -->
+            <!-- Hover changes to Palestinian red (#931a24) -->
             <a
               class="w-10 h-10 rounded-full bg-white/5 hover:bg-[#931a24] transition-colors flex items-center justify-center text-white"
               href={social.href} target="_blank" rel="noopener noreferrer"
             >
               <span class="sr-only">{social.name}</span>
+              <!-- Custom SVG paths for each platform -->
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                {/* Facebook icon path */}
                 {social.icon === 'facebook' && (
                   <path
                     d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
                   />
                 )}
+                {/* Twitter icon path */}
                 {social.icon === 'twitter' && (
                   <path
                     d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"
                   />
                 )}
+                {/* Instagram icon path */}
                 {social.icon === 'instagram' && (
                   <path
                     d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
@@ -96,7 +183,8 @@ const { data = defaultData } = Astro.props;
           ))}
           </div>
         </div>
-        <!-- Email -->
+        
+        <!-- Email Contact -->
         <div class="flex items-center gap-3">
           <span class="text-sm font-bold text-white">Email:</span>
           <a href="mailto:degazaalmundo@gmail.com" class="text-gray-400 hover:text-white transition-colors text-sm">
@@ -104,7 +192,10 @@ const { data = defaultData } = Astro.props;
           </a>
         </div>
       </div>
-      <!-- Links 1 -->
+      
+      <!-- ========================================= -->
+      <!-- ORGANIZATION LINKS COLUMN                -->
+      <!-- ========================================= -->
       <div>
         <h4 class="text-lg font-bold mb-6 text-white">Organización</h4>
         <ul class="space-y-4">
@@ -117,7 +208,10 @@ const { data = defaultData } = Astro.props;
           ))}
         </ul>
       </div>
-      <!-- Links 2 -->
+      
+      <!-- ========================================= -->
+      <!-- HELP LINKS COLUMN                        -->
+      <!-- ========================================= -->
       <div>
         <h4 class="text-lg font-bold mb-6 text-white">Ayuda</h4>
         <ul class="space-y-4">
@@ -131,18 +225,29 @@ const { data = defaultData } = Astro.props;
         </ul>
       </div>
     </div>
+    
+    <!-- ========================================= -->
+    <!-- COPYRIGHT & CREDITS SECTION              -->
+    <!-- ========================================= -->
     <div
       class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
     >
       <div class="flex flex-col md:flex-row items-center gap-2 md:gap-4">
+        <!-- Copyright Notice -->
         <p class="text-sm text-gray-500">
           {data.copyright}
         </p>
+        
+        <!-- Palestinian Flag Color Indicators -->
+        <!-- Red, Black, White, Green circles -->
         <div class="flex items-center gap-2 my-2">
           {data.flagColors.map((flag: { color: any; border: any; }) => (
             <span class={`w-3 h-3 rounded-full ${flag.color} ${flag.border || ''}`}></span>
           ))}
         </div>
+        
+        <!-- Developer Credit -->
+        <!-- Link to developer portfolio with Palestinian green accent -->
         <p class="text-xs text-gray-600">
           by <a 
             href="https://pablogf.dev/" 

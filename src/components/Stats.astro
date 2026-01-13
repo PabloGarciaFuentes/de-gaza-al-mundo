@@ -1,20 +1,68 @@
 ---
+/**
+ * STATS SECTION COMPONENT
+ * 
+ * Purpose: Display key metrics that build trust and credibility
+ * Position: Positioned between hero and main content sections
+ * 
+ * Key Features:
+ * - 3-column responsive grid (stacked on mobile, side-by-side on desktop)
+ * - Large, bold numbers with Palestinian flag color theming
+ * - Emphasizes transparency, scale, and commitment
+ * - Visual dividers between stats for clarity
+ * 
+ * Metrics Displayed:
+ * - 100% Direct Donations (Red) - Transparency indicator
+ * - 75+ Families Helped (Green) - Scale/Impact indicator
+ * - 24/7 Community Support (Black) - Commitment indicator
+ * 
+ * Layout Strategy:
+ * - Mobile: Single column, stacked vertically with horizontal dividers
+ * - Desktop: 3-column grid with vertical dividers
+ * - Centered text alignment for visual balance
+ * 
+ * Design Philosophy:
+ * - Trust building through concrete numbers
+ * - Palestinian flag colors reinforce identity
+ * - Simple, scannable format for quick understanding
+ * - Positioned strategically to reinforce credibility early
+ */
+
+/**
+ * STATS DATA STRUCTURE
+ * 
+ * Configuration object for statistics section:
+ * - stats: Array of 3 key metrics
+ * 
+ * Stat Structure:
+ * - value: The numeric/percentage value (can include symbols like %, +)
+ * - label: Description of what the metric represents
+ * - color: TailwindCSS color class using Palestinian flag colors
+ * 
+ * Content Strategy:
+ * - First stat: Transparency (100% direct) - builds trust
+ * - Second stat: Impact (families helped) - shows scale
+ * - Third stat: Commitment (24/7 support) - demonstrates dedication
+ * - Colors match Palestinian flag (red, green, black)
+ */
 const defaultData = {
+  // === KEY METRICS ===
+  // 3 trust-building statistics with Palestinian color theming
   stats: [
     {
-      value: "100%",
-      label: "Donación Directa",
-      color: "text-[#931a24]"
+      value: "100%", // Percentage indicator
+      label: "Donación Directa", // "Direct Donation" - emphasizes transparency
+      color: "text-[#931a24]" // Palestinian red - urgency and solidarity
     },
     {
-      value: "75+",
-      label: "Familias Ayudadas", 
-      color: "text-[#236E1E]"
+      value: "75+", // Plus sign indicates growing number
+      label: "Familias Ayudadas", // "Families Helped" - shows concrete impact
+      color: "text-[#236E1E]" // Palestinian green - hope and growth
     },
     {
-      value: "24/7",
-      label: "Soporte Comunitario",
-      color: "text-black"
+      value: "24/7", // Time format indicates constant availability
+      label: "Soporte Comunitario", // "Community Support" - shows commitment
+      color: "text-black" // Palestinian black - strength and resilience
     }
   ]
 };
@@ -22,15 +70,26 @@ const defaultData = {
 const { data = defaultData } = Astro.props;
 ---
 
-<!-- Stats Section (New addition for trust) -->
+<!-- ============================================= -->
+<!-- STATS SECTION - TRUST INDICATORS              -->
+<!-- ============================================= -->
+<!-- Compact section displaying 3 key metrics -->
 <section id="stats-section" class="border-y border-[#f4f0f1] bg-white py-10">
   <div class="w-full max-w-7xl mx-auto px-4 sm:px-10">
+    
+    <!-- Stats Grid -->
+    <!-- 3 columns on desktop with vertical dividers, stacked on mobile with horizontal dividers -->
     <div
       class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-[#f4f0f1]"
     >
       {data.stats.map((stat: { color: any; value: unknown; label: unknown; }) => (
+        <!-- Individual Stat Card -->
         <div class="px-4 py-2">
+          <!-- Large Metric Value -->
+          <!-- Color-coded with Palestinian flag colors -->
           <p class={`text-4xl font-black ${stat.color} mb-2`}>{stat.value}</p>
+          
+          <!-- Metric Label -->
           <p class="text-[#6b6b6b] font-medium">{stat.label}</p>
         </div>
       ))}

@@ -1,17 +1,75 @@
 ---
+/**
+ * LAST NEWS SECTION COMPONENT
+ * 
+ * Purpose: Showcase recent news, events, and solidarity activities
+ * Content Source: Instagram feed (@degazaalmundo)
+ * 
+ * Key Features:
+ * - 3-column responsive grid layout (1 column mobile, 3 desktop)
+ * - Article cards with images, dates, categories, and descriptions
+ * - Direct links to Instagram posts
+ * - Category color coding (Community, Events, Solidarity)
+ * - External link to full Instagram feed
+ * 
+ * Article Categories:
+ * - Comunidad (Community) - Black themed
+ * - Eventos (Events) - Green themed (#236E1E)
+ * - Solidaridad (Solidarity) - Red themed (#931a24)
+ * 
+ * Layout Strategy:
+ * - Mobile: Single column stacked cards
+ * - Desktop: 3-column grid with equal-height cards
+ * - All articles link to Instagram posts
+ * 
+ * Design Philosophy:
+ * - Keep community informed about activities
+ * - Drive traffic to Instagram for engagement
+ * - Visual storytelling through images
+ * - Clear categorization for easy scanning
+ */
+
+// === IMAGE IMPORTS ===
+// Featured images for latest 3 news articles
 import kaseOImage from "../assets/images/news/kase_o.png";
 import ZambombaImg from "../assets/images/news/zambomba.png";
 import MercadilloImg from "../assets/images/news/mercadillo.png";
 
+/**
+ * NEWS SECTION DATA STRUCTURE
+ * 
+ * Configuration object for news section:
+ * - header: Section title, badge, and Instagram link
+ * - articles: Array of 3 featured news items
+ * 
+ * Article Structure:
+ * - id: Unique identifier
+ * - image: Featured image
+ * - date: Publication date (Spanish format)
+ * - category: Type with color theming
+ * - title: Headline
+ * - description: Brief summary
+ * - link: Instagram post URL
+ * 
+ * Content Strategy:
+ * - Highlight recent solidarity activities
+ * - Feature community events and collaborations
+ * - Show real-world impact and partnerships
+ * - Drive engagement to Instagram platform
+ */
 const defaultData = {
+  // === SECTION HEADER ===
   header: {
     badge: "Actualidad",
     title: "Últimas noticias",
-    linkText: "Ver todas las noticias en Instagram",
+    linkText: "Ver todas las noticias en Instagram", // Desktop link text
     linkIcon: "arrow_forward",
-    mobileLinkText: "Ver todas las noticias en Instagram",
+    mobileLinkText: "Ver todas las noticias en Instagram", // Mobile link text
     url: "https://www.instagram.com/degazaalmundo/",
   },
+
+  // === FEATURED ARTICLES ===
+  // Latest 3 news items showcasing solidarity activities
   articles: [
     {
       id: 1,
@@ -20,7 +78,7 @@ const defaultData = {
       date: "20 Dic, 2025",
       category: {
         name: "Comunidad",
-        color: "bg-black",
+        color: "bg-black", // Palestinian black
         textColor: "text-black",
       },
       title: "Kase.O se une a nuestra causa solidaria",
@@ -34,7 +92,7 @@ const defaultData = {
       date: "20 Dic, 2025",
       category: {
         name: "Eventos",
-        color: "bg-[#236E1E]",
+        color: "bg-[#236E1E]", // Palestinian green
         textColor: "text-[#236E1E]",
       },
       title: "Zambomba Flamenca por Palestina",
@@ -49,7 +107,7 @@ const defaultData = {
       date: "18 Dic, 2025",
       category: {
         name: "Solidaridad",
-        color: "bg-[#931a24]",
+        color: "bg-[#931a24]", // Palestinian red
         textColor: "text-[#931a24]",
       },
       title: "Tenderete MariCarmen",
@@ -63,28 +121,37 @@ const defaultData = {
 const { data = defaultData } = Astro.props;
 ---
 
-<!-- LastNews Section -->
+<!-- ============================================= -->
+<!-- LAST NEWS SECTION                             -->
+<!-- ============================================= -->
 <section
   id="news-section"
   class="py-16 md:py-24 bg-white border-t border-[#f4f0f1] scroll-mt-20"
 >
   <div class="w-full max-w-7xl mx-auto px-4 sm:px-10">
+    
+    <!-- Section Header with Instagram Link -->
     <div
       class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12"
     >
+      <!-- Left: Badge and Title -->
       <div class="max-w-2xl">
+        <!-- Red Badge with Dot -->
         <span
           class="text-[#931a24] font-bold tracking-wider text-sm uppercase mb-2 flex items-center gap-2"
         >
           <span class="w-2 h-2 rounded-full bg-[#931a24]"></span>
           {data.header.badge}
         </span>
+        <!-- Section Title -->
         <h2
           class="text-[#171212] text-3xl md:text-4xl font-black leading-tight tracking-tight"
         >
           {data.header.title}
         </h2>
       </div>
+
+      <!-- Right: Desktop Instagram Link -->
       <a
         class="hidden md:flex items-center gap-2 text-[#6b6b6b] hover:text-[#931a24] transition-colors font-bold text-sm"
         href={data.header.url}
@@ -95,6 +162,11 @@ const { data = defaultData } = Astro.props;
         <span class="material-symbols-outlined">{data.header.linkIcon}</span>
       </a>
     </div>
+
+    <!-- ============================================= -->
+    <!-- ARTICLES GRID                                 -->
+    <!-- ============================================= -->
+    <!-- 3-column grid on desktop, single column on mobile -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       {
         data.articles.map(
@@ -107,9 +179,15 @@ const { data = defaultData } = Astro.props;
             description: any;
             link: string | URL | null | undefined;
           }) => (
+            <!-- Article Card -->
             <article class="flex flex-col group">
+              
+              <!-- Featured Image with Date Badge -->
               <div class="relative overflow-hidden rounded-xl aspect-video mb-5 shadow-sm">
+                <!-- Subtle overlay -->
                 <div class="absolute inset-0 bg-black/5 z-10" />
+                
+                <!-- Article Image -->
                 <img
                   src={article.image}
                   alt={article.alt}
@@ -118,29 +196,43 @@ const { data = defaultData } = Astro.props;
                   width="400"
                   height="225"
                 />
+                
+                <!-- Date Badge (top-right) -->
                 <div class="absolute top-3 right-3 z-20 bg-white/95 backdrop-blur px-3 py-1 rounded-md shadow-sm">
                   <span class="text-xs font-bold text-[#171212]">
                     {article.date}
                   </span>
                 </div>
               </div>
+
+              <!-- Article Content -->
               <div class="flex flex-col grow">
+                
+                <!-- Category Tag -->
                 <div class="flex items-center gap-2 mb-3">
+                  <!-- Color dot indicator -->
                   <span
                     class={`w-2 h-2 rounded-full ${article.category.color}`}
                   />
+                  <!-- Category name -->
                   <span
                     class={`text-xs font-bold ${article.category.textColor} uppercase tracking-wider`}
                   >
                     {article.category.name}
                   </span>
                 </div>
+
+                <!-- Article Title -->
                 <h3 class="text-xl font-bold text-[#171212] mb-3 leading-snug group-hover:text-[#931a24] transition-colors">
                   {article.title}
                 </h3>
+
+                <!-- Article Description -->
                 <p class="text-[#6b6b6b] text-sm leading-relaxed line-clamp-3 mb-4 grow">
                   {article.description}
                 </p>
+
+                <!-- Read More Link -->
                 <a
                   href={article.link}
                   target="_blank"
@@ -158,6 +250,9 @@ const { data = defaultData } = Astro.props;
         )
       }
     </div>
+
+    <!-- Mobile Instagram Link Button -->
+    <!-- Centered button visible only on mobile -->
     <div class="mt-10 text-center md:hidden">
       <a
         class="inline-flex items-center gap-2 text-[#171212] font-bold border border-gray-200 px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors"

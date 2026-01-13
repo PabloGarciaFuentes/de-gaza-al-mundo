@@ -1,36 +1,89 @@
 ---
+/**
+ * CONTACT SECTION COMPONENT
+ * =========================
+ * 
+ * Purpose:
+ * --------
+ * Provides visitors with direct communication channels to connect with the organization.
+ * Features Instagram for daily updates and email for detailed inquiries. Serves as the
+ * final engagement point for building community and answering questions.
+ * 
+ * Features:
+ * ---------
+ * - Two primary contact methods: Instagram (@degazaalmundo) and Email
+ * - Custom SVG Instagram icon with Palestinian red (#931a24) accent
+ * - Material icon for email with Palestinian green (#236E1E) accent
+ * - Interactive hover states with color transitions
+ * - Responsive 2-column grid layout (stacks on mobile)
+ * - Section header with green subtitle and red accent bar
+ * 
+ * Layout Strategy:
+ * ---------------
+ * - Clean white background with subtle top border
+ * - Centered content with max-w-5xl constraint
+ * - Contact cards in horizontal layout on desktop, vertical on mobile
+ * - Icon circles with brand color coordination
+ * - Generous padding and spacing for approachability
+ * 
+ * Design Philosophy:
+ * ------------------
+ * Creates an inviting, accessible contact experience that encourages engagement.
+ * Uses Palestinian flag colors to differentiate contact methods (red for social, green for email).
+ * Hover effects create interactive feedback while maintaining professional appearance.
+ * Strategic icon choices: SVG for Instagram branding, Material for email simplicity.
+ */
+
 const defaultData = {
-  subtitle: "Estamos para escucharte",
-  title: "Contacto",
+  subtitle: "Estamos para escucharte", // "We're here to listen" - welcoming tone
+  title: "Contacto", // "Contact"
+  
   contacts: [
+    // ========================================
+    // INSTAGRAM CONTACT
+    // ========================================
+    // Primary social channel for daily updates and community engagement
+    // Uses Palestinian red (#931a24) for visual identity
     {
-      platform: "Instagram",
-      handle: "@degazaalmundo", 
-      description: "Sigue nuestras actualizaciones diarias",
-      url: "https://www.instagram.com/degazaalmundo/",
+      platform: "Instagram", // Platform name
+      handle: "@degazaalmundo", // Instagram username
+      description: "Sigue nuestras actualizaciones diarias", // "Follow our daily updates"
+      url: "https://www.instagram.com/degazaalmundo/", // Instagram profile URL
+      
+      // Icon configuration: Custom SVG with red accent
       icon: {
-        type: "svg",
-        bgColor: "bg-white",
-        textColor: "text-[#931a24]",
-        hoverBg: "group-hover:bg-[#931a24]",
-        hoverText: "group-hover:text-white",
-        borderHover: "hover:border-[#931a24]/20"
+        type: "svg", // Uses custom SVG path
+        bgColor: "bg-white", // White background
+        textColor: "text-[#931a24]", // Palestinian red
+        hoverBg: "group-hover:bg-[#931a24]", // Red background on hover
+        hoverText: "group-hover:text-white", // White icon on hover
+        borderHover: "hover:border-[#931a24]/20" // Subtle red border on hover
       },
+      
+      // Instagram logo SVG path (official brand icon)
       svg: 'M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.8 6.981.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z'
     },
+    
+    // ========================================
+    // EMAIL CONTACT
+    // ========================================
+    // Direct communication channel for detailed inquiries
+    // Uses Palestinian green (#236E1E) for differentiation
     {
-      platform: "Correo Electrónico",
-      handle: "degazaalmundo@gmail.com",
-      description: "Escríbenos para cualquier consulta", 
-      url: "mailto:degazaalmundo@gmail.com",
+      platform: "Correo Electrónico", // "Email"
+      handle: "degazaalmundo@gmail.com", // Contact email address
+      description: "Escríbenos para cualquier consulta", // "Write us for any inquiry"
+      url: "mailto:degazaalmundo@gmail.com", // mailto link
+      
+      // Icon configuration: Material icon with green accent
       icon: {
-        type: "material",
-        name: "email",
-        bgColor: "bg-white",
-        textColor: "text-[#236E1E]",
-        hoverBg: "group-hover:bg-[#236E1E]",
-        hoverText: "group-hover:text-white",
-        borderHover: "hover:border-[#236E1E]/20"
+        type: "material", // Uses Material Symbols icon
+        name: "email", // Material icon name
+        bgColor: "bg-white", // White background
+        textColor: "text-[#236E1E]", // Palestinian green
+        hoverBg: "group-hover:bg-[#236E1E]", // Green background on hover
+        hoverText: "group-hover:text-white", // White icon on hover
+        borderHover: "hover:border-[#236E1E]/20" // Subtle green border on hover
       }
     }
   ]
@@ -39,33 +92,58 @@ const defaultData = {
 const { data = defaultData } = Astro.props;
 ---
 
+<!-- ============================================ -->
+<!-- CONTACT SECTION                              -->
+<!-- ============================================ -->
+<!-- Contact channels with Instagram and Email    -->
+<!-- Two-column responsive grid layout            -->
+<!-- Palestinian flag colors for differentiation  -->
+<!-- ============================================ -->
+
 <section
   class="py-16 md:py-24 bg-white border-t border-[#f4f0f1] scroll-mt-20"
   id="contact-section"
 >
   <div class="w-full max-w-7xl mx-auto px-4 sm:px-10">
+    
+    <!-- Section Header -->
     <div class="text-center mb-10 md:mb-16">
+      <!-- Subtitle: Palestinian green for welcoming tone -->
       <span
         class="text-[#236E1E] font-bold tracking-wider text-sm uppercase mb-2 block"
         >{data.subtitle}</span
       >
+      <!-- Main Title: "Contacto" -->
       <h2
         class="text-text-main text-3xl md:text-4xl font-black leading-tight tracking-tight"
       >
         {data.title}
       </h2>
+      <!-- Decorative accent bar: Palestinian red -->
       <div class="h-1.5 w-16 bg-[#931a24] mx-auto mt-6 rounded-full"></div>
     </div>
+
+    <!-- Contact Cards Grid -->
+    <!-- Two columns on desktop (md+), single column on mobile -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
       {data.contacts.map((contact: { icon: { borderHover: any; bgColor: any; textColor: any; hoverBg: any; hoverText: any; type: string; name: unknown; }; url: string | URL | null | undefined; platform: unknown; svg: string | null | undefined; handle: unknown; description: unknown; }) => (
+        
+        <!-- Contact Card -->
+        <!-- Interactive card with hover effects and color transitions -->
+        <!-- Opens in new tab for Instagram, same tab for email -->
         <a
           class={`flex flex-col sm:flex-row items-center gap-3 sm:gap-6 p-4 sm:p-8 rounded-xl sm:rounded-2xl bg-[#fcfafa] border border-[#f0f0f0] ${contact.icon.borderHover} hover:shadow-xl transition-all group`}
           href={contact.url}
           target={contact.platform === "Instagram" ? "_blank" : undefined}
         >
+        
+        <!-- Icon Circle -->
+        <!-- White background with Palestinian color accents -->
+        <!-- Inverts colors on hover (background becomes brand color, icon becomes white) -->
         <div
           class={`w-10 h-10 sm:w-16 sm:h-16 rounded-full ${contact.icon.bgColor} flex items-center justify-center shadow-sm ${contact.icon.textColor} ${contact.icon.hoverBg} ${contact.icon.hoverText} transition-colors`}
         >
+          {/* Conditional icon rendering: SVG for Instagram, Material icon for email */}
           {contact.icon.type === "svg" ? (
             <svg class="w-4 h-4 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
               <path d={contact.svg}></path>
@@ -76,17 +154,23 @@ const { data = defaultData } = Astro.props;
             </span>
           )}
         </div>
+
+          <!-- Contact Information -->
+          <!-- Centered on mobile, left-aligned on desktop -->
           <div class="text-center sm:text-left">
+            <!-- Platform Name: Small uppercase label -->
             <p
               class="text-text-muted text-xs font-bold uppercase tracking-widest mb-1"
             >
               {contact.platform}
             </p>
+            <!-- Handle/Email: Primary text with hover color change to Palestinian red -->
             <p
               class="text-text-main text-base sm:text-xl font-black group-hover:text-primary transition-colors"
             >
               {contact.handle}
             </p>
+            <!-- Description: Small gray text explaining purpose -->
             <p class="text-gray-500 text-xs sm:text-sm mt-1">
               {contact.description}
             </p>

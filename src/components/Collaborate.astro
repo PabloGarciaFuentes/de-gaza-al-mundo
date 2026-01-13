@@ -1,6 +1,45 @@
 ---
+/**
+ * COLLABORATE SECTION COMPONENT
+ * =============================
+ * 
+ * Purpose:
+ * --------
+ * Critical conversion point that guides visitors on how to make donations to Palestinian families.
+ * Provides complete donation instructions including banking details, Bizum payment info, and 
+ * Telegram community link. Centers around trust-building and transparency.
+ * 
+ * Features:
+ * ---------
+ * - Complete donation instructions (bank transfer and Bizum)
+ * - Security warning about sensitive keywords (Gaza, Palestina)
+ * - Telegram community CTA with official branding colors (#0088cc blue)
+ * - Privacy disclaimer to build trust
+ * - Decorative background circles in Palestinian flag colors
+ * - Centered card layout with elevation (shadow-xl)
+ * 
+ * Layout Strategy:
+ * ---------------
+ * - Light background (#fcfafa) for subtle contrast
+ * - Centered white card (max-w-4xl) with generous padding
+ * - Telegram icon circle at top with filled style
+ * - Whitespace-preserved description for formatting (bank details, etc.)
+ * - Text-justified for professional appearance
+ * - Primary CTA button in Palestinian red (#931a24)
+ * 
+ * Design Philosophy:
+ * ------------------
+ * This is the most critical section for conversion - where awareness becomes action.
+ * Uses official Telegram blue (#0088cc) for brand recognition and trust.
+ * Balances urgency with professionalism through careful typography and spacing.
+ * Security warning about keywords shows transparency and protects donors.
+ */
+
 const defaultData = {
-  title: "Cómo donar",
+  title: "Cómo donar", // Main heading: "How to donate"
+  
+  // Comprehensive donation instructions with banking details
+  // Uses whitespace-pre-line to preserve line breaks in template
   description: `Te necesitamos. Cada donación asegura comida diaria, agua potable, productos de higiene, leña y cubrir urgencias. La situación es extrema, y esta es la forma más directa, humana y transparente de llegar donde más se necesita y marcar la diferencia.
 
   Haz una donación a través de la Asociación "Por la Causa"
@@ -12,60 +51,88 @@ const defaultData = {
   Código: 13292
   Concepto: Donación Proyecto dGaM
   Por seguridad no poner la palabra Gaza ni Palestina`,
+  
+  // Primary CTA: Join Telegram community for transparency
   cta: {
-    icon: "chat",
-    label: "Unirse a Telegram",
-    url: "https://t.me/+6HWcj5AJePYxN2M0",
+    icon: "chat", // Material icon for messaging
+    label: "Unirse a Telegram", // "Join Telegram"
+    url: "https://t.me/+6HWcj5AJePYxN2M0", // Telegram group invite link
   },
-  disclaimer: "Unirse es gratuito y seguro. Respetamos tu privacidad.",
+  
+  disclaimer: "Unirse es gratuito y seguro. Respetamos tu privacidad.", // Trust-building message
+  
+  // Telegram brand colors for icon circle
   telegramIcon: {
-    icon: "send",
-    bgColor: "bg-blue-50",
-    textColor: "text-[#0088cc]",
+    icon: "send", // Telegram paper plane icon
+    bgColor: "bg-blue-50", // Light blue background
+    textColor: "text-[#0088cc]", // Official Telegram blue
   },
 };
 
 const { data = defaultData } = Astro.props;
 ---
 
+<!-- ============================================ -->
+<!-- COLLABORATE SECTION                          -->
+<!-- ============================================ -->
+<!-- Donation instructions and Telegram CTA       -->
+<!-- Light background with decorative circles     -->
+<!-- Centered card with banking/Bizum details     -->
+<!-- ============================================ -->
+
 <!-- CTASection -->
 <section
   id="collaborate-section"
   class="bg-[#fcfafa] py-16 md:py-24 relative overflow-hidden scroll-mt-20"
 >
-  <!-- Decorative circle -->
+  <!-- Decorative Circles: Palestinian flag colors for brand consistency -->
+  <!-- Top-right: Green circle (#236E1E) -->
   <div
     class="absolute -top-24 -right-24 w-96 h-96 bg-accent-green/5 rounded-full blur-3xl"
   >
   </div>
+  <!-- Bottom-left: Red circle (#931a24) -->
   <div
     class="absolute -bottom-24 -left-24 w-96 h-96 bg-[#931a24]/5 rounded-full blur-3xl"
   >
   </div>
+
+  <!-- Main Content Container -->
   <div class="w-full max-w-7xl mx-auto px-4 sm:px-10 relative z-10">
+    <!-- Donation Card: White elevated card with all donation instructions -->
     <div
       class="bg-white rounded-2xl shadow-xl border border-[#f0f0f0] p-8 md:p-16 text-center max-w-4xl mx-auto"
     >
+      <!-- Telegram Icon Circle: Official Telegram blue (#0088cc) for brand recognition -->
       <div
         class={`w-16 h-16 ${data.telegramIcon.bgColor} ${data.telegramIcon.textColor} rounded-full flex items-center justify-center mx-auto mb-6`}
       >
-        <!-- Simulating Telegram Icon style -->
+        <!-- Material icon with filled style for solid appearance -->
         <span
           class="material-symbols-outlined"
           style="font-variation-settings: 'FILL' 1; font-size: 2rem;"
           >{data.telegramIcon.icon}</span
         >
       </div>
+
+      <!-- Main Heading: "Cómo donar" (How to donate) -->
       <h2
         class="text-[#171212] text-3xl md:text-5xl font-black leading-tight mb-6"
       >
         {data.title}
       </h2>
+
+      <!-- Donation Instructions: Banking details, Bizum info, security warning -->
+      <!-- Uses whitespace-pre-line to preserve line breaks -->
+      <!-- Text-justified for professional appearance -->
       <p
         class="text-[#6b6b6b] text-sm md:text-xl leading-relaxed max-w-2xl mx-auto mb-10 whitespace-pre-line text-justify"
       >
         {data.description}
       </p>
+
+      <!-- Primary CTA: Join Telegram community -->
+      <!-- Palestinian red (#931a24) for brand consistency -->
       <div class="flex flex-col sm:flex-row justify-center gap-4">
         <a
           href={data.cta.url}
@@ -77,6 +144,8 @@ const { data = defaultData } = Astro.props;
           <span>{data.cta.label}</span>
         </a>
       </div>
+
+      <!-- Privacy Disclaimer: Trust-building message -->
       <p class="mt-6 text-sm text-[#6b6b6b]">
         {data.disclaimer}
       </p>

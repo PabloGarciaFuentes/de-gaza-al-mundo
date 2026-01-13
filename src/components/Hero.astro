@@ -1,4 +1,31 @@
 ---
+/**
+ * HERO SECTION COMPONENT
+ * 
+ * Purpose: Main landing section introducing the humanitarian organization "De Gaza al Mundo"
+ * Position: First section of the homepage, sets tone and call-to-action
+ * 
+ * Key Features:
+ * - Two-column responsive layout (text + hero image)
+ * - Mission statement with badge, title, and detailed description
+ * - Four key objectives displayed in icon grid
+ * - Primary CTA button (Telegram group join)
+ * - Styled hero image with Palestinian flag color accents
+ * 
+ * Layout Strategy:
+ * - Mobile: Single column, image on top (reversed flex order)
+ * - Desktop: Two columns side-by-side (text left, image right)
+ * - Image sized smaller for better balance (max-w-xs mobile, sm tablets)
+ * 
+ * Design Philosophy:
+ * - Trust building through transparency badge
+ * - Emotional connection via hero image
+ * - Clear value proposition with 4 objectives
+ * - Single, focused call-to-action
+ */
+
+// === IMAGE IMPORTS ===
+// Hero image showing resilience and hope
 import HeroImage from "../assets/images/hero/hero_img_2.png";
 
 const defaultData = {
@@ -30,10 +57,11 @@ const defaultData = {
       iconColor: "text-blue-600",
       text: "Apoyo emocional y conversación"
     }
-  ],  buttons: [
+  ],
+  buttons: [
     {
       type: "primary",
-      label: "Unirme al Grupo",
+      label: "Unirme al Grupo Telegram",
       icon: "group_add",
       url: "https://t.me/+6HWcj5AJePYxN2M0",
     },
@@ -59,16 +87,24 @@ const defaultData = {
 const { data = defaultData } = Astro.props;
 ---
 
-<!-- HeroSection -->
+<!-- ============================================= -->
+<!-- HERO SECTION - MAIN LANDING CONTENT          -->
+<!-- ============================================= -->
 <section
   id="hero-section"
   class="relative bg-[#f8f6f6] py-12 px-4 sm:px-10 scroll-mt-20"
 >
   <div class="w-full max-w-7xl mx-auto">
     <div class="@container">
+      <!-- Two-column layout: reversed on mobile for image-first -->
       <div class="flex flex-col-reverse lg:flex-row gap-12 items-center">
-        <!-- Text Content -->
+        
+        <!-- ============================================= -->
+        <!-- LEFT COLUMN: TEXT CONTENT                     -->
+        <!-- ============================================= -->
         <div class="flex flex-col gap-6 lg:w-1/2 items-start">
+          
+          <!-- Trust Badge -->
           <div
             class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#236E1E]/10 text-[#236E1E] text-sm font-medium"
           >
@@ -77,19 +113,28 @@ const { data = defaultData } = Astro.props;
             >
             {data.badge.text}
           </div>
+
+          <!-- Main Headline -->
           <h1
             class="text-[#171212] text-4xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight"
           >
             {data.title}
           </h1>
+
+          <!-- Mission Description -->
           <p class="text-[#6b6b6b] text-lg leading-relaxed max-w-xl">
             {data.description}
           </p>
+
+          <!-- Objectives Subtitle -->
           <h1
-            class="text-[#171212] text-xl sm:text-xl lg:text-xl font-black leading-tight tracking-tight"
+            class="text-[#171212] text-2xl sm:text-2xl lg:text-2xl font-black leading-tight tracking-tight"
           >
             {data.subtitle}
           </h1>
+
+          <!-- Objectives Grid -->
+          <!-- 4 key goals with icons in 2x2 grid layout -->
           <div
             class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 w-full max-w-xl py-2"
           >
@@ -108,6 +153,9 @@ const { data = defaultData } = Astro.props;
               </div>
             ))}
           </div>
+
+          <!-- Call-to-Action Button -->
+          <!-- Primary: Join Telegram group for direct participation -->
           <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mt-2">
             {
               data.buttons.map(
@@ -164,6 +212,9 @@ const { data = defaultData } = Astro.props;
               )
             }
           </div>
+
+          <!-- Social Proof - COMMENTED OUT -->
+          <!-- Avatar stack showing community members - removed for cleaner design -->
           <!-- <div class="flex items-center gap-4 text-sm text-[#6b6b6b] mt-2">
             <div class="flex -space-x-3">
               {data.stats.avatars.map((avatar: string | null | undefined, index: number) => (
@@ -180,15 +231,22 @@ const { data = defaultData } = Astro.props;
             <span>{data.stats.text}</span>
           </div> -->
         </div>
-        <!-- Hero Image -->
+
+        <!-- ============================================= -->
+        <!-- RIGHT COLUMN: HERO IMAGE                      -->
+        <!-- ============================================= -->
+        <!-- Styled image with Palestinian flag color accents -->
         <div class="w-full lg:w-1/2 flex justify-center">
           <div
             class="relative rounded-2xl overflow-hidden shadow-2xl aspect-3/4 group max-w-xs sm:max-w-sm w-full"
           >
+            <!-- Dark overlay (fades on hover) -->
             <div
               class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-all duration-300"
             >
             </div>
+
+            <!-- Hero Image -->
             <img
               src={data.heroImage.src}
               alt={data.heroImage.alt}
@@ -198,25 +256,28 @@ const { data = defaultData } = Astro.props;
               width="600"
               height="800"
             />
-            <!-- Palestinian Flag Colors Accent Top -->
+
+            <!-- Palestinian Flag Color Accents -->
+            <!-- Subtle gradient borders in flag colors (red, black, white, green) -->
+            <!-- Top Border -->
             <div
               class="absolute top-0 left-0 w-full h-1 opacity-70"
               style="background: linear-gradient(to right, #931a24, #000000, #ffffff, #236E1E); filter: blur(3.5px); border-radius: 16px 16px 0 0;"
             >
             </div>
-            <!-- Palestinian Flag Colors Accent Bottom -->
+            <!-- Bottom Border -->
             <div
               class="absolute bottom-0 left-0 w-full h-1 opacity-70"
               style="background: linear-gradient(to right, #931a24, #000000, #ffffff, #236E1E); filter: blur(3.5px); border-radius: 0 0 16px 16px;"
             >
             </div>
-            <!-- Palestinian Flag Colors Accent Left -->
+            <!-- Left Border -->
             <div
               class="absolute top-0 left-0 w-1 h-full opacity-70"
               style="background: linear-gradient(to bottom, #931a24, #000000, #ffffff, #236E1E); filter: blur(3.5px); border-radius: 16px 0 0 16px;"
             >
             </div>
-            <!-- Palestinian Flag Colors Accent Right -->
+            <!-- Right Border -->
             <div
               class="absolute top-0 right-0 w-1 h-full opacity-70"
               style="background: linear-gradient(to bottom, #931a24, #000000, #ffffff, #236E1E); filter: blur(3.5px); border-radius: 0 16px 16px 0;"
