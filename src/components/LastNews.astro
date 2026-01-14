@@ -11,6 +11,7 @@
  * - Direct links to Instagram posts
  * - Category color coding (Community, Events, Solidarity)
  * - External link to full Instagram feed
+ * - Automatic image optimization with Astro Image component (WebP format)
  * 
  * Article Categories:
  * - Comunidad (Community) - Black themed
@@ -22,6 +23,13 @@
  * - Desktop: 3-column grid with equal-height cards
  * - All articles link to Instagram posts
  * 
+ * Image Optimization (Phase 1):
+ * - Uses Astro's <Image> component for automatic optimization
+ * - Converts PNG to WebP format (80% quality)
+ * - Resizes to 400x225px (16:9 aspect ratio)
+ * - Reduces image sizes for faster load times
+ * - Lazy loading for below-the-fold content
+ * 
  * Design Philosophy:
  * - Keep community informed about activities
  * - Drive traffic to Instagram for engagement
@@ -30,7 +38,11 @@
  */
 
 // === IMAGE IMPORTS ===
+// Astro Image component for automatic optimization to WebP format
+import { Image } from 'astro:assets';
+
 // Featured images for latest 3 news articles
+// Imported as ImageMetadata objects for Astro Image optimization
 import kaseOImage from "../assets/images/news/kase_o.png";
 import ZambombaImg from "../assets/images/news/zambomba.png";
 import MercadilloImg from "../assets/images/news/mercadillo.png";
@@ -70,10 +82,15 @@ const defaultData = {
 
   // === FEATURED ARTICLES ===
   // Latest 3 news items showcasing solidarity activities
+  // 
+  // IMPORTANT CHANGE (Phase 1 Optimization):
+  // - BEFORE: Used .src strings (e.g., kaseOImage.src)
+  // - AFTER: Uses full ImageMetadata objects (e.g., kaseOImage)
+  // - Reason: Astro <Image> component requires full objects for optimization
   articles: [
     {
       id: 1,
-      image: kaseOImage.src,
+      image: kaseOImage,
       alt: "Comunity volunteers",
       date: "20 Dic, 2025",
       category: {
@@ -87,7 +104,7 @@ const defaultData = {
     },
     {
       id: 2,
-      image: ZambombaImg.src,
+      image: ZambombaImg,
       alt: "Zambomba Event",
       date: "20 Dic, 2025",
       category: {
@@ -102,7 +119,7 @@ const defaultData = {
     },
     {
       id: 3,
-      image: MercadilloImg.src,
+      image: MercadilloImg,
       alt: "Mercadillo Navidad",
       date: "18 Dic, 2025",
       category: {
@@ -188,13 +205,15 @@ const { data = defaultData } = Astro.props;
                 <div class="absolute inset-0 bg-black/5 z-10" />
                 
                 <!-- Article Image -->
-                <img
+                <Image
                   src={article.image}
                   alt={article.alt}
                   class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   loading="lazy"
-                  width="400"
-                  height="225"
+                  width={400}
+                  height={225}
+                  format="webp"
+                  quality={80}
                 />
                 
                 <!-- Date Badge (top-right) -->
