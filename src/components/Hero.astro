@@ -1,10 +1,10 @@
 ---
 /**
  * HERO SECTION COMPONENT
- * 
+ *
  * Purpose: Main landing section introducing the humanitarian organization "De Gaza al Mundo"
  * Position: First section of the homepage, sets tone and call-to-action
- * 
+ *
  * Key Features:
  * - Two-column responsive layout (text + hero image)
  * - Mission statement with badge, title, and detailed description
@@ -12,19 +12,19 @@
  * - Primary CTA button (Telegram group join)
  * - Styled hero image with Palestinian flag color accents
  * - Automatic image optimization with Astro Image component (WebP format)
- * 
+ *
  * Layout Strategy:
  * - Mobile: Single column, image on top (reversed flex order)
  * - Desktop: Two columns side-by-side (text left, image right)
  * - Image sized smaller for better balance (max-w-xs mobile, sm tablets)
- * 
+ *
  * Image Optimization (Phase 1):
  * - Uses Astro's <Image> component for automatic optimization
  * - Converts PNG to WebP format (85% quality for hero image)
  * - Resizes to 600x800px with eager loading (above the fold)
  * - Reduces image size by ~92% (644KB → 50KB)
  * - fetchpriority="high" for LCP optimization
- * 
+ *
  * Design Philosophy:
  * - Trust building through transparency badge
  * - Emotional connection via hero image
@@ -35,7 +35,7 @@
 // === IMAGE IMPORTS ===
 // Astro Image component for automatic optimization to WebP format
 // Critical for hero image optimization (above the fold)
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 
 // Hero image showing resilience and hope
 // Imported as ImageMetadata object for Astro Image optimization
@@ -48,35 +48,35 @@ const defaultData = {
   },
   title: "Conectando corazones solidarios con familias en Gaza",
   description: `Somos “De Gaza al Mundo”, una comunidad solidaria española que, ante la violencia extrema y la hambruna forzada que sufre la población de Gaza, ha decidido no quedarse parada ni ser cómplice del genocidio palestino. Formamos parte de la Asociación Por la Causa, desde donde apoyamos de manera directa a más de 75 familias gazatíes, cerca de 350 personas, a través de un grupo de Telegram donde convivimos voluntarias, familias y donantes, compartiendo, escuchando y acompañándonos cada día, sin intermediarios.`,
-  subtitle: `Objetivos "De Gaza al Mundo"`,  
+  subtitle: `Objetivos "De Gaza al Mundo"`,
   features: [
     {
       icon: "restaurant",
       iconColor: "text-[#236E1E]",
-      text: "Una comida al día y agua potable"
+      text: "Una comida al día y agua potable",
     },
     {
       icon: "soap",
       iconColor: "text-[#931a24]",
-      text: "Leña y productos de higiene"
+      text: "Leña y productos de higiene",
     },
     {
       icon: "volunteer_activism",
       iconColor: "text-black",
-      text: "Conseguir más donaciones para las familias"
+      text: "Conseguir más donaciones para las familias",
     },
     {
       icon: "forum",
       iconColor: "text-blue-600",
-      text: "Apoyo emocional y conversación"
-    }
+      text: "Apoyo emocional y conversación",
+    },
   ],
   buttons: [
     {
       type: "primary",
       label: "Unirme al Grupo Telegram",
       icon: "group_add",
-      url: "https://t.me/+6HWcj5AJePYxN2M0",
+      url: "https://t.me/degazaalmundo",
     },
     // {
     //   type: "secondary",
@@ -100,9 +100,7 @@ const defaultData = {
 const { data = defaultData } = Astro.props;
 ---
 
-<!-- ============================================= -->
-<!-- HERO SECTION - MAIN LANDING CONTENT          -->
-<!-- ============================================= -->
+<!-- ============================================= --><!-- HERO SECTION - MAIN LANDING CONTENT          --><!-- ============================================= -->
 <section
   id="hero-section"
   class="relative bg-[#f8f6f6] py-12 px-4 sm:px-10 scroll-mt-20"
@@ -111,12 +109,10 @@ const { data = defaultData } = Astro.props;
     <div class="@container">
       <!-- Two-column layout: reversed on mobile for image-first -->
       <div class="flex flex-col-reverse lg:flex-row gap-12 items-center">
-        
         <!-- ============================================= -->
         <!-- LEFT COLUMN: TEXT CONTENT                     -->
         <!-- ============================================= -->
         <div class="flex flex-col gap-6 lg:w-1/2 items-start">
-          
           <!-- Trust Badge -->
           <div
             class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#236E1E]/10 text-[#236E1E] text-sm font-medium"
@@ -151,20 +147,27 @@ const { data = defaultData } = Astro.props;
           <div
             class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 w-full max-w-xl py-2"
           >
-            {data.features.map((feature: { icon: unknown; iconColor: any; text: unknown; }) => (
-              <div class="flex items-center gap-3">
-                <div
-                  class={`w-10 h-10 shrink-0 rounded-lg bg-white border border-[#f0f0f0] flex items-center justify-center ${feature.iconColor} shadow-sm`}
-                >
-                  <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">
-                    {feature.icon}
-                  </span>
-                </div>
-                <span class="text-text-main font-medium text-sm leading-tight">
-                  {feature.text}
-                </span>
-              </div>
-            ))}
+            {
+              data.features.map(
+                (feature: { icon: unknown; iconColor: any; text: unknown }) => (
+                  <div class="flex items-center gap-3">
+                    <div
+                      class={`w-10 h-10 shrink-0 rounded-lg bg-white border border-[#f0f0f0] flex items-center justify-center ${feature.iconColor} shadow-sm`}
+                    >
+                      <span
+                        class="material-symbols-outlined"
+                        style="font-variation-settings: 'FILL' 1;"
+                      >
+                        {feature.icon}
+                      </span>
+                    </div>
+                    <span class="text-text-main font-medium text-sm leading-tight">
+                      {feature.text}
+                    </span>
+                  </div>
+                ),
+              )
+            }
           </div>
 
           <!-- Call-to-Action Button -->
@@ -178,7 +181,7 @@ const { data = defaultData } = Astro.props;
                   label: unknown;
                   url: string;
                 }) => {
-                  if (button.label === "Unirme al Grupo") {
+                  if (button.label === "Unirme al Grupo Telegram") {
                     return (
                       <a
                         href={button.url}
@@ -221,7 +224,7 @@ const { data = defaultData } = Astro.props;
                       </button>
                     );
                   }
-                }
+                },
               )
             }
           </div>

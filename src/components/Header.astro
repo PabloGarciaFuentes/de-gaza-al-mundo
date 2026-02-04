@@ -1,10 +1,10 @@
 ---
 /**
  * HEADER NAVIGATION COMPONENT
- * 
+ *
  * Purpose: Main site navigation with responsive mobile/desktop layouts
  * Position: Fixed header with backdrop blur for modern appearance
- * 
+ *
  * Key Features:
  * - Fixed positioning with high z-index for always-visible navigation
  * - Responsive layout: mobile hamburger menu vs desktop horizontal nav
@@ -13,11 +13,11 @@
  * - External CTA button (Telegram integration)
  * - Accessibility-first design with proper ARIA labels
  * - Automatic logo optimization with Astro Image component (WebP format)
- * 
+ *
  * Architecture:
  * - Mobile: Logo + Centered Title + Hamburger → Expandable Menu
  * - Desktop: Logo + Horizontal Navigation + CTA Button
- * 
+ *
  * Image Optimization (Phase 1):
  * - Uses Astro's <Image> component for logo optimization
  * - Converts JPG to WebP format (80% quality)
@@ -26,19 +26,19 @@
  */
 
 // Astro Image component for automatic optimization
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 
 // Logo import
-import logo from '../assets/logo.jpg';
+import logo from "../assets/logo.jpg";
 
 /**
  * HEADER DATA STRUCTURE
- * 
+ *
  * Configuration object for header content and behavior:
  * - logo: Image configuration with responsive sizing
  * - navigation: Array of internal navigation links (anchor-based)
  * - ctaButton: External action button (Telegram join)
- * 
+ *
  * Navigation Strategy:
  * - Uses anchor links (#section-id) for single-page navigation
  * - Smooth scroll behavior handled by CSS scroll-behavior
@@ -47,7 +47,7 @@ import logo from '../assets/logo.jpg';
 const defaultData = {
   // === LOGO CONFIGURATION ===
   // Responsive logo with Palestinian-themed styling
-  // 
+  //
   // IMPORTANT CHANGE (Phase 1 Optimization):
   // - BEFORE: Used logo.src string
   // - AFTER: Uses full ImageMetadata object (logo)
@@ -56,30 +56,30 @@ const defaultData = {
   logo: {
     src: logo,
     alt: "De Gaza al Mundo Logo", // Accessibility description
-    class: "w-16 h-16 md:w-24 md:h-24 object-cover rounded-xl" // Responsive sizing: mobile 16x16, desktop 24x24
+    class: "w-16 h-16 md:w-24 md:h-24 object-cover rounded-xl", // Responsive sizing: mobile 16x16, desktop 24x24
   },
-  
+
   // === NAVIGATION LINKS ===
   // Internal section navigation using anchor links
   // Order optimized for user journey flow
   navigation: [
     // { label: "Inicio", href: "#" }, // Commented out - redundant since logo serves as home link
-    { label: "Sobre Nosotras", href: "#" },               // About section (currently placeholder)
+    { label: "Sobre Nosotras", href: "#" }, // About section (currently placeholder)
     { label: "Transparencia", href: "#transparency-section" }, // Image gallery showcase
-    { label: "Artesanías", href: "#craft-section" },         // Products/craft section
-    { label: "Noticias", href: "#news-section" },            // Latest news updates
+    { label: "Artesanías", href: "#craft-section" }, // Products/craft section
+    { label: "Noticias", href: "#news-section" }, // Latest news updates
     { label: "Cómo Colaborar", href: "#collaborate-section" }, // Donation/collaboration info
-    { label: "Contacto", href: "#contact-section" },         // Contact information
+    { label: "Contacto", href: "#contact-section" }, // Contact information
   ],
-  
+
   // === CALL-TO-ACTION BUTTON ===
   // Primary conversion action - Telegram community join
   // Uses Palestinian red color (#931a24) for brand consistency
   ctaButton: {
-    label: "Unirme a Telegram",                    // Action-oriented text
-    icon: "send",                                  // Material symbol for messaging
-    url: "https://t.me/+6HWcj5AJePYxN2M0"        // External Telegram group link
-  }
+    label: "Unirme a Telegram", // Action-oriented text
+    icon: "send", // Material symbol for messaging
+    url: "https://t.me/degazaalmundo", // External Telegram group link
+  },
 };
 
 // Component props with fallback to defaultData
@@ -135,18 +135,25 @@ const { data = defaultData } = Astro.props;
           height={64}
         />
       </div>
-      
+
       <!-- Center Zone: Brand Title (absolutely positioned for perfect centering) -->
-      <h1 class="text-[#171212] text-lg font-bold tracking-tight absolute left-1/2 transform -translate-x-1/2">
+      <h1
+        class="text-[#171212] text-lg font-bold tracking-tight absolute left-1/2 transform -translate-x-1/2"
+      >
         De Gaza al Mundo
       </h1>
-      
+
       <!-- Right Zone: Hamburger Menu Toggle -->
-      <button id="mobile-menu-btn" class="p-2 text-[#171212] cursor-pointer" aria-label="Abrir menú de navegación" aria-expanded="false">
+      <button
+        id="mobile-menu-btn"
+        class="p-2 text-[#171212] cursor-pointer"
+        aria-label="Abrir menú de navegación"
+        aria-expanded="false"
+      >
         <span class="material-symbols-outlined" id="menu-icon">menu</span>
       </button>
     </div>
-    
+
     <!-- 
       DESKTOP LAYOUT (hidden md:flex)
       
@@ -173,7 +180,7 @@ const { data = defaultData } = Astro.props;
           height={96}
         />
       </div>
-      
+
       <!-- 
         DESKTOP NAVIGATION ZONE
         
@@ -186,17 +193,28 @@ const { data = defaultData } = Astro.props;
         - Smooth color transitions for polished UX
       -->
       <div id="desktop-menu" class="hidden md:flex items-center gap-8">
-        <nav class="flex items-center gap-8" role="navigation" aria-label="Navegación principal">
-          {data.navigation.map((item: { href: string | URL | null | undefined; label: unknown; }) => (
-            <a
-              class="text-[#171212] text-base font-medium hover:text-[#931a24] transition-colors"
-              href={item.href}
-            >
-              {item.label}
-            </a>
-          ))}
+        <nav
+          class="flex items-center gap-8"
+          role="navigation"
+          aria-label="Navegación principal"
+        >
+          {
+            data.navigation.map(
+              (item: {
+                href: string | URL | null | undefined;
+                label: unknown;
+              }) => (
+                <a
+                  class="text-[#171212] text-base font-medium hover:text-[#931a24] transition-colors"
+                  href={item.href}
+                >
+                  {item.label}
+                </a>
+              ),
+            )
+          }
         </nav>
-        
+
         <!-- 
           PRIMARY CTA BUTTON
           
@@ -215,12 +233,14 @@ const { data = defaultData } = Astro.props;
           class="flex items-center justify-center gap-2 rounded-lg h-11 px-5 bg-[#931a24] hover:bg-red-800 transition-colors text-white text-base font-bold shadow-sm cursor-pointer"
           aria-label="Unirse a nuestro canal de Telegram"
         >
-          <span class="material-symbols-outlined text-xl">{data.ctaButton.icon}</span>
+          <span class="material-symbols-outlined text-xl"
+            >{data.ctaButton.icon}</span
+          >
           <span>{data.ctaButton.label}</span>
         </a>
       </div>
     </div>
-    
+
     <!-- 
       MOBILE MENU PANEL
       
@@ -238,23 +258,38 @@ const { data = defaultData } = Astro.props;
       - Vertical stack layout for touch-friendly interaction
       - CTA button maintains brand styling
     -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-[#f4f0f1] px-4 py-4" role="navigation" aria-label="Menú móvil">
+    <div
+      id="mobile-menu"
+      class="hidden md:hidden bg-white border-t border-[#f4f0f1] px-4 py-4"
+      role="navigation"
+      aria-label="Menú móvil"
+    >
       <nav class="flex flex-col gap-4">
-        {data.navigation.map((item: { href: string | URL | null | undefined; label: unknown; }) => (
-          <a
-            class="text-[#171212] text-base font-medium hover:text-[#931a24] transition-colors py-2"
-            href={item.href}
-          >
-            {item.label}
-          </a>
-        ))}
+        {
+          data.navigation.map(
+            (item: {
+              href: string | URL | null | undefined;
+              label: unknown;
+            }) => (
+              <a
+                class="text-[#171212] text-base font-medium hover:text-[#931a24] transition-colors py-2"
+                href={item.href}
+              >
+                {item.label}
+              </a>
+            ),
+          )
+        }
         <a
           href={data.ctaButton.url}
           target="_blank"
           rel="noopener noreferrer"
           class="flex items-center justify-center gap-2 rounded-lg h-11 px-5 bg-[#931a24] hover:bg-red-800 transition-colors text-white text-base font-bold shadow-sm cursor-pointer mt-2"
-          aria-label="Unirse a nuestro canal de Telegram - Se abre en nueva ventana">
-          <span class="material-symbols-outlined text-xl">{data.ctaButton.icon}</span>
+          aria-label="Unirse a nuestro canal de Telegram - Se abre en nueva ventana"
+        >
+          <span class="material-symbols-outlined text-xl"
+            >{data.ctaButton.icon}</span
+          >
           <span>{data.ctaButton.label}</span>
         </a>
       </nav>
@@ -282,50 +317,49 @@ const { data = defaultData } = Astro.props;
   - Event delegation for mobile links
 -->
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener("DOMContentLoaded", function () {
     // === DOM ELEMENT REFERENCES ===
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');  // Hamburger button
-    const mobileMenu = document.getElementById('mobile-menu');         // Mobile menu panel
-    const menuIcon = document.getElementById('menu-icon');             // Icon element for state changes
-    
+    const mobileMenuBtn = document.getElementById("mobile-menu-btn"); // Hamburger button
+    const mobileMenu = document.getElementById("mobile-menu"); // Mobile menu panel
+    const menuIcon = document.getElementById("menu-icon"); // Icon element for state changes
+
     // Safety check: ensure all required elements exist
     if (mobileMenuBtn && mobileMenu && menuIcon) {
-      
       // === MOBILE MENU TOGGLE FUNCTIONALITY ===
       /**
        * Handles hamburger menu button clicks
        * Toggles menu visibility and updates icon state
        * Updates aria-expanded for screen readers
        */
-      mobileMenuBtn.addEventListener('click', function() {
-        const isMenuHidden = mobileMenu.classList.contains('hidden');
-        
+      mobileMenuBtn.addEventListener("click", function () {
+        const isMenuHidden = mobileMenu.classList.contains("hidden");
+
         if (isMenuHidden) {
           // OPEN MENU
-          mobileMenu.classList.remove('hidden');
-          menuIcon.textContent = 'close';                    // Switch to close icon
-          mobileMenuBtn.setAttribute('aria-expanded', 'true'); // Update accessibility state
+          mobileMenu.classList.remove("hidden");
+          menuIcon.textContent = "close"; // Switch to close icon
+          mobileMenuBtn.setAttribute("aria-expanded", "true"); // Update accessibility state
         } else {
           // CLOSE MENU
-          mobileMenu.classList.add('hidden');
-          menuIcon.textContent = 'menu';                     // Switch to hamburger icon
-          mobileMenuBtn.setAttribute('aria-expanded', 'false'); // Update accessibility state
+          mobileMenu.classList.add("hidden");
+          menuIcon.textContent = "menu"; // Switch to hamburger icon
+          mobileMenuBtn.setAttribute("aria-expanded", "false"); // Update accessibility state
         }
       });
-      
+
       // === AUTO-CLOSE ON NAVIGATION ===
       /**
        * Closes mobile menu when user clicks any navigation link
        * Improves UX by automatically hiding menu after selection
        * Applies to all <a> elements within mobile menu
        */
-      const mobileLinks = mobileMenu.querySelectorAll('a');
-      mobileLinks.forEach(function(link) {
-        link.addEventListener('click', function() {
+      const mobileLinks = mobileMenu.querySelectorAll("a");
+      mobileLinks.forEach(function (link) {
+        link.addEventListener("click", function () {
           // Close menu and reset states
-          mobileMenu.classList.add('hidden');
-          menuIcon.textContent = 'menu';
-          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+          mobileMenu.classList.add("hidden");
+          menuIcon.textContent = "menu";
+          mobileMenuBtn.setAttribute("aria-expanded", "false");
         });
       });
     }

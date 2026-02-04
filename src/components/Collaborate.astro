@@ -2,13 +2,13 @@
 /**
  * COLLABORATE SECTION COMPONENT
  * =============================
- * 
+ *
  * Purpose:
  * --------
  * Critical conversion point that guides visitors on how to make donations to Palestinian families.
- * Provides complete donation instructions including banking details, Bizum payment info, and 
+ * Provides complete donation instructions including banking details, Bizum payment info, and
  * Telegram community link. Centers around trust-building and transparency.
- * 
+ *
  * Features:
  * ---------
  * - Complete donation instructions (bank transfer and Bizum)
@@ -17,7 +17,7 @@
  * - Privacy disclaimer to build trust
  * - Decorative background circles in Palestinian flag colors
  * - Centered card layout with elevation (shadow-xl)
- * 
+ *
  * Layout Strategy:
  * ---------------
  * - Light background (#fcfafa) for subtle contrast
@@ -26,7 +26,7 @@
  * - Whitespace-preserved description for formatting (bank details, etc.)
  * - Text-justified for professional appearance
  * - Primary CTA button in Palestinian red (#931a24)
- * 
+ *
  * Design Philosophy:
  * ------------------
  * This is the most critical section for conversion - where awareness becomes action.
@@ -37,7 +37,7 @@
 
 const defaultData = {
   title: "Cómo donar", // Main heading: "How to donate"
-  
+
   // Comprehensive donation instructions with banking details
   // Uses whitespace-pre-line to preserve line breaks in template
   description: `Te necesitamos. Cada donación asegura comida diaria, agua potable, productos de higiene, leña y cubrir urgencias. La situación es extrema, y esta es la forma más directa, humana y transparente de llegar donde más se necesita y marcar la diferencia.
@@ -51,16 +51,16 @@ const defaultData = {
   Código: 13292
   Concepto: Donación Proyecto dGaM
   Por seguridad no poner la palabra Gaza ni Palestina`,
-  
+
   // Primary CTA: Join Telegram community for transparency
   cta: {
     icon: "chat", // Material icon for messaging
     label: "Unirse a Telegram", // "Join Telegram"
-    url: "https://t.me/+6HWcj5AJePYxN2M0", // Telegram group invite link
+    url: "https://t.me/degazaalmundo", // Telegram group invite link
   },
-  
+
   disclaimer: "Unirse es gratuito y seguro. Respetamos tu privacidad.", // Trust-building message
-  
+
   // Telegram brand colors for icon circle
   telegramIcon: {
     icon: "send", // Telegram paper plane icon
@@ -72,15 +72,7 @@ const defaultData = {
 const { data = defaultData } = Astro.props;
 ---
 
-<!-- ============================================ -->
-<!-- COLLABORATE SECTION                          -->
-<!-- ============================================ -->
-<!-- Donation instructions and Telegram CTA       -->
-<!-- Light background with decorative circles     -->
-<!-- Centered card with banking/Bizum details     -->
-<!-- ============================================ -->
-
-<!-- CTASection -->
+<!-- ============================================ --><!-- COLLABORATE SECTION                          --><!-- ============================================ --><!-- Donation instructions and Telegram CTA       --><!-- Light background with decorative circles     --><!-- Centered card with banking/Bizum details     --><!-- ============================================ --><!-- CTASection -->
 <section
   id="collaborate-section"
   class="bg-[#fcfafa] py-16 md:py-24 relative overflow-hidden scroll-mt-20"
