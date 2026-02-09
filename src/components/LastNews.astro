@@ -46,6 +46,7 @@ import { Image } from 'astro:assets';
 import kaseOImage from "../assets/images/news/kase_o.png";
 import ZambombaImg from "../assets/images/news/zambomba.png";
 import MercadilloImg from "../assets/images/news/mercadillo.png";
+import AbrazaImg from "../assets/images/news/abraza.webp";
 
 /**
  * NEWS SECTION DATA STRUCTURE
@@ -88,8 +89,25 @@ const defaultData = {
   // - AFTER: Uses full ImageMetadata objects (e.g., kaseOImage)
   // - Reason: Astro <Image> component requires full objects for optimization
   articles: [
+    
     {
       id: 1,
+      image: AbrazaImg,
+      alt: "Abraza una familia",
+      date: "21 Ene, 2026",
+      category: {
+        name: "Solidaridad",
+        color: "bg-[#236E1E]", // Palestinian green
+        textColor: "text-[#236E1E]",
+      },
+      title: `Únete a nuestra campaña:<br/>ABRAZA UNA FAMILIA`,
+      objectPosition: "object-[50%_80%]",
+      description:
+        `Abraza una Familia es un programa de apoyo directo y continuado a familias gazatíes. En Gaza, la incertidumbre es diaria. Pero los abrazos también pueden sostener.`,
+      link: "https://www.instagram.com/p/DTyYpFBihf0/",
+    },
+    {
+      id: 2,
       image: kaseOImage,
       alt: "Comunity volunteers",
       date: "20 Dic, 2025",
@@ -101,21 +119,6 @@ const defaultData = {
       title: "Kase.O se une a nuestra causa solidaria",
       description: `El reconocido rapero español Kase.O dona el dinero de sus actuaciones en los festivales con fondos proisrraelís a la asociación "De Gaza Al Mundo".`,
       link: "https://www.instagram.com/p/DSfnBXpjM53/",
-    },
-    {
-      id: 2,
-      image: ZambombaImg,
-      alt: "Zambomba Event",
-      date: "20 Dic, 2025",
-      category: {
-        name: "Eventos",
-        color: "bg-[#236E1E]", // Palestinian green
-        textColor: "text-[#236E1E]",
-      },
-      title: "Zambomba Flamenca por Palestina",
-      description:
-        `Celebrado en el Centro Cívico Sector III de #Getafe una Zambomba Flamenca por Palestina. Organizado por @artistasconpalestina y @getafeconpalestina.`,
-      link: "https://www.instagram.com/p/DSfeuqfDJJN/",
     },
     {
       id: 3,
@@ -208,7 +211,7 @@ const { data = defaultData } = Astro.props;
                 <Image
                   src={article.image}
                   alt={article.alt}
-                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  class={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 ${article.objectPosition || 'object-center'}`}
                   loading="lazy"
                   width={400}
                   height={225}
@@ -242,9 +245,10 @@ const { data = defaultData } = Astro.props;
                 </div>
 
                 <!-- Article Title -->
-                <h3 class="text-xl font-bold text-[#171212] mb-3 leading-snug group-hover:text-[#931a24] transition-colors">
-                  {article.title}
-                </h3>
+                <h3 
+                  class="text-xl font-bold text-[#171212] mb-3 leading-snug group-hover:text-[#931a24] transition-colors"
+                  set:html={article.title}
+                />
 
                 <!-- Article Description -->
                 <p class="text-[#6b6b6b] text-sm leading-relaxed line-clamp-3 mb-4 grow">
