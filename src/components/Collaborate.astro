@@ -59,6 +59,12 @@ const defaultData = {
     url: "https://t.me/degazaalmundo", // Telegram group invite link
   },
 
+  cta_donate: {
+    icon: "volunteer_activism", // Material icon for donate
+    label: "Donar", // "Donate"
+    url: "https://donate.stripe.com/eVq28qfQM6phcVgejVg3600", // Stripe donate link
+  },
+
   disclaimer: "Unirse es gratuito y seguro. Respetamos tu privacidad.", // Trust-building message
 
   // Telegram brand colors for icon circle
@@ -70,6 +76,12 @@ const defaultData = {
 };
 
 const { data = defaultData } = Astro.props;
+
+// Split description into introduction and technical details (IBAN, Bizum)
+// Assuming double newline separates the emotional intro from technical instructions
+const descriptionParts = data.description.split("\n\n");
+const introText = descriptionParts[0];
+const technicalDetails = descriptionParts.slice(1).join("\n\n");
 ---
 
 <!-- ============================================ --><!-- COLLABORATE SECTION                          --><!-- ============================================ --><!-- Donation instructions and Telegram CTA       --><!-- Light background with decorative circles     --><!-- Centered card with banking/Bizum details     --><!-- ============================================ --><!-- CTASection -->
@@ -114,31 +126,63 @@ const { data = defaultData } = Astro.props;
         {data.title}
       </h2>
 
-      <!-- Donation Instructions: Banking details, Bizum info, security warning -->
-      <!-- Uses whitespace-pre-line to preserve line breaks -->
-      <!-- Text-justified for professional appearance -->
+      <!-- Introduction: Emotional message -->
       <p
-        class="text-[#6b6b6b] text-sm md:text-xl leading-relaxed max-w-2xl mx-auto mb-10 whitespace-pre-line text-justify"
+        class="text-[#6b6b6b] text-base md:text-xl leading-relaxed max-w-2xl mx-auto mb-10 text-center"
       >
-        {data.description}
+        {introText}
       </p>
 
-      <!-- Primary CTA: Join Telegram community -->
-      <!-- Palestinian red (#931a24) for brand consistency -->
-      <div class="flex flex-col sm:flex-row justify-center gap-4">
+      <!-- Main CTAs: Direct actions (Stripe and Telegram) -->
+      <div class="flex flex-col sm:flex-row justify-center gap-4 mb-10">
+        <!-- Direct Donation: Stripe credit card/payment -->
+        <a
+          href={data.cta_donate.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center justify-center gap-3 rounded-lg h-14 px-8 bg-[#931a24] hover:bg-red-800 transition-all transform hover:-translate-y-1 text-white text-lg font-bold shadow-lg cursor-pointer w-full sm:w-auto"
+        >
+          <span class="material-symbols-outlined">{data.cta_donate.icon}</span>
+          <span>{data.cta_donate.label}</span>
+        </a>
+
+        <!-- Community CTA: Direct connection -->
         <a
           href={data.cta.url}
           target="_blank"
           rel="noopener noreferrer"
-          class="flex items-center justify-center gap-3 rounded-lg h-14 px-8 bg-[#931a24] hover:bg-red-800 transition-all transform hover:-translate-y-1 text-white text-lg font-bold shadow-lg cursor-pointer"
+          class="flex items-center justify-center gap-3 rounded-lg h-14 px-8 bg-[#0088cc] hover:bg-[#007bbd] transition-all transform hover:-translate-y-1 text-white text-lg font-bold shadow-lg cursor-pointer w-full sm:w-auto"
         >
-          <span class="material-symbols-outlined">{data.cta.icon}</span>
+          <span class="material-symbols-outlined text-filled"
+            >{data.cta.icon}</span
+          >
           <span>{data.cta.label}</span>
         </a>
       </div>
 
-      <!-- Privacy Disclaimer: Trust-building message -->
-      <p class="mt-6 text-sm text-[#6b6b6b]">
+      <!-- Divider for alternative methods -->
+      <div class="flex items-center gap-4 mb-10 max-w-xl mx-auto">
+        <div class="flex-1 h-px bg-[#f0f0f0]"></div>
+        <span
+          class="text-[#6b6b6b] text-sm font-medium uppercase tracking-wider"
+          >Otras formas de colaborar</span
+        >
+        <div class="flex-1 h-px bg-[#f0f0f0]"></div>
+      </div>
+
+      <!-- Technical Details: Banking and Bizum instructions -->
+      {
+        technicalDetails && (
+          <div class="bg-gray-50 rounded-xl p-6 border border-[#f0f0f0] max-w-2xl mx-auto mb-6">
+            <p class="text-[#6b6b6b] text-sm md:text-md leading-relaxed whitespace-pre-line text-left font-medium">
+              {technicalDetails}
+            </p>
+          </div>
+        )
+      }
+
+      <!-- Privacy Disclaimer -->
+      <p class="text-sm text-[#6b6b6b]">
         {data.disclaimer}
       </p>
     </div>
